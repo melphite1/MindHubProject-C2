@@ -4,7 +4,7 @@ import "../styles/styles.css"
 const Header = () => {
     return (
         <header>
-            <NavLink to="/"> <h2>ESCAPE</h2></NavLink>
+            <NavLink to="/"> <h2>CRIS</h2></NavLink>
             <nav>
                 <NavLink to="/news">News</NavLink>
                 <NavLink to="/games">Games</NavLink>
