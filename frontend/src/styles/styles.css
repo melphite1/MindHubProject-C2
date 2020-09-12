@@ -1,0 +1,22 @@
+html * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    width: 100vw;
+    background-color: black;
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3vh 4vw;
+}
+
+a {
+    color: whitesmoke;
+    text-decoration: none;
+    padding: 0 6px ;
+    font-size: 20px;
+}
