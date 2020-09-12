@@ -5,9 +5,14 @@ html * {
 }
 
 header{
+<<<<<<< HEAD
     width: 100vw;
     background-color: violet;
     color: black;
+=======
+    background-color: red;
+    color: whitesmoke;
+>>>>>>> origin/branchAle
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,3 +25,4 @@ a {
     padding: 0 6px ;
     font-size: 20px;
 }
+
