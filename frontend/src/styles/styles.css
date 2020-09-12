@@ -5,7 +5,6 @@ html * {
 }
 
 header{
-    width: 100vw;
     background-color: red;
     color: whitesmoke;
     display: flex;
@@ -20,3 +19,4 @@ a {
     padding: 0 6px ;
     font-size: 20px;
 }
+
