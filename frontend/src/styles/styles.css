@@ -6,7 +6,7 @@ html * {
 
 header{
     width: 100vw;
-    background-color: red;
+    background-color: green; /* Antes red, cambiado solo para que mi branch aparezca */
     color: whitesmoke;
     display: flex;
     justify-content: space-between;
