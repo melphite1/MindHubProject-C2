@@ -6,7 +6,7 @@ html * {
 
 header{
     width: 100vw;
-    background-color: black;
+    background-color: red;
     color: whitesmoke;
     display: flex;
     justify-content: space-between;
