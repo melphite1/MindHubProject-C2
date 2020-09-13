@@ -8,7 +8,6 @@ import Games from './pages/Games';
 
 
 class App extends React.Component {
-  state = {}
   render() {
     return (
       <BrowserRouter>
