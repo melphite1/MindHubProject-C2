@@ -6,8 +6,8 @@ html * {
 
 header{
     width: 100vw;
-    background-color: green; /* Antes red, cambiado solo para que mi branch aparezca */
-    color: whitesmoke;
+    background-color: violet;
+    color: black;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -15,8 +15,9 @@ header{
 }
 
 a {
-    color: whitesmoke;
+    color: black;
     text-decoration: none;
     padding: 0 6px ;
     font-size: 20px;
 }
+
