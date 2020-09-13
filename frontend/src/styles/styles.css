@@ -3,19 +3,21 @@ html * {
     padding: 0;
     box-sizing: border-box;
 }
+body{
+    background: rgb(92, 92, 92);
+}
 
 header{
-    width: 100vw;
-    background-color: violet;
-    color: black;
+    background-color: black;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 3vh 4vw;
+    height: 10vh;
 }
 
 a {
-    color: black;
+    color: whitesmoke;
     text-decoration: none;
     padding: 0 6px ;
     font-size: 20px;

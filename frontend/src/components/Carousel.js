@@ -12,24 +12,28 @@ class Carousel extends React.Component {
                         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
+                        <div class="carousel-item active" style={{ height: '80vh' }}>
                             <img class="d-block w-100" src="https://i.blogs.es/a99d47/assassin-s-creed-valhalla-04/1366_2000.jpeg" alt="First slide" />
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2>Find the latest news about the gamer world</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dapibus sem elementum purus euismod elementum. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+                            </div>
                         </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="https://as.com/meristation/imagenes/2019/10/13/noticias/1570972818_956311_1570972895_noticia_normal.jpg" alt="Second slide" />
+                        <div class="carousel-item" style={{ height: '80vh' }}>
+                            <img class="d-block w-100" src="https://areajugones.sport.es/wp-content/uploads/2020/04/the-last-of-us-outbreak-day-art-01-us-25sep19.jpg" alt="Second slide" />
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2>Find the latest news about the gamer world</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dapibus sem elementum purus euismod elementum. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+                            </div>
                         </div>
-                        <div class="carousel-item">
+                        <div class="carousel-item" style={{ height: '80vh' }}>
                             <img class="d-block w-100" src="https://www.kabukis.com/wp-content/uploads/2013/08/BEYOND.jpg" alt="Third slide" />
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2>Find the latest news about the gamer world</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dapibus sem elementum purus euismod elementum. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+                            </div>
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
                 </div>
 
             </>
