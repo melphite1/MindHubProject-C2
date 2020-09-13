@@ -1,15 +1,18 @@
+const { string } = require("@hapi/joi")
 const mongoose = require("mongoose")
 
 
 const UserSchema = new mongoose.Schema({
     favGames: Array,
+    favConsole: String,
     username: String,
     password: String,
     email: String,
     firstname: String,
-    lastname:String,
-    idComment: mongoose.Types.ObjectId, ref: "Comment",
-    country: String
+    lastname: String,
+    commentID: { type: mongoose.Types.ObjectId, ref: "Comment" },
+    country: String,
+    urlpic: String
 })
 
 
