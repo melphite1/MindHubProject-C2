@@ -7,7 +7,7 @@ const NewsSchema = new mongoose.Schema({
     body: String,
     images: String,
     date: String,
-    commentID: mongoose.Types.ObjectId, ref: "Comment",
+    commentID:{type: mongoose.Types.ObjectId, ref: "Comment"},
 })
 
 

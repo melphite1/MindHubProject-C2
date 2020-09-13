@@ -4,8 +4,8 @@ import auxReducer from '../reducers/auxReducer'
 const { combineReducers } = require('redux')
 
 
-const rootReducer = combineReducers ({
-    gamesReducer: gamesReducer,
+const rootReducer = combineReducers({
+    // gamesReducer: gamesReducer,
     usersReducer: usersReducer,
     auxReducer: auxReducer
 })

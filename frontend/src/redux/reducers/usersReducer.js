@@ -1,6 +1,6 @@
 const initialState = {
-    name:'',
-    photo:'',
+    name: '',
+    urlpic: '',
     token: ''
 }
 
@@ -8,15 +8,15 @@ const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'SET_USER':
             localStorage.setItem('token', action.payload.token)
-            return{
+            return {
                 ...state,
                 name: action.payload.name,
-                photo: action.payload.photo,
+                urlpic: action.payload.urlpic,
                 token: action.payload.token
             }
         case 'LOGOUT_USER':
             localStorage.clear()
-            return{
+            return {
                 ...state,
                 ...initialState
             }

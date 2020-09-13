@@ -10,7 +10,8 @@ const gameController = {
         gameSave.save()
         .then(game => res.json({succes: true, game}))
         .catch( error =>res.json({succes: false, error}))
-    }
+    },
+    
 }
 
 module.exports = gameController

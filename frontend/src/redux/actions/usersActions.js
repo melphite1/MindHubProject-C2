@@ -1,4 +1,3 @@
-import usersReducer from "../reducers/usersReducer"
 import axios from 'axios'
 
 const usersActions = {
@@ -7,38 +6,42 @@ const usersActions = {
     createAccount: newUser => {
         return async (dispatch, getState) => {
             const response = await axios.post('http://127.0.0.1:4000/api/user', newUser)/* ->PEDIR RUTA AL BACKEND<- */
-            if(response.data.success !== true) {
+            console.log(response)
+            if (response.data.success !== true) {
                 alert(response.data.error)
-            } else { 
+                console.log(response.data.message)
+            } else {
                 dispatch({
                     type: 'SET_USER',
                     payload: {
-                    name: response.data.name,
-                    photo: response.data.photo,
-                    token: response.data.token
-                }
+                        name: response.data.name,
+                        urlpic: response.data.urlpic,
+                        token: response.data.token
+                    }
                 })
             }
-            
-            
+
+
         }
     },
 
     userLogIn: newUser => {
         return async (dispatch, getState) => {
             const response = await axios.post('http://127.0.0.1:4000/api/login', newUser)/* ->PEDIR RUTA AL BACKEND<- */
-            if(!response.data.success) { 
-                alert(response.data.message)}
-            else{
-            dispatch({
-                type: 'SET_USER',
-                payload: {
-                    name: response.data.name,
-                    photo: response.data.photo,
-                    token: response.data.token
-                }
-            })
-            } 
+            console.log(response.data.name)
+            if (!response.data.success) {
+                alert(response.data.message)
+            }
+            else {
+                dispatch({
+                    type: 'SET_USER',
+                    payload: {
+                        name: response.data.name,
+                        urlpic: response.data.urlpic,
+                        token: response.data.token
+                    }
+                })
+            }
 
         }
     },
@@ -50,27 +53,29 @@ const usersActions = {
             })
         }
     },
-    
-    forcedLogIn: token => {
+
+    forcedLogIn: tokenLS => {
         return async (dispatch, getState) => {
-            const response = await axios.get('http://127.0.0.1:4000/api/tokenVerificator',/* ->PEDIR RUTA AL BACKEND<- */ {
+            console.log(tokenLS)
+            const response = await axios.get('http://127.0.0.1:4000/api/tokenVerificator', {
                 headers: {
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${tokenLS}`
                 }
             })
+            console.log(response.data)
             dispatch({
                 type: "SET_USER",
-                payload:{
+                payload: {
                     name: response.data.name,
-                    photo: response.data.photo,
-                    token: token
+                    urlpic: response.data.urlpic,
+                    token: tokenLS
                 }
             })
 
         }
     }
-    
-    
+
+
 }
 
 
