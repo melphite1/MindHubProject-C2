@@ -8,16 +8,16 @@ const gamesActions = {
             let response = await Axios.get('https://api.rawg.io/api/games?page=1')
             dispatch({
                 type: 'GETGAMES',
-                payload: { games: response.data }
+                payload: { games: response.data.results }
             })
         }
     },
     getCategories: () => {
         return async (dispatch, getState) => {
-            let response = await Axios.get('https://api.rawg.io/api/games?page=1')
+            let response = await Axios.get('https://rawg-video-games-database.p.rapidapi.com/genres')
             dispatch({
                 type: 'GETCATEGORIES',
-                payload: { categories: response.data.results }
+                payload: { categories: response.data }
             })
         }
     }

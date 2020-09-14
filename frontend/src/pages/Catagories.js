@@ -9,9 +9,6 @@ const Categories = (props) => {
   const [categories, setCategories] = useState([])
   const [filteredCategories, setFilteredCategories] = useState([])
 
-
-
-
   useEffect(() => {
     setCategories({
       ...categories,
@@ -22,9 +19,9 @@ const Categories = (props) => {
       filteredCategories: props.categories
     })
   }, [props.categories])
+
   console.log(categories)
   
-
   const capturarValue = (e) => {
     const valorAlmacenado = e.target.value.trim().toLowerCase();
     setCategories({

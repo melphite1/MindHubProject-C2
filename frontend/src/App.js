@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import News from './pages/News';
 import Register from './components/Register';
 import LogIn from './components/LogIn';
-import Games from './pages/Catagories';
+import Categories from './pages/Catagories';
 import { connect } from 'react-redux';
 import usersActions from './redux/actions/usersActions'
 
@@ -20,7 +20,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/news" component={News} />
-          <Route exact path="/games" component={Games} />
+          <Route exact path="/games" component={Categories} />
           <Route exact path="/signup" component={Register} />
           <Route exact path="/login" component={LogIn} />
           <Redirect to="/" />
