@@ -1,5 +1,6 @@
 const initialState = {
-    games: []
+    games: [],
+    categories: []
 }
 
 const gamesReducer = (state = initialState, action) => {
