@@ -1,6 +1,6 @@
 const initialState = {
     games: [],
-    categories: []
+    categories:[]
 }
 
 const gamesReducer = (state = initialState, action) => {
@@ -10,6 +10,13 @@ const gamesReducer = (state = initialState, action) => {
                 ...state,
                 games: action.payload
             }
+        case 'GETCATEGORIES':
+                return {
+                    ...state,
+                    categories: action.payload
+                }
+            default:
+                return state;
     }
 }
 

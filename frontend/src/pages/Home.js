@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../components/Header'
 import Carousel from '../components/Carousel'
 import { connect } from "react-redux";
 import gamesActions from '../redux/actions/gamesActions';
 
-const Home = () => {
+const Home = (props) => {
+
+    useEffect(() => {
+        props.getCategories()
+    },[])
+
     return (
         <>
             <Header />

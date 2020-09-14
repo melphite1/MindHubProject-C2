@@ -4,18 +4,14 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import News from './pages/News';
 import Register from './components/Register';
 import LogIn from './components/LogIn';
-<<<<<<< HEAD
-import Games from './components/Games';
-=======
 import Games from './pages/Catagories';
->>>>>>> fe32186b3d4427e8e33157a6fc17abe49722bd44
 import { connect } from 'react-redux';
 import usersActions from './redux/actions/usersActions'
 
 
 class App extends React.Component {
   render() {
-    console.log(this.props.token)
+
     if (localStorage.getItem('token') && this.props.token == "") {
       this.props.forcedLogIn(localStorage.getItem('token'))
     }

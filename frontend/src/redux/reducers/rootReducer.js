@@ -5,7 +5,7 @@ const { combineReducers } = require('redux')
 
 
 const rootReducer = combineReducers({
-    // gamesReducer: gamesReducer,
+    gamesReducer: gamesReducer,
     usersReducer: usersReducer,
     auxReducer: auxReducer
 })

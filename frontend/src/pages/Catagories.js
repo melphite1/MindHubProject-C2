@@ -9,6 +9,9 @@ const Categories = (props) => {
   const [categories, setCategories] = useState([])
   const [filteredCategories, setFilteredCategories] = useState([])
 
+
+
+
   useEffect(() => {
     setCategories({
       ...categories,
@@ -19,44 +22,18 @@ const Categories = (props) => {
       filteredCategories: props.categories
     })
   }, [props.categories])
+  console.log(categories)
   
 
   const capturarValue = (e) => {
     const valorAlmacenado = e.target.value.trim().toLowerCase();
-    this.setState({
+    setCategories({
       filteredCategories: categories.filter(
         (category) => category.category.toLowerCase().indexOf(valorAlmacenado) === 0
       )
     });
   };
-
-  const categoryNotFound = require("../images/404notFound.jpg");
-    const filteredSameZero = () => {
-      if (state.filteredCategories.length === 0) {
-        return (
-          <div
-            id="categoryNotFound"
-            style={{
-              backgroundImage: `url(${categoryNotFound})`,
-            }}
-          >
-            <p id='notFoundText'
-              style={{
-                fontSize: "3vh",
-                fontWeight: "bold",
-                color: "whitesmoke",
-                backgroundColor: "#32a08859",
-                textShadow: "2px 2px 2px black",
-                padding: "1vh 0vw",
-                textAlign:'center',
-              }}
-            >
-              Categoy not found.. Try Again!
-            </p>
-          </div>
-        )};
-    };
-    
+  
     /* {this.state.cities === null 
       ? (<div className='preloader'></div>)
       : null
@@ -93,16 +70,16 @@ const Categories = (props) => {
       <>
         <Header/>
         <div id="mainCategories">
-          <input type="text" placeholder="What category are you interested in?" name="category" id="category" onChange={capturarValue()}/>
+          {/* <input type="text" placeholder="What category are you interested in?" name="category" id="category" onChange={capturarValue()}/> */}
           <ul className="Container">
             {filteredSameZero()}
-            {filteredCategories.map((category) => {
+            {/* {filteredCategories.map((category) => {
               return<>              
                 <NavLink to={`/Category/${category._id}`}>
                   <Category category={category} />
                 </NavLink>
               </>
-            })}
+            })} */}
           </ul>
         </div>
         {/* <Footer /> */}
