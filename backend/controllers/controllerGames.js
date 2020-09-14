@@ -17,7 +17,7 @@ const gameController = {
         const listGames =  await Game.find()
 
         res.json({
-            succes: true,
+            success: true,
             games: listGames,
         })
     }
