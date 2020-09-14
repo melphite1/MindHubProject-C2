@@ -59,7 +59,7 @@ const Header = (props) => {
               <div style={{ backgroundImage: `url(${props.token ? props.urlpic : user})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="d-inline-block pt-5 col-12 h-50">  </div>
             </button>
             <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-              {props.token ? <NavLink to="/" className="dropdown-item">Your Account</NavLink> : <NavLink to="/login" className="dropdown-item">Sign Up</NavLink>}
+              {props.token ? <NavLink to="/" className="dropdown-item">Your Account</NavLink> : <NavLink to="/signup" className="dropdown-item">Sign Up</NavLink>}
               {props.token ? <NavLink to="" onClick={logout} className="dropdown-item">Log Out</NavLink> : <NavLink to="/login" className="dropdown-item">Log in</NavLink>}
             </div>
 

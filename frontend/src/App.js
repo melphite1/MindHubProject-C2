@@ -4,9 +4,10 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import News from './pages/News';
 import Register from './components/Register';
 import LogIn from './components/LogIn';
+import Categories from './pages/Categories';
 import { connect } from 'react-redux';
 import usersActions from './redux/actions/usersActions'
-import Categories from './pages/Categories';
+
 
 
 class App extends React.Component {
