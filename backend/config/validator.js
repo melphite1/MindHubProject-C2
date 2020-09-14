@@ -12,9 +12,9 @@ const validator = {
             password: Joi.string().trim().required(),
             username: Joi.string().trim().min(4).required(),
             urlpic: Joi.string().trim().required(),
-            country: Joi.string(),
-            favConsole: Joi.string(),
-            favGames: Joi.array()
+            logWithGoogle: Joi.boolean(),
+            firstTime: Joi.boolean(),
+            favConsole: Joi.string()
         })
 
         const validation = schema.validate(req.body)

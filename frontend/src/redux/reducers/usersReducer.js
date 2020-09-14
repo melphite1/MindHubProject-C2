@@ -1,7 +1,8 @@
 const initialState = {
     name: '',
     urlpic: '',
-    token: ''
+    token: '',
+    username: ''
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -12,7 +13,8 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 name: action.payload.name,
                 urlpic: action.payload.urlpic,
-                token: action.payload.token
+                token: action.payload.token,
+                username: action.payload.username
             }
         case 'LOGOUT_USER':
             localStorage.clear()

@@ -3,14 +3,15 @@ import { NavLink } from "react-router-dom";
 import "../styles/styles.css";
 import { connect } from "react-redux";
 import usersActions from "../redux/actions/usersActions";
+import user from "../images/person.png"
 
 const Header = (props) => {
 
 
-  /* USER LOGOUT */
-  /* const logout = () => {
+
+  const logout = () => {
     props.userLogOut();
-  }; */
+  };
 
   /* ->AMOLDAR RENDERIZADO CONDICIONAL (TOKEN-USER LOGUED/VISITANTE)<- */
   /* {props.token 
@@ -36,29 +37,36 @@ const Header = (props) => {
         </>
         )
     } */
-
+  console.log(props.name)
   return (
     <>
       <header>
         <NavLink to="/"> <h2>SCAPE</h2></NavLink>
-        <nav className="d-flex">
-          <NavLink to="/news">News</NavLink>
-          <NavLink to="/games">Games</NavLink>
 
-          {props.token ? <h2>hola,{props.name}</h2> : <h2>Hola, extrano</h2>}
-          <div class="dropdown show " >
-            <a class="btn btn-secondary dropdown-toggle-left " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              pic</a>
 
-            <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
-              <div class=" d-flex flex-column">
-                <NavLink to="/signup">Sign Up</NavLink>
-                <NavLink to="/login">Log in</NavLink>
+        <div className="navbar-nav d-flex">
+          <NavLink to="/news" className=" text-dark">News</NavLink>
+          <NavLink to="/games" className=" text-dark">Games</NavLink>
+        </div>
 
-              </div>
+        {props.token ? <h2>hola,{props.name}</h2> : <h2>Hola, extrano</h2>}
+        <div class="dropdown show " >
+          <a class="btn btn-secondary dropdown-toggle-left " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {props.urlpic}</a>
+
+          <div class="dropdown " aria-labelledby="dropdownMenuLink">
+            <button className="btn dropdown-toggle d-none d-sm-block" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div style={{ backgroundImage: `url(${props.token ? props.urlpic : user})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="d-inline-block pt-5 col-12 h-50">  </div>
+            </button>
+            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+              {props.token ? <NavLink to="/" className="dropdown-item">Your Account</NavLink> : <NavLink to="/login" className="dropdown-item">Sign Up</NavLink>}
+              {props.token ? <NavLink to="" onClick={logout} className="dropdown-item">Log Out</NavLink> : <NavLink to="/login" className="dropdown-item">Log in</NavLink>}
             </div>
+
+
           </div>
-        </nav>
+        </div>
+
       </header>
     </>
   )

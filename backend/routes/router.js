@@ -17,5 +17,8 @@ router.route('/login')
 router.route('/tokenVerificator')
     .get(passport.authenticate('jwt', { session: false }), usersController.tokenVerificator)
 
+router.route('/setConsole')
+    .put(usersController.setConsole)
+
 module.exports = router
 

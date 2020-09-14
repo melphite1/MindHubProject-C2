@@ -1,13 +1,14 @@
 const User = require("../models/User")
 const bcryptjs = require("bcryptjs")
 const jwt = require("jsonwebtoken")
+const { findByIdAndUpdate } = require("../models/User")
 
 
 
 const usersController = {
 
     createAccount: async (req, res) => {
-        const { username, password, email, name, lastname, country, urlpic, favConsole } = req.body
+        const { username, password, email, name, lastname, logWithGoogle, firstTime, favConsole } = req.body
 
         const passwordHash = bcryptjs.hashSync(password.trim(), 10)
         const userExists = await User.findOne({ username: username })
@@ -16,7 +17,7 @@ const usersController = {
             res.json({ success: false, message: "Username already use" })
         } else {
 
-            const newUser = new User({ name, lastname, email, username, password: passwordHash, urlpic, country, favConsole })
+            const newUser = new User({ name, lastname, email, username, password: passwordHash, logWithGoogle, firstTime, favConsole })
 
             const user = await newUser.save()
             jwt.sign({ ...newUser }, process.env.SECRETORKEY, {}, (error, token) => {
@@ -65,14 +66,28 @@ const usersController = {
     },
     tokenVerificator: (req, res) => {
 
-        const { name, urlpic } = req.user
+        const { name, urlpic, username } = req.user
         console.log(req.user)
         res.json({
             success: true,
             name,
-            urlpic
+            urlpic, username
         })
+    },
+    setConsole: async (req, res) => {
+        const { favConsole, username } = req.body
+        console.log(favConsole)
+        const user = await User.findOneAndUpdate({
+            username
+        }, {
+            favConsole
+        }, {
+            returnNewDocument: true
+        })
+
+
     }
+
 }
 
 
