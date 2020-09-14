@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
-/* import Footer from "../components/Footer"; */
 import Category from "../components/Category";
-/* import "../components/styles/Cities.css"; */
 import {NavLink} from 'react-router-dom'
 import { connect } from "react-redux";
 
@@ -23,10 +21,10 @@ const Categories = (props) => {
   }, [props.categories])
   
 
-  capturarValue = (e) => {
+  const capturarValue = (e) => {
     const valorAlmacenado = e.target.value.trim().toLowerCase();
     this.setState({
-      filteredCategories: state.categories.filter(
+      filteredCategories: categories.filter(
         (category) => category.category.toLowerCase().indexOf(valorAlmacenado) === 0
       )
     });
@@ -63,10 +61,10 @@ const Categories = (props) => {
       ? (<div className='preloader'></div>)
       : null
     }
-    */
-    const categoryNotFound = require("../images/404notFound.jpg");
+ */
+    const categoryNotFound = require("../images/404notFound.png");
     const filteredSameZero = () => {
-      if (state.filteredCategories.length === 0) {
+      if (filteredCategories.length === 0) {
         return (
           <div
             id="categoryNotFound"
@@ -98,10 +96,10 @@ const Categories = (props) => {
           <input type="text" placeholder="What category are you interested in?" name="category" id="category" onChange={capturarValue()}/>
           <ul className="Container">
             {filteredSameZero()}
-            {state.filteredCategories.map((category) => {
+            {filteredCategories.map((category) => {
               return<>              
                 <NavLink to={`/Category/${category._id}`}>
-                  <Category Category={category} />
+                  <Category category={category} />
                 </NavLink>
               </>
             })}

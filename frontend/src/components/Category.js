@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/City.css";
+import "../styles/styles.css";
 import { NavLink } from "react-router-dom";
 
 const City = (props) => {
@@ -9,7 +9,7 @@ const City = (props) => {
           <div
             id="imgContainer"
             style={{
-              backgroundImage: `url(${props.city.image})`,
+              backgroundImage: `url(${props.category.images})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               height: "40vh",
@@ -29,7 +29,7 @@ const City = (props) => {
                 marginBottom:"2vh"
               }}
             >
-            {props.city.city}, {props.city.country}
+            {props.category.category}, {props.category.country}
             </p>
           </div>
       </li>
