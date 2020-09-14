@@ -7,6 +7,7 @@ const newsController = require("../controllers/controllerNews")
 const router = express.Router()
 
 router.route("/games")
+    .get(gameController.getListGames)
     .post(gameController.addGame)
 
 router.route('/user')
@@ -19,7 +20,7 @@ router.route('/tokenVerificator')
     .get(passport.authenticate('jwt', { session: false }), usersController.tokenVerificator)
 
 router.route('/news')
-    .put(newsController.addNews)
+    .post(newsController.addNews)
 
 module.exports = router
 
