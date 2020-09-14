@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 /* import Footer from "../components/Footer"; */
 import Category from "../components/Category";
@@ -11,6 +11,16 @@ const Categories = (props) => {
   const [categories, setCategories] = useState([])
   const [filteredCategories, setFilteredCategories] = useState([])
 
+  useEffect(() => {
+    setCategories({
+      ...categories,
+      categories: props.categories
+    })
+    setFilteredCategories({
+      ...filteredCategories,
+      filteredCategories: props.categories
+    })
+  }, [props.categories])
   
 
   capturarValue = (e) => {
@@ -22,13 +32,38 @@ const Categories = (props) => {
     });
   };
 
-  render() {
+  const categoryNotFound = require("../images/404notFound.jpg");
+    const filteredSameZero = () => {
+      if (state.filteredCategories.length === 0) {
+        return (
+          <div
+            id="categoryNotFound"
+            style={{
+              backgroundImage: `url(${categoryNotFound})`,
+            }}
+          >
+            <p id='notFoundText'
+              style={{
+                fontSize: "3vh",
+                fontWeight: "bold",
+                color: "whitesmoke",
+                backgroundColor: "#32a08859",
+                textShadow: "2px 2px 2px black",
+                padding: "1vh 0vw",
+                textAlign:'center',
+              }}
+            >
+              Categoy not found.. Try Again!
+            </p>
+          </div>
+        )};
+    };
     
     /* {this.state.cities === null 
       ? (<div className='preloader'></div>)
       : null
     }
- */
+    */
     const categoryNotFound = require("../images/404notFound.jpg");
     const filteredSameZero = () => {
       if (state.filteredCategories.length === 0) {
@@ -66,7 +101,7 @@ const Categories = (props) => {
             {state.filteredCategories.map((category) => {
               return<>              
                 <NavLink to={`/Category/${category._id}`}>
-                  <City city={category} />
+                  <Category Category={category} />
                 </NavLink>
               </>
             })}
@@ -75,7 +110,7 @@ const Categories = (props) => {
         {/* <Footer /> */}
       </>
     );
-  }
+  
 }
 
 const mapStateToProps = state => {
@@ -84,4 +119,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Cities);
+export default connect(mapStateToProps)(Categories);
