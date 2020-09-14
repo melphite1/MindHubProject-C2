@@ -1,42 +1,47 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
-import newsActions from '../redux/actions/newsActions';
 import { connect } from "react-redux"
-import Axios from 'axios'
 import One from "../components/OneNews"
+import newsActions from '../redux/actions/newsActions'
 
 const News = (props) => {
-    const [news, setNews] = useState([
 
-    ])
-    useEffect(async () => {
-      const respuesta = await  props.getNews()
-        // const respuesta = await Axios.get('http://127.0.0.1:4000/api/news')
-        console.log(respuesta.news)
-        setNews(
-            ...news,
-            respuesta.news
-        )
+
+    const [news, setNews] = useState(null)
+
+    useEffect(() => {
+        props.getNews()
+        setNews({
+            news
+        })
+
     }, [])
+    console.log(props.newsRed)
     return (
         <>
             <Header />
             <h1>News</h1>
+            {
+                (props.newsRed == null) ?
+                 <p>NO NEWS YET</p>
+                :
+                   props.newsRed.map(newsOne =>{
+                       return <One news = {newsOne} />
+                   })
 
-            {news.map(Onenews => {
-                return <>
-                <One news = {Onenews}/>
-               
-                </>
-            })}
-
-
+            }
         </>
     )
+}
+const mapStateToProps = state => {
+    return {
+        newsRed: state.newsReducer.news.news
+    }
 }
 
 const mapDispatchToProps = {
     getNews: newsActions.getnews
 }
 
-export default connect(null, mapDispatchToProps)(News)
+
+export default connect(mapStateToProps, mapDispatchToProps)(News)
