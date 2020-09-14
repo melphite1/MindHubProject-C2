@@ -45,7 +45,7 @@ const Categories = (props) => {
 
   const capturarValue = (e) => {
     const valorAlmacenado = e.target.value.trim().toLowerCase();
-    setCategories({
+    setFilteredCategories({
       filteredCategories: categories.filter(
         (category) => category.category.toLowerCase().indexOf(valorAlmacenado) === 0
       )
@@ -88,16 +88,16 @@ const Categories = (props) => {
       <>
         <Header/>
         <div id="mainCategories">
-          {/* <input type="text" placeholder="What category are you interested in?" name="category" id="category" onChange={capturarValue()}/> */}
+          <input type="text" placeholder="What category are you interested in?" name="category" id="category" onChange={capturarValue()}/>
           <ul className="Container">
             {filteredSameZero()}
-            {/* {filteredCategories.map((category) => {
+            {filteredCategories.map((category) => {
               return<>              
-                <NavLink to={`/Category/${category._id}`}>
+                <NavLink to={`/Category/${category.name}`}>
                   <Category category={category} />
                 </NavLink>
               </>
-            })} */}
+            })}
           </ul>
         </div>
         {/* <Footer /> */}
