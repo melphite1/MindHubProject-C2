@@ -43,7 +43,7 @@ const Header = (props) => {
         <NavLink to="/"> <h2>SCAPE</h2></NavLink>
         <nav className="d-flex">
           <NavLink to="/news">News</NavLink>
-          <NavLink to="/games">Games</NavLink>
+          <NavLink to="/Categories">Games</NavLink>
 
           {props.token ? <h2>hola,{props.name}</h2> : <h2>Hola, extrano</h2>}
           <div class="dropdown show " >

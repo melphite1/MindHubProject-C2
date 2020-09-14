@@ -3,11 +3,32 @@ import Header from "../components/Header";
 import Category from "../components/Category";
 import {NavLink} from 'react-router-dom'
 import { connect } from "react-redux";
+import axios from 'axios'
 
 const Categories = (props) => {
 
   const [categories, setCategories] = useState([])
   const [filteredCategories, setFilteredCategories] = useState([])
+
+  {
+    axios({
+    "method":"GET",
+    "url":"https://rawg-video-games-database.p.rapidapi.com/genres",
+    "headers":{
+    "content-type":"application/octet-stream",
+    "x-rapidapi-host":"rawg-video-games-database.p.rapidapi.com",
+    "x-rapidapi-key":"c0aed11e71msh88771d59f5bb371p169482jsnbf0c9e80b15b",
+    "useQueryString":true
+    }
+    })
+    .then((response)=>{
+      console.log(response)
+    })
+    .catch((error)=>{
+      console.log(error)
+    })
+  }
+
 
   useEffect(() => {
     setCategories({

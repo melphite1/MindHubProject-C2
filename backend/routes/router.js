@@ -24,6 +24,7 @@ router.route('/tokenVerificator')
 
 router.route('/news')
     .post(newsController.addNews)
+    .get(newsController.getNews)
 
 module.exports = router
 
