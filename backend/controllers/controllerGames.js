@@ -13,14 +13,22 @@ const gameController = {
     },
 
     getListGames: async (req, res) => {
-        
+
         const listGames =  await Game.find()
 
         res.json({
             success: true,
             games: listGames,
         })
-    }
+    },
+
+    getListGamesCategory: async (req, res) => {
+        const listGamesCategory = await Game.find({category: req.params.category})
+        res.json({
+            success:true,
+            listGamesCategory: listGamesCategory,
+        })
+    } 
     
 }
 
