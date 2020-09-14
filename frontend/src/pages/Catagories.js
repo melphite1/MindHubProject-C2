@@ -9,9 +9,6 @@ const Categories = (props) => {
   const [categories, setCategories] = useState([])
   const [filteredCategories, setFilteredCategories] = useState([])
 
-
-
-
   useEffect(() => {
     setCategories({
       ...categories,
