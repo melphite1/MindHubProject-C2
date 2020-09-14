@@ -3,6 +3,7 @@ const passport = require("../config/passport")
 const validator = require("../config/validator")
 const gameController = require("../controllers/controllerGames")
 const usersController = require("../controllers/controllerUsers")
+const newsController = require("../controllers/controllerNews")
 const router = express.Router()
 
 router.route("/games")
@@ -16,6 +17,9 @@ router.route('/login')
 
 router.route('/tokenVerificator')
     .get(passport.authenticate('jwt', { session: false }), usersController.tokenVerificator)
+
+router.route('/news')
+    .put(newsController.addNews)
 
 module.exports = router
 
