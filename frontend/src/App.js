@@ -11,7 +11,7 @@ import usersActions from './redux/actions/usersActions'
 
 class App extends React.Component {
   render() {
-    console.log(this.props.token)
+    
     if (localStorage.getItem('token') && this.props.token == "") {
       this.props.forcedLogIn(localStorage.getItem('token'))
     }

@@ -10,6 +10,11 @@ const controllerNews = {
         newsSave.save()
         .then(news => res.json({succes: true, news}))
         .catch(error => res.json({succes:false, error}))
+    },
+
+    getNews: async (req, res) => {
+        const news = await News.find()
+        res.json({ succes:true, news})
     }
 }
 

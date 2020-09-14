@@ -19,7 +19,8 @@ router.route('/tokenVerificator')
     .get(passport.authenticate('jwt', { session: false }), usersController.tokenVerificator)
 
 router.route('/news')
-    .put(newsController.addNews)
+    .post(newsController.addNews)
+    .get(newsController.getNews)
 
 module.exports = router
 
