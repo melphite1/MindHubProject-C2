@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import News from './pages/News';
 import Register from './components/Register';
 import LogIn from './components/LogIn';
-import Games from './pages/Games';
+import Games from './pages/Catagories';
 import { connect } from 'react-redux';
 import usersActions from './redux/actions/usersActions'
 
