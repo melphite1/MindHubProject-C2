@@ -5,6 +5,7 @@ const Games = () => {
         <>
             <Header />
             <h1>Games</h1>
+            
         </>
     )
 }

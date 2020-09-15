@@ -12,7 +12,7 @@ const gamesActions = {
             })
         }
     },
-    getCategories: () => {
+    /* getCategories: () => {
         return async (dispatch, getState) => {
             let response = await Axios.get('https://rawg-video-games-database.p.rapidapi.com/genres')
             dispatch({
@@ -20,7 +20,7 @@ const gamesActions = {
                 payload: { categories: response.data }
             })
         }
-    }
+    } */
 }
 
 export default gamesActions

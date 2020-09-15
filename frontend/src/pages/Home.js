@@ -1,29 +1,46 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import Carousel from '../components/Carousel'
-import { connect } from "react-redux";
-import gamesActions from '../redux/actions/gamesActions';
+import { connect } from "react-redux"
+import newsActions from '../redux/actions/newsActions'
+import One from "../components/OneNews"
 
 const Home = (props) => {
+    const [news, setNews] = useState(null)
+    useEffect(()=>{
+        props.getNews()
+        setNews({
+            news
+        })
 
-    useEffect(() => {
-        props.getCategories()
     },[])
-
+    
     return (
         <>
             <Header />
             <Carousel />
+            {
+                (props.newsRed == null) ?
+                 <p>NO NEWS YET</p>
+                :
+                   props.newsRed.map(newsOne =>{
+                       return <One news = {newsOne} />
+                   })
+
+            }
         </>
     )
 }
 
-const mapDispatchToProps = {
-    getCategories: gamesActions.getCategories,
+const mapStateToProps = state => {
+    return {
+        newsRed: state.newsReducer.news.news
+    }
 }
 
-export default connect(null, mapDispatchToProps)(Home);
+const mapDispatchToProps = {
+    getNews: newsActions.getnews
+}
 
 
-
-  
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
