@@ -24,6 +24,7 @@ class App extends React.Component {
         <Route exact path="/" component={Home} />
         <Route path="/news" component={News} />
         <Route path="/categories" component={Categories} />
+        <Route path="/games/:id" component={Games} />
         <Redirect to="/" />
       </Switch>)
     } else {
