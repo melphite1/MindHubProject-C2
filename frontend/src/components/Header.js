@@ -50,7 +50,7 @@ const Header = (props) => {
           <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
             <div class="navbar-nav">
               <Link to="/news" class="nav-item nav-link active text-light text-center">News</Link>
-              <Link to="/games" class="nav-item nav-link active text-light text-center">Games</Link>
+              <Link to="/categories" class="nav-item nav-link active text-light text-center">Games</Link>
 
             </div>
 
