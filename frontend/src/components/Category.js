@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/styles.css";
-import { NavLink } from "react-router-dom";
+
 
 const Category = (props) => {
   return (
@@ -9,7 +9,7 @@ const Category = (props) => {
           <div
             id="imgContainer"
             style={{
-              backgroundImage: `url(${props.category.image})`,
+              backgroundImage: `url(${props.category.picCategory})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               height: "40vh",
@@ -29,7 +29,7 @@ const Category = (props) => {
                 marginBottom:"2vh"
               }}
             >
-            {props.category.category}, {props.category.country}
+            {props.category.name}
             </p>
           </div>
       </li>
