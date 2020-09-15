@@ -1,10 +1,11 @@
+const Category = require("../models/Category")
 const Game = require("../models/Game")
 
 const gameController = {
     addGame:  (req, res) => {
-        const {title,images,body,rating,platforms,idComment} = req.body
+        const {title,images,body,rating,platforms,idCategory} = req.body
         const gameSave = new Game({
-            title,images,body,rating,platforms,idComment
+            title,images,body,rating,platforms,idCategory
         })
 
         gameSave.save()
@@ -28,7 +29,17 @@ const gameController = {
             success:true,
             listGamesCategory: listGamesCategory,
         })
-    } 
+    },
+
+    addCategory: async (req, res) => {
+        const {name,  picCategory} = req.body 
+
+        const categorySave = new Category({name, picCategory})
+
+        categorySave.save()
+        .then(game => res.json({succes: true, game}))
+        .catch( error =>res.json({succes: false, error}))
+    }
     
 }
 
