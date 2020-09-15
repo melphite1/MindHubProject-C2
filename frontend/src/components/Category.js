@@ -1,7 +1,9 @@
 import React from "react";
-
+import "../styles/styles.css";
+import { NavLink } from "react-router-dom";
 
 const Category = (props) => {
+
   console.log(props)
   return (
     <> 
@@ -29,7 +31,7 @@ const Category = (props) => {
                 marginBottom:"2vh"
               }}
             >
-            {props.name}
+            {props.category.name}
             </p>
           </div>
       </li>

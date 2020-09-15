@@ -7,7 +7,7 @@ import LogIn from './components/LogIn';
 import Categories from './pages/Categories';
 import { connect } from 'react-redux';
 import usersActions from './redux/actions/usersActions'
-import Game from './components/Game';
+import Games from './components/Games';
 
 
 
@@ -31,7 +31,7 @@ class App extends React.Component {
         <Route exact path="/" component={Home} />
         <Route path="/news" component={News} />
         <Route path="/categories" component={Categories} />
-        <Route path="/games/:id" component={Game} />
+        <Route path="/games/:id" component={Games} />
         <Route path="/signup" component={Register} />
         <Route path="/login" component={LogIn} />
         <Redirect to="/login" />
