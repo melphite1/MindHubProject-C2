@@ -20,7 +20,18 @@ const gamesActions = {
                 payload: response.data.listCategories
             })
         }
-    } 
+    },
+
+    getSpecificGames: categoryId => {
+        return async (dispatch, getState) => {
+            const response = await Axios.get('http://127.0.0.1:4000/api/games/'+categoryId);
+              const info = response.data.games;
+            dispatch({
+                type:'GET_SPECIFIC_GAMES',
+                payload: info
+            })
+        }
+    }
 }
 
 export default gamesActions

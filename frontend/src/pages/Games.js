@@ -8,28 +8,27 @@ import gamesActions from "../redux/actions/gamesActions";
 
 const Games = (props) => {
   
-  const [city, setCity] = useState({})
+  const [category, setCategory] = useState({})
 
 
   useEffect(() => {
-    const specificCity = props.cities.filter(city => city._id === props.match.params.id)
-    stateModificator(specificCity[0])
-    getSpecificItineraries()
-    M.AutoInit();
-  }, [props.cities])
+    const specificCategory = props.categories.filter(category => category._id === props.match.params.id)
+    stateModificator(specificCategory[0])
+    getSpecificGames()
+  }, [props.games])
 
-  const getSpecificItineraries = async () => {
-    await props.getSpecificItineraries(props.match.params.id)
+  const getSpecificGames = async () => {
+    await props.getSpecificGames(props.match.params.id)
   }
 
-  const stateModificator = specificCity => {
-    setCity(specificCity)
+  const stateModificator = specificCategory => {
+    setCategory(specificCategory)
   }
 
     return (
       <>
         <Header />
-        <ul id="mainContainer">
+        {/* <ul id="mainContainer">
             {
               <NavLink to= '/Cities'>
                 <City city={city}/>
@@ -45,21 +44,20 @@ const Games = (props) => {
                   </>
                 })
             }
-        </ul>
-        <Footer />
+        </ul> */}
       </>
     );
 }
 
 const mapStateToProps = state => {
   return{
-    cities: state.citiesRedState.cities,
-    itineraries: state.citiesRedState.itineraries
+    categories: state.gamesReducer.categories,
+    games: state.gamesReducer.games
   }
 }
 
 const mapDispatchToProps = {
-  getSpecificItineraries: citiesActions.getSpecificItineraries
+  getSpecificGames: gamesActions.getSpecificGames
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Itineraries);
+export default connect(mapStateToProps, mapDispatchToProps)(Games);

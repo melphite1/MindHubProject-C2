@@ -149,7 +149,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     sendConsole: auxActions.sendConsole,
-    /* getCategories: gamesActions.getCategories */
+    getCategories: gamesActions.getCategories
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);
