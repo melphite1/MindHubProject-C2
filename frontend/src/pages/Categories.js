@@ -14,8 +14,7 @@ const Categories = (props) => {
   const [filteredCategories, setFilteredCategories] = useState([])
   const [favConsole, setFavConsole] = useState('')
 
-  console.log(props)
-  console.log(filteredCategories)
+
 
   useEffect(() => {
     /* props.getCategories() */

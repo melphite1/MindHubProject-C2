@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 
 const Category = (props) => {
 
-  console.log(props)
   return (
     <> 
       <li>

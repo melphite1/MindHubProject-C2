@@ -13,7 +13,7 @@ const gamesReducer = (state = initialState, action) => {
         case 'GET_SPECIFIC_GAMES':
             return{
                 ...state,
-                games: [...action.payload]
+                games: action.payload.games
             }
         default:
             return state;

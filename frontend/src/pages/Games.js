@@ -15,7 +15,7 @@ const Games = (props) => {
     const specificCategory = props.categories.filter(category => category._id === props.match.params.id)
     stateModificator(specificCategory[0])
     getSpecificGames()
-  }, [props.games])
+  }, [])
 
   const getSpecificGames = async () => {
     await props.getSpecificGames(props.match.params.id)
@@ -24,27 +24,22 @@ const Games = (props) => {
   const stateModificator = specificCategory => {
     setCategory(specificCategory)
   }
-
+  console.log(props.games)
     return (
       <>
         <Header />
-        {/* <ul id="mainContainer">
-            {
-              <NavLink to= '/Cities'>
-                <City city={city}/>
-              </NavLink>
-            }
-            {props.itineraries.length === 0 
+        <ul id="mainContainer">
+            {props.games.length === 0 
               ? (<div id="noItYet">
-                <p>No itineraries loaded yet. Be the first!</p>
+                <p>No games loaded yet.</p>
                 </div>) 
-              : props.itineraries.map((itinerary) => {
+              : props.games.map((game) => {
                   return <>
-                    <Itinerary itinerary={itinerary} />
+                    <Game game={game} />
                   </>
                 })
             }
-        </ul> */}
+        </ul>
       </>
     );
 }
