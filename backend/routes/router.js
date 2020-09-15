@@ -7,7 +7,11 @@ const newsController = require("../controllers/controllerNews")
 const router = express.Router()
 
 router.route("/games")
+    .get(gameController.getListGames)
     .post(gameController.addGame)
+    
+router.route('/games/:category')
+    .get(gameController.getListGamesCategory)
 
 router.route('/user')
     .post(validator.validateData, usersController.createAccount)

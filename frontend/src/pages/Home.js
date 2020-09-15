@@ -4,10 +4,12 @@ import Carousel from '../components/Carousel'
 import { connect } from "react-redux"
 import newsActions from '../redux/actions/newsActions'
 import One from "../components/OneNews"
+import gamesActions from '../redux/actions/gamesActions'
 
 const Home = (props) => {
     const [news, setNews] = useState(null)
     useEffect(()=>{
+        props.getCategories()
         props.getNews()
         setNews({
             news
@@ -39,7 +41,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    getNews: newsActions.getnews
+    getNews: newsActions.getnews,
+    getCategories: gamesActions.getCategories
 }
 
 
