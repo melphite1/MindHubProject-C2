@@ -1,4 +1,4 @@
-const { string } = require("@hapi/joi")
+const { string, boolean } = require("@hapi/joi")
 const mongoose = require("mongoose")
 
 
@@ -11,8 +11,9 @@ const UserSchema = new mongoose.Schema({
     name: String,
     lastname: String,
     commentID: { type: mongoose.Types.ObjectId, ref: "Comment" },
-    country: String,
-    urlpic: String
+    urlpic: String,
+    logWithGoogle: Boolean,
+    firstTime: Boolean,
 })
 
 

@@ -38,7 +38,8 @@ const usersActions = {
                     payload: {
                         name: response.data.name,
                         urlpic: response.data.urlpic,
-                        token: response.data.token
+                        token: response.data.token,
+                        username: response.data.username
                     }
                 })
             }
@@ -67,7 +68,8 @@ const usersActions = {
                 payload: {
                     name: response.data.name,
                     urlpic: response.data.urlpic,
-                    token: tokenLS
+                    token: tokenLS,
+                    username: response.data.username
                 }
             })
 

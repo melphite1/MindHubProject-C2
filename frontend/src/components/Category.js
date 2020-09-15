@@ -2,14 +2,14 @@ import React from "react";
 import "../styles/styles.css";
 import { NavLink } from "react-router-dom";
 
-const City = (props) => {
+const Category = (props) => {
   return (
     <> 
       <li>
           <div
             id="imgContainer"
             style={{
-              backgroundImage: `url(${props.category.images})`,
+              backgroundImage: `url(${props.category.image})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               height: "40vh",
@@ -37,4 +37,4 @@ const City = (props) => {
   );
 };
 
-export default City;
+export default Category;
