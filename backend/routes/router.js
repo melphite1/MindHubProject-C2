@@ -22,11 +22,22 @@ router.route('/login')
 router.route('/tokenVerificator')
     .get(passport.authenticate('jwt', { session: false }), usersController.tokenVerificator)
 
+router.route('/news/comments')
+    .post(passport.authenticate('jwt', { session: false }), newsController.putCommentary)
+    .get(newsController.getCommentaries)
+
+router.route('/news/deleteCommentary')
+    .put(newsController.deleteCommentary)
+
+router.route('/news/modifyCommentary')
+    .put(newsController.modifyCommentary)
+
 router.route('/setConsole')
     .put(usersController.setConsole)
 router.route('/news')
     .post(newsController.addNews)
     .get(newsController.getNews)
+
 
 module.exports = router
 

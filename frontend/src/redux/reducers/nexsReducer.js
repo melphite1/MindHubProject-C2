@@ -1,5 +1,6 @@
 const initialState = {
-    news:""
+    news: "",
+    commentaries: []
 }
 
 const newsReducer = (state = initialState, action) => {
@@ -8,6 +9,11 @@ const newsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 news: action.payload
+            }
+        case 'GETCOMMENTARIES':
+            return {
+                ...state,
+                commentaries: action.payload
             }
         default:
             return state;
