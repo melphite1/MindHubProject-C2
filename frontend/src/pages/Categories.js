@@ -6,6 +6,7 @@ const Categories = (props) => {
     const [favConsole, setFavConsole] = useState(
         ''
     )
+    console.log(props)
     const consoles = [
         'Not defined yet',
         'Pc',
@@ -48,23 +49,28 @@ const Categories = (props) => {
     return (
         <>
             <Header />
-            <h1>Games</h1>
-            <select name='favConsole' id='favConsole' onChange={readInput}>
-                <option value={-1}>Choose your favourite console.</option>
-                {
-                    consoles.map((console, i) => {
-                        return <option key={'console' + [i]} value={console}>{console}</option>
-                    })
-                }
-            </select>
-            <button htmlFor='favConsole' onClick={sendConsole}>Send your favorite console</button>
+            <h1 className="text-center text-light">Games</h1>
+            {props.firstTime && props.token ? <>
+                <select name='favConsole' id='favConsole' onChange={readInput} className="text-center col-6">
+                    <option value={-1} className="text-center">Choose your favourite console.</option>
+                    {
+                        consoles.map((console, i) => {
+                            return <option key={'console' + [i]} value={console} className="text-center">{console}</option>
+                        })
+                    }
+                </select>
+                <button htmlFor='favConsole' onClick={sendConsole} className="text-center col-6">Send your favorite console</button>
+            </> : ''
+            }
         </>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        username: state.usersReducer.username
+        username: state.usersReducer.username,
+        firstTime: state.usersReducer.firstTime,
+        token: state.usersReducer.token
     }
 }
 

@@ -70,7 +70,7 @@ const Register = (props) => {
                 <div style={{ backgroundImage: 'url(https://www.filmsjackets.com/image/cache/catalog/ilse-schattenwolf-battlefield-5-cotton-jacket/ilse-schattenwolf-battlefield-5-cotton-jacket-800x980.jpg)', width: '40%', height: '100vh', backgroundPosition: 'top right', backgroundSize: 'cover' }}>
 
                 </div>
-                <div className='form section container center d-flex flex-column align-items-center' style={{ width: '60%', height: '100vh' }}>
+                <div className='form section container center d-flex flex-column align-items-center register' style={{ width: '60%', height: '100vh' }}>
                     <h1 className="text-center">Create new account</h1>
                     <input type='text' name='name' placeholder='Type your name'
                         onChange={readInput} />
