@@ -9,7 +9,7 @@ const router = express.Router()
 router.route("/games")
     .get(gameController.getListGames)
     .post(gameController.addGame)
-    
+
 router.route('/games/:category')
     .get(gameController.getListGamesCategory)
 
@@ -22,6 +22,8 @@ router.route('/login')
 router.route('/tokenVerificator')
     .get(passport.authenticate('jwt', { session: false }), usersController.tokenVerificator)
 
+router.route('/setConsole')
+    .put(usersController.setConsole)
 router.route('/news')
     .post(newsController.addNews)
     .get(newsController.getNews)

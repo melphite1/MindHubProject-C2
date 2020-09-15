@@ -1,16 +1,16 @@
 const initialState = {
-    countries: [],
+
 }
 
 const auxReducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case 'GETCOUNTRIES':
-            return{
+            return {
                 ...state,
                 countries: [...action.payload]
             }
-            default: 
-                return state
+        default:
+            return state
     }
 }
 
