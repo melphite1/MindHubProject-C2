@@ -1,15 +1,11 @@
 import axios from 'axios'
 
 const auxActions = {
-    getCountries: () => {
+    sendConsole: (favConsole, username) => {
         return async (dispatch, getState) => {
-            const response = await axios.get('https://restcountries.eu/rest/v2/all');
-            const info = response.data;
-            console.log(info)
-            dispatch({
-                type: 'GETCOUNTRIES',
-                payload: info
-            })
+            console.log(favConsole)
+            const response = await axios.put('http://127.0.0.1:4000/api/setConsole', { favConsole, username });
+
         }
     },
 

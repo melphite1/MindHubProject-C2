@@ -6,7 +6,7 @@ const usersActions = {
     createAccount: newUser => {
         return async (dispatch, getState) => {
             const response = await axios.post('http://127.0.0.1:4000/api/user', newUser)/* ->PEDIR RUTA AL BACKEND<- */
-        
+
             if (response.data.success !== true) {
                 alert(response.data.error)
                 console.log(response.data.message)
@@ -16,7 +16,8 @@ const usersActions = {
                     payload: {
                         name: response.data.name,
                         urlpic: response.data.urlpic,
-                        token: response.data.token
+                        token: response.data.token,
+                        firstTime: response.data.firstTime
                     }
                 })
             }
@@ -38,7 +39,9 @@ const usersActions = {
                     payload: {
                         name: response.data.name,
                         urlpic: response.data.urlpic,
-                        token: response.data.token
+                        token: response.data.token,
+                        username: response.data.username,
+                        firstTime: response.data.firstTime
                     }
                 })
             }
@@ -61,13 +64,15 @@ const usersActions = {
                     Authorization: `Bearer ${tokenLS}`
                 }
             })
-           
+
             dispatch({
                 type: "SET_USER",
                 payload: {
                     name: response.data.name,
                     urlpic: response.data.urlpic,
-                    token: tokenLS
+                    token: tokenLS,
+                    username: response.data.username,
+                    firstTime: response.data.firstTime
                 }
             })
 
