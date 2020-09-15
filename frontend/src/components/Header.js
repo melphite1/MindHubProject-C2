@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "../styles/styles.css";
 import { connect } from "react-redux";
 import usersActions from "../redux/actions/usersActions";
@@ -41,32 +41,32 @@ const Header = (props) => {
   return (
     <>
       <header>
-        <NavLink to="/"> <h2>SCAPE</h2></NavLink>
+        <nav class="navbar navbar-expand-xl navbar-light">
+          <NavLink to="/" class="navbar-brand">SCAPE</NavLink>
+          <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
+          <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+            <div class="navbar-nav">
+              <Link to="/news" class="nav-item nav-link active text-light">News</Link>
+              <Link to="/games" class="nav-item nav-link active text-light">Games</Link>
 
-        <div className="navbar-nav d-flex">
-          <NavLink to="/news" className=" text-dark">News</NavLink>
-          <NavLink to="/games" className=" text-dark">Games</NavLink>
-        </div>
-
-        {props.token ? <h2>hola,{props.name}</h2> : <h2>Hola, extrano</h2>}
-        <div class="dropdown show " >
-          <a class="btn btn-secondary dropdown-toggle-left " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {props.urlpic}</a>
-
-          <div class="dropdown " aria-labelledby="dropdownMenuLink">
-            <button className="btn dropdown-toggle d-none d-sm-block" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <div style={{ backgroundImage: `url(${props.token ? props.urlpic : user})`, backgroundPosition: 'center', backgroundSize: 'cover' }} className="d-inline-block pt-5 col-12 h-50">  </div>
-            </button>
-            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-              {props.token ? <NavLink to="/" className="dropdown-item">Your Account</NavLink> : <NavLink to="/signup" className="dropdown-item">Sign Up</NavLink>}
-              {props.token ? <NavLink to="" onClick={logout} className="dropdown-item">Log Out</NavLink> : <NavLink to="/login" className="dropdown-item">Log in</NavLink>}
             </div>
 
+            <div class="navbar-nav ml-auto">
+              <div class="nav-item dropdown">
+                <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action text-light"><img src={props.token ? props.urlpic : user} class="avatar" alt="Avatar" /> {props.token ? props.name : 'guess'} <b class="caret"></b></a>
+                <div class="dropdown-menu">
+                  {props.token ? <Link to="/" className="dropdown-item">Your Account</Link> : <Link to="/signup" className="dropdown-item">Sign Up</Link>}
 
+                  <div class="dropdown-divider"></div>
+                  {props.token ? <Link to="" onClick={logout} className="dropdown-item">Log Out</Link> : <Link to="/login" className="dropdown-item">Log in</Link>}
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-
+        </nav>
       </header>
     </>
   )

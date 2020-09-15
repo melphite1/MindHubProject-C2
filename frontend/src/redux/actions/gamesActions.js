@@ -12,7 +12,7 @@ const gamesActions = {
             })
         }
     },
-    /* getCategories: () => {
+     getCategories: () => {
         return async (dispatch, getState) => {
             let response = await Axios.get('https://api.rawg.io/api/games?page=1')
             dispatch({
@@ -20,7 +20,7 @@ const gamesActions = {
                 payload: { categories: response.data.results }
             })
         }
-    } */
+    } 
 }
 
 export default gamesActions
