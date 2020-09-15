@@ -127,7 +127,7 @@ const Categories = (props) => {
           {filteredSameZero()}
           {filteredCategories.map((category) => {
             return <>
-              <NavLink to={`/Category/${category.name}`}>
+              <NavLink to={`/games/${category._id}`}>
                 <Category category={category} />
               </NavLink>
             </>

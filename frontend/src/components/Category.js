@@ -1,8 +1,8 @@
 import React from "react";
-import "../styles/styles.css";
 
 
 const Category = (props) => {
+  console.log(props)
   return (
     <> 
       <li>
@@ -29,7 +29,7 @@ const Category = (props) => {
                 marginBottom:"2vh"
               }}
             >
-            {props.category.name}
+            {props.name}
             </p>
           </div>
       </li>
