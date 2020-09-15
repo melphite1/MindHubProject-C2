@@ -22,14 +22,14 @@ class App extends React.Component {
       var myRoutes = (<Switch>
         <Route exact path="/" component={Home} />
         <Route path="/news" component={News} />
-        <Route path="/games" component={Categories} />
+        <Route path="/categories" component={Categories} />
         <Redirect to="/" />
       </Switch>)
     } else {
       var myRoutes = (< Switch >
         <Route exact path="/" component={Home} />
         <Route path="/news" component={News} />
-        <Route path="/games" component={Categories} />
+        <Route path="/categories" component={Categories} />
         <Route path="/signup" component={Register} />
         <Route path="/login" component={LogIn} />
         <Redirect to="/login" />

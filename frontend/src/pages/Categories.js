@@ -1,12 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import Header from '../components/Header'
 import auxActions from '../redux/actions/auxActions'
+import gamesActions from '../redux/actions/gamesActions'
+
+
 const Categories = (props) => {
-    const [favConsole, setFavConsole] = useState(
-        ''
-    )
-    console.log(props)
+
+  const [categories, setCategories] = useState([])
+  const [filteredCategories, setFilteredCategories] = useState([])
+  const [favConsole, setFavConsole] = useState('')
+
+  useEffect(() => {
+    props.getCategories()
+    setCategories({
+      ...categories,
+      categories: props.categories
+    })
+    setFilteredCategories({
+      ...filteredCategories,
+      filteredCategories: props.categories
+    })
+  }, [props.categories])
+
+    
     const consoles = [
         'Not defined yet',
         'Pc',
@@ -36,7 +53,6 @@ const Categories = (props) => {
         'Atari5200, Atari'
     ]
     const readInput = e => {
-
         const value = e.target.value
         setFavConsole(
             value
@@ -62,6 +78,17 @@ const Categories = (props) => {
                 <button htmlFor='favConsole' onClick={sendConsole} className="text-center col-6">Send your favorite console</button>
             </> : ''
             }
+            <div id="mainCategories">
+            <ul className="Container">
+              {this.state.filteredCities.map((city) => {
+                return<>              
+                  <NavLink to={`/Itineraries/${city._id}`}>
+                    <City city={city}/>
+                  </NavLink>
+                </>
+              })}
+            </ul>
+            </div>
         </>
     )
 }
@@ -70,12 +97,14 @@ const mapStateToProps = (state) => {
     return {
         username: state.usersReducer.username,
         firstTime: state.usersReducer.firstTime,
-        token: state.usersReducer.token
+        token: state.usersReducer.token,
+        categories: state.gamesReducer.categories
     }
 }
 
 const mapDispatchToProps = {
-    sendConsole: auxActions.sendConsole
+    sendConsole: auxActions.sendConsole,
+    getCategories: gamesActions.getCategories
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories)

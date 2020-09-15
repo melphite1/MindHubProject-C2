@@ -14,10 +14,10 @@ const gamesActions = {
     },
      getCategories: () => {
         return async (dispatch, getState) => {
-            let response = await Axios.get('https://api.rawg.io/api/games?page=1')
+            let response = await Axios.get('http://127.0.0.1:4000/api/categories')
             dispatch({
                 type: 'GETCATEGORIES',
-                payload: { categories: response.data.results }
+                payload: response.data.listCategories
             })
         }
     } 
