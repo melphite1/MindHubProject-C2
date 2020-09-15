@@ -9,6 +9,8 @@ const router = express.Router()
 router.route("/games")
     .get(gameController.getListGames)
     .post(gameController.addGame)
+router.route("/category")
+    .post(gameController.addCategory)
 
 router.route('/games/:category')
     .get(gameController.getListGamesCategory)
