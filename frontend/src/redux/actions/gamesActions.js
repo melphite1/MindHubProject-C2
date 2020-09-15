@@ -5,19 +5,19 @@ import Axios from 'axios'
 const gamesActions = {
     getGames: () => {
         return async (dispatch, getState) => {
-            let response = await Axios.get('https://api.rawg.io/api/games?page=1')
+            let response = await Axios.get('http://127.0.0.1:4000/api/games')
             dispatch({
                 type: 'GETGAMES',
-                payload: { games: response.data.results }
+                payload: { games: response.data.games }
             })
         }
     },
      getCategories: () => {
         return async (dispatch, getState) => {
-            let response = await Axios.get('https://rawg-video-games-database.p.rapidapi.com/genres')
+            let response = await Axios.get('http://127.0.0.1:4000/api/category')
             dispatch({
                 type: 'GETCATEGORIES',
-                payload: { categories: response.data }
+                payload: response.data.listGamesCategory
             })
         }
     } 

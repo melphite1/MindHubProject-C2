@@ -11,9 +11,10 @@ router.route("/games")
     .post(gameController.addGame)
 router.route("/category")
     .post(gameController.addCategory)
-
-router.route('/games/:category')
     .get(gameController.getListGamesCategory)
+
+// router.route('/games/:category')
+//     .get(gameController.getListGamesCategory)
 
 router.route('/user')
     .post(validator.validateData, usersController.createAccount)
