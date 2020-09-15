@@ -5,7 +5,7 @@ const gameController = {
     addGame:  (req, res) => {
         const {title,images,body,rating,platforms,idComment} = req.body
         const gameSave = new Game({
-            title,images,body,rating,platforms,idComment
+            title,images,body,rating,platforms,idCdomment
         })
 
         gameSave.save()
@@ -13,21 +13,12 @@ const gameController = {
         .catch( error =>res.json({succes: false, error}))
     },
 
-    getListGames: async (req, res) => {
 
-        const listGames =  await Game.find()
-
-        res.json({
-            success: true,
-            games: listGames,
-        })
-    },
-
-    getListGamesCategory: async (req, res) => {
-        const listGamesCategory = await Game.find({category: req.params.category})
+    getCategories: async (req, res) => {
+        const listCategories = await Category.find()
         res.json({
             success:true,
-            listGamesCategory: listGamesCategory,
+            listCategories: listCategories,
         })
     },
 
@@ -39,8 +30,16 @@ const gameController = {
         categorySave.save()
         .then(game => res.json({succes: true, game}))
         .catch( error =>res.json({succes: false, error}))
-    }
+    },
     
+    getSpecificGames: async (req, res) => {
+        const specificGames = await Game.find({idCategory: req.params.id})
+        console.log(specificGames)
+        res.json({
+            success:true,
+            games: specificGames,
+        })
+    }
 }
 
 module.exports = gameController
