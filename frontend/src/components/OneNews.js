@@ -10,6 +10,7 @@ class OneNews extends React.Component {
     commentary: '',
     idNews: '',
     sendModify: false,
+    viewMore: false
   }
   componentDidMount() {
     this.props.getCommentaries()
@@ -60,6 +61,13 @@ class OneNews extends React.Component {
     await this.props.modifyCommentary(this.state.commentary, this.state.id)
   }
   render() {
+
+    const viewSwitch = () => {
+      this.setState({
+        viewMore: !this.state.viewMore
+      })
+    }
+
     return (
       <>
         <div className="mx-auto border col-10 m-5">
@@ -69,39 +77,41 @@ class OneNews extends React.Component {
           <p className="text-light text-center">{this.props.news.date}</p>
           <img className="mx-auto" src={this.props.news.images}></img>
           <p className="text-light text-center">{this.props.news.body}</p>
-          <div>
+          {this.state.viewMore &&
+            <div>
+              {this.props.commentaries.map(commentary => {
 
-            {this.props.commentaries.map(commentary => {
-
-              return (
-                this.props.news._id === commentary.idNews &&
-                <>
-                  <div className="col-10 mx-auto mt-5">
-                    <div className="d-flex justify-content-between">
-                      <div className="d-flex">
-                        <a className="comment-pic user-action text-light"> <img src={commentary.userPic} className="avatar" alt="Avatar" /><b className="caret"></b></a>
-                        <div>
-                          <h6 className="text-light">{commentary.username}</h6>
-                          {this.state.sendModify && commentary.username === this.props.username ? <><input onChange={this.readCommentary} id={commentary._id} placeholder={commentary.content} /> <button onClick={this.modifyCommentary}>send</button></> : <p className="text-light">{commentary.content}</p>}
+                return (
+                  this.props.news._id === commentary.idNews &&
+                  <>
+                    <div className="col-10 mx-auto mt-5">
+                      <div className="d-flex justify-content-between">
+                        <div className="d-flex">
+                          <a className="comment-pic user-action text-light"> <img src={commentary.userPic} className="avatar" alt="Avatar" /><b className="caret"></b></a>
+                          <div>
+                            <h6 className="text-light">{commentary.username}</h6>
+                            {this.state.sendModify && commentary.username === this.props.username ? <><input onChange={this.readCommentary} id={commentary._id} placeholder={commentary.content} /> <button onClick={this.modifyCommentary}>send</button></> : <p className="text-light">{commentary.content}</p>}
+                          </div>
+                        </div>
+                        <div className="d-flex">
+                          {this.props.username === commentary.username &&
+                            <>
+                              <img src={edit} data-toggle="tooltip" data-placement="top" title="Delete" id={commentary._id} onClick={this.openInput} style={{ height: '4vh' }}></img>
+                              <img src={trash} data-toggle="tooltip" data-placement="top" title="Modify" id={commentary._id} onClick={this.deleteCommentary} style={{ height: '4vh' }}></img>
+                            </>
+                          }
                         </div>
                       </div>
-                      <div className="d-flex">
-                        {this.props.username === commentary.username &&
-                          <>
-                            <img src={edit} data-toggle="tooltip" data-placement="top" title="Delete" id={commentary._id} onClick={this.openInput} style={{ height: '4vh' }}></img>
-                            <img src={trash} data-toggle="tooltip" data-placement="top" title="Modify" id={commentary._id} onClick={this.deleteCommentary} style={{ height: '4vh' }}></img>
-                          </>
-                        }
-                      </div>
-                    </div>
 
-                  </div>
-                </>)
-            }
-            )}
-            <input onChange={this.readCommentary} id={this.props.news._id} value={this.state.commentary} onKeyUp={this.enter}></input>
-            <button onClick={this.sendCommentary}>send</button>
-          </div>
+                    </div>
+                  </>)
+              }
+              )}
+              <input onChange={this.readCommentary} id={this.props.news._id} value={this.state.commentary} onKeyUp={this.enter}></input>
+              <button onClick={this.sendCommentary}>send</button>
+            </div>
+          }
+          <button onClick={viewSwitch}>{this.state.viewMore ? 'View less' : 'View more' }</button>
         </div>
       </>
     );
