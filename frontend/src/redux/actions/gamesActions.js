@@ -14,8 +14,8 @@ const gamesActions = {
     },
     getSpecificGames: categoryId => {
         return async (dispatch, getState) => {
-            const response = await Axios.get('http://127.0.0.1:4000/api/games/' + categoryId);
-            const info = response.data;
+            const response = await Axios.get('http://127.0.0.1:4000/api/games/'+categoryId);
+              const info = response.data;
             dispatch({
                 type: 'GET_SPECIFIC_GAMES',
                 payload: info

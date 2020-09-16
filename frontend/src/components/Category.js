@@ -3,7 +3,6 @@ import "../styles/styles.css";
 import { NavLink } from "react-router-dom";
 
 const Category = (props) => {
-
   return (
     <>
       <li className="col- 5">

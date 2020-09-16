@@ -28,6 +28,9 @@ router.route("/category")
 router.route('/categories')
     .get(gameController.getCategories)
 
+// router.route('/games/:category')
+//     .get(gameController.getListGamesCategory)
+
 router.route('/user')
     .post(validator.validateData, usersController.createAccount)
 

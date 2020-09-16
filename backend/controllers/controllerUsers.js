@@ -42,14 +42,14 @@ const usersController = {
 
         if (!userExist) {
             res.json({
-                success: false, mensaje: "Usuario y/o contraseña incorrectos"
+                success: false, message: "Incorrect username or password"
             })
         } else {
             const passwordMatches = bcryptjs.compareSync(password, userExist.password)
 
             if (!passwordMatches) {
                 res.json({
-                    success: false, mensaje: "Usuario y/o contraseña incorrectos"
+                    success: false, message: "Incorrect username or password"
                 })
             } else {
                 jwt.sign({ ...userExist }, process.env.SECRETORKEY, {}, (error, token) => {

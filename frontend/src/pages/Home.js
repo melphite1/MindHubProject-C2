@@ -5,8 +5,9 @@ import { connect } from "react-redux"
 import newsActions from '../redux/actions/newsActions'
 import One from "../components/OneNews"
 import gamesActions from '../redux/actions/gamesActions'
+import usersReducer from '../redux/reducers/usersReducer'
 import { NavLink } from 'react-router-dom'
-
+import Swal from 'sweetalert2'
 
 
 
@@ -18,6 +19,13 @@ const Home = (props) => {
         setNews({
             news
         })
+        if(props.token){
+            Swal.fire({
+                icon: 'success',
+                title: 'Welcome!',
+                text: 'We are very happy to see you!',
+              })
+        }
 
     }, [])
 
@@ -139,7 +147,8 @@ const Home = (props) => {
 
 const mapStateToProps = state => {
     return {
-        newsRed: state.newsReducer.news.news
+        newsRed: state.newsReducer.news.news,
+        token: state.usersReducer.token
     }
 }
 

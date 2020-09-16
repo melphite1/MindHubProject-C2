@@ -5,6 +5,7 @@ import Header from '../components/Header'
 import Category from "../components/Category";
 import auxActions from '../redux/actions/auxActions'
 import gamesActions from '../redux/actions/gamesActions'
+import Games from './Games';
 
 
 
@@ -20,7 +21,8 @@ const Categories = (props) => {
     props.getCategories()
     setCategories([...orderedCategories])
     setFilteredCategories([...props.categories])
-  }, [props.categories])
+  }, [])
+
 
   let orderedCategories = props.categories.sort(function (a, b) {
     if (a.name > b.name) {
@@ -139,6 +141,7 @@ const Categories = (props) => {
 
               <NavLink to={`/games/${category._id}`} className="col- 5">
                 <Category category={category} />
+
               </NavLink>
 
             </>
