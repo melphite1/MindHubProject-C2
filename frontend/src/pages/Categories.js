@@ -5,24 +5,16 @@ import Header from '../components/Header'
 import Category from "../components/Category";
 import auxActions from '../redux/actions/auxActions'
 import gamesActions from '../redux/actions/gamesActions'
-import Games from './Games';
-
-
-
 const Categories = (props) => {
-
   const [categories, setCategories] = useState([])
   const [filteredCategories, setFilteredCategories] = useState([])
   const [favConsole, setFavConsole] = useState('')
-
-
 
   useEffect(() => {
     props.getCategories()
     setCategories([...orderedCategories])
     setFilteredCategories([...props.categories])
-  }, [])
-
+  }, [props.categories])
 
   let orderedCategories = props.categories.sort(function (a, b) {
     if (a.name > b.name) {
@@ -34,7 +26,6 @@ const Categories = (props) => {
     // a must be equal to b
     return 0;
   });
-
   const consoles = [
     'Not defined yet',
     'Pc',
@@ -63,14 +54,12 @@ const Categories = (props) => {
     'Atari2600, Atari',
     'Atari5200, Atari'
   ]
-
   const readInput = e => {
     const value = e.target.value
     setFavConsole(
       value
     )
   }
-
   const captureValue = (e) => {
     const valueCategory = e.target.value.trim().toLowerCase();
     setFilteredCategories({
@@ -79,13 +68,10 @@ const Categories = (props) => {
       )
     });
   };
-
   const sendConsole = () => {
     props.sendConsole(favConsole, props.username)
   }
-
   const categoryNotFound = require("../images/404notFound.png");
-
   const filteredSameZero = () => {
     if (filteredCategories.length === 0) {
       return (
@@ -112,7 +98,6 @@ const Categories = (props) => {
       )
     };
   };
-
   console.log(props)
   return (
     <>
@@ -138,12 +123,9 @@ const Categories = (props) => {
           {filteredSameZero()}
           {filteredCategories.map((category) => {
             return <>
-
               <NavLink to={`/games/${category._id}`} className="col- 5">
                 <Category category={category} />
-
               </NavLink>
-
             </>
           })}
         </ul>
@@ -151,7 +133,6 @@ const Categories = (props) => {
     </>
   );
 };
-
 const mapStateToProps = (state) => {
   return {
     username: state.usersReducer.username,
@@ -160,10 +141,8 @@ const mapStateToProps = (state) => {
     categories: state.gamesReducer.categories
   }
 }
-
 const mapDispatchToProps = {
   sendConsole: auxActions.sendConsole,
   getCategories: gamesActions.getCategories
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);

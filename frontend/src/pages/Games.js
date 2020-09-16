@@ -6,7 +6,7 @@
 // import auxActions from '../redux/actions/auxActions'
 // const Games = (props) => {
 // <<<<<<< HEAD
-    
+
 //     const [categories, setCategories] = useState([])
 //     const [games, setGames] = useState([])
 
@@ -42,7 +42,7 @@
 
 // export default connect(mapStateToProps, mapDispatchToProps)(Games);
 // =======
-  
+
 // =======
 import { connect } from "react-redux";
 import React, { useState, useEffect } from "react";
@@ -61,7 +61,7 @@ const Games = (props) => {
     const specificCategory = props.categories.filter(category => category._id === props.match.params.id)
     stateModificator(specificCategory[0])
     getSpecificGames()
-  }, [])
+  }, [...props.games])
 
   const getSpecificGames = async () => {
     await props.getSpecificGames(props.match.params.id)

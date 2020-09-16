@@ -4,7 +4,7 @@ import trash from '../images/trash.png'
 import edit from '../images/edit.png'
 import { connect } from "react-redux"
 
-class Game extends React.Component {
+class Comment extends React.Component {
     state = {
         commentary: '',
         idGame: '',
@@ -20,6 +20,11 @@ class Game extends React.Component {
     }
     escape = (e) => {
         if (e.keyCode === 27) {
+            this.setState({
+                sendModify: false
+            })
+        } else if (e.keyCode === 13) {
+            this.modifyCommentary()
             this.setState({
                 sendModify: false
             })
@@ -67,34 +72,30 @@ class Game extends React.Component {
 
 
 
+
+            this.props.game._id === this.props.commentary.idGame &&
             <>
-                {this.props.commentaries.map(commentary => {
-                    return (
-                        this.props.game._id === commentary.idGame &&
-                        <>
-                            <div className="col-12 mx-auto mt-5">
-                                <div className="d-flex justify-content-between">
-                                    <div className="d-flex">
-                                        <a className="comment-pic user-action text-light"> <img src={commentary.userPic} className="avatar" alt="Avatar" /><b className="caret"></b></a>
-                                        <div>
-                                            <h6 className="text-light">{commentary.username}</h6>
-                                            {this.state.sendModify && commentary.username === this.props.username ? <><input onChange={this.readCommentary} id={commentary._id} placeholder={commentary.content} onKeyUp={this.escape} /> <p>escape to cancel • enter to save</p></> : <p className="text-light">{commentary.content}</p>}
-                                        </div>
-                                    </div>
-                                    <div className="d-flex">
-                                        {this.props.username === commentary.username &&
-                                            <>
-                                                <img src={edit} className="pr-2" data-toggle="tooltip" data-placement="top" title="Delete" id={commentary._id} onClick={this.openInput} style={{ height: '3vh', width: '2vw' }}></img>
-                                                <img src={trash} className="pr-2" data-toggle="tooltip" data-placement="top" title="Modify" id={commentary._id} onClick={this.deleteCommentary} style={{ height: '3vh', width: '2vw' }}></img>
-                                            </>}
-                                    </div>
-                                </div>
+                <div className="col-12 mx-auto mt-5">
+                    <div className="d-flex justify-content-between">
+                        <div className="d-flex">
+                            <a className="comment-pic user-action text-light"> <img src={this.props.commentary.userPic} className="avatar" alt="Avatar" /><b className="caret"></b></a>
+                            <div>
+                                <h6 className="text-light">{this.props.commentary.username}</h6>
+                                {this.state.sendModify && this.props.commentary.username === this.props.username ? <><input onChange={this.readCommentary} id={this.props.commentary._id} placeholder={this.props.commentary.content} onKeyUp={this.escape} /> <p>escape to cancel • enter to save</p></> : <p className="text-light">{this.props.commentary.content}</p>}
                             </div>
-                        </>)
-                })}
-                <div className="p-5">
-                    <input onChange={this.readCommentary} placeholder="Send a comment" className="sendComment col-12" id={this.props.game._id} value={this.state.commentary} onKeyUp={this.enter}></input>
+                        </div>
+                        <div className="d-flex">
+                            {this.props.username === this.props.commentary.username &&
+                                <>
+                                    <img src={edit} className="pr-2" data-toggle="tooltip" data-placement="top" title="Delete" id={this.props.commentary._id} onClick={this.openInput} style={{ height: '3vh', width: '2vw' }}></img>
+                                    <img src={trash} className="pr-2" data-toggle="tooltip" data-placement="top" title="Modify" id={this.props.commentary._id} onClick={this.deleteCommentary} style={{ height: '3vh', width: '2vw' }}></img>
+                                </>}
+                        </div>
+                    </div>
                 </div>
+
+
+
 
             </>
 
@@ -118,4 +119,4 @@ const mapDispatchToProps = {
     modifyCommentary: gamesActions.modifyCommentary,
 
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Game)
+export default connect(mapStateToProps, mapDispatchToProps)(Comment)
