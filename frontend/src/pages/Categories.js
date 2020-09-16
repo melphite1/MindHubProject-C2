@@ -15,6 +15,11 @@ const Categories = (props) => {
   const [filteredCategories, setFilteredCategories] = useState([])
   const [favConsole, setFavConsole] = useState('')
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> d30f7a1ad127e12ab178455c7c48d462c43f6174
   useEffect(() => {
     props.getCategories() 
     setCategories([...props.categories])
@@ -149,7 +154,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     sendConsole: auxActions.sendConsole,
-    getCategories: gamesActions.getCategories 
+    getCategories: gamesActions.getCategories
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);

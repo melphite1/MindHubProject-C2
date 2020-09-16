@@ -3,7 +3,11 @@ import "../styles/styles.css";
 import { NavLink } from "react-router-dom";
 
 const Category = (props) => {
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> d30f7a1ad127e12ab178455c7c48d462c43f6174
   return (
     <> 
       <li>

@@ -7,11 +7,20 @@ const newsController = require("../controllers/controllerNews")
 const router = express.Router()
 
 router.route("/games")
-    .get(gameController.getListGames)
     .post(gameController.addGame)
+
+router.route("/games/:id")
+.get(gameController.getSpecificGames)
+
 router.route("/category")
     .post(gameController.addCategory)
+<<<<<<< HEAD
     .get(gameController.getListGamesCategory)
+=======
+
+router.route('/categories')
+    .get(gameController.getCategories)
+>>>>>>> d30f7a1ad127e12ab178455c7c48d462c43f6174
 
 // router.route('/games/:category')
 //     .get(gameController.getListGamesCategory)
@@ -27,6 +36,7 @@ router.route('/tokenVerificator')
 
 router.route('/setConsole')
     .put(usersController.setConsole)
+
 router.route('/news')
     .post(newsController.addNews)
     .get(newsController.getNews)
