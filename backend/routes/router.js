@@ -33,7 +33,7 @@ router.route('/news/comments')
 
 router.route('/games/comments')
     .post(passport.authenticate('jwt', { session: false }), gameController.putCommentary)
-// .get(newsController.getCommentaries)
+    .get(newsController.getCommentaries)
 
 router.route('/news/deleteCommentary')
     .put(newsController.deleteCommentary)

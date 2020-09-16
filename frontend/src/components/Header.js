@@ -56,7 +56,7 @@ const Header = (props) => {
 
             <div className="navbar-nav ml-auto">
               <div className="nav-item dropdown ">
-                <a href="#" data-toggle="dropdown" className="nav-link dropdown-toggle user-action text-light"><img src={props.token ? props.urlpic : user} className="avatar" alt="Avatar" /> {props.token ? props.name : 'guest'} <b className="caret"></b></a>
+                <a href="#" data-toggle="dropdown" className="nav-link dropdown-toggle user-action text-light"><img src={props.token ? props.urlpic : user} className="avatar" alt="Avatar" /> {props.token ? props.name : 'Guest'} <b className="caret"></b></a>
                 <div className="dropdown-menu">
                   {props.token ? <Link to="/profile" className="dropdown-item">Profile</Link> : <Link to="/signup" className="dropdown-item">Sign Up</Link>}
 

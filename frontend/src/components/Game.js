@@ -8,6 +8,9 @@ class Game extends React.Component {
     idGame: '',
     sendModify: false,
   }
+  componentDidMount() {
+    this.props.getCommentaries()
+  }
   readCommentary = (e) => {
     var commentary = e.target.value
     const idGame = e.target.id
@@ -57,6 +60,18 @@ class Game extends React.Component {
           <p className='text-light'>{this.props.game.body}</p>
           <p className='text-light'>{this.props.game.rating}</p>
           <div>
+            {this.props.commentaries.map(commentary => {
+              return (
+                <div>
+                  <h3 className="text-light">{commentary.username}</h3>
+                  {this.state.sendModify && commentary.username === this.props.username ? <><input onChange={this.readCommentary} id={commentary._id} placeholder={commentary.content} /> <button onClick={this.modifyCommentary}>send</button></> : <p className="text-light">{commentary.content}</p>}
+                  {this.props.username === commentary.username &&
+                    <>
+                      <p className="text-light" id={commentary._id} >borrar</p>
+                      <p className="text-light" id={commentary._id} >modificar</p>
+                    </>}
+                </div>)
+            })}
             <input onChange={this.readCommentary} id={this.props.game._id} value={this.state.commentary}></input>
             <button onClick={this.sendCommentary}>send</button>
           </div>
