@@ -19,11 +19,21 @@ const Categories = (props) => {
 
   useEffect(() => {
     props.getCategories()
-    setCategories([...props.categories])
+    setCategories([...orderedCategories])
     setFilteredCategories([...props.categories])
   }, [])
 
 
+  let orderedCategories = props.categories.sort(function (a, b) {
+    if (a.name > b.name) {
+      return 1;
+    }
+    if (a.name < b.name) {
+      return -1;
+    }
+    // a must be equal to b
+    return 0;
+  });
 
   const consoles = [
     'Not defined yet',
@@ -124,15 +134,16 @@ const Categories = (props) => {
           : ''
       }
       <div id="mainCategories">
-        <input type="text" placeholder="What category are you interested in?" name="category" id="category" onChange={captureValue} /> /* Cambiar a un input type select (mampeando props.categories) */
-              <ul className="Container">
+        <ul className="container col-5" style={{ listStyle: 'none' }}>
           {filteredSameZero()}
           {filteredCategories.map((category) => {
             return <>
-              <NavLink to={`/games/${category._id}`}>
+
+              <NavLink to={`/games/${category._id}`} className="col- 5">
                 <Category category={category} />
 
               </NavLink>
+
             </>
           })}
         </ul>
