@@ -1,5 +1,7 @@
 import React from 'react';
 import newsActions from '../redux/actions/newsActions'
+import trash from '../images/trash.png'
+import edit from '../images/edit.png'
 import { connect } from "react-redux"
 
 class OneNews extends React.Component {
@@ -16,18 +18,19 @@ class OneNews extends React.Component {
   readCommentary = (e) => {
     var commentary = e.target.value
     const id = e.target.id
-
-
     this.setState({
       commentary,
       id
     })
   }
+
   enter = (e) => {
+    console.log(e.keyCode)
     if (e.keyCode === 13) {
       this.sendCommentary()
     }
   }
+
   sendCommentary = async () => {
     var commentary = this.state.commentary
     if (commentary === '') {
@@ -73,14 +76,25 @@ class OneNews extends React.Component {
               return (
                 this.props.news._id === commentary.idNews &&
                 <>
-                  <div>
-                    <h3 className="text-light">{commentary.username}</h3>
-                    {this.state.sendModify && commentary.username === this.props.username ? <><input onChange={this.readCommentary} id={commentary._id} placeholder={commentary.content} /> <button onClick={this.modifyCommentary}>send</button></> : <p className="text-light">{commentary.content}</p>}
-                    {this.props.username === commentary.username &&
-                      <>
-                        <p className="text-light" id={commentary._id} onClick={this.deleteCommentary}>borrar</p>
-                        <p className="text-light" id={commentary._id} onClick={this.openInput}>modificar</p>
-                      </>}
+                  <div className="col-10 mx-auto mt-5">
+                    <div className="d-flex justify-content-between">
+                      <div className="d-flex">
+                        <a className="comment-pic user-action text-light"> <img src={commentary.userPic} className="avatar" alt="Avatar" /><b className="caret"></b></a>
+                        <div>
+                          <h6 className="text-light">{commentary.username}</h6>
+                          {this.state.sendModify && commentary.username === this.props.username ? <><input onChange={this.readCommentary} id={commentary._id} placeholder={commentary.content} /> <button onClick={this.modifyCommentary}>send</button></> : <p className="text-light">{commentary.content}</p>}
+                        </div>
+                      </div>
+                      <div className="d-flex">
+                        {this.props.username === commentary.username &&
+                          <>
+                            <img src={edit} data-toggle="tooltip" data-placement="top" title="Delete" id={commentary._id} onClick={this.openInput} style={{ height: '4vh' }}></img>
+                            <img src={trash} data-toggle="tooltip" data-placement="top" title="Modify" id={commentary._id} onClick={this.deleteCommentary} style={{ height: '4vh' }}></img>
+                          </>
+                        }
+                      </div>
+                    </div>
+
                   </div>
                 </>)
             }

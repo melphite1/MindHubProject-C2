@@ -9,6 +9,13 @@ const router = express.Router()
 router.route('/games/comments')
     .post(passport.authenticate('jwt', { session: false }), gameController.putCommentary)
     .get(gameController.getCommentaries)
+
+router.route('/games/deleteCommentary')
+    .put(gameController.deleteCommentary)
+
+router.route('/games/modifyCommentary')
+    .put(gameController.modifyCommentary)
+
 router.route("/games")
     .post(gameController.addGame)
 
@@ -33,8 +40,6 @@ router.route('/tokenVerificator')
 router.route('/news/comments')
     .post(passport.authenticate('jwt', { session: false }), newsController.putCommentary)
     .get(newsController.getCommentaries)
-
-
 
 router.route('/news/deleteCommentary')
     .put(newsController.deleteCommentary)
