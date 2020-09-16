@@ -1,19 +1,25 @@
 const initialState = {
     games: [],
-    categories:[]
+    categories: [],
+    commentaries: []
 }
 
 const gamesReducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case 'GETCATEGORIES':
-                return {
-                    ...state,
-                    categories: action.payload
-                }
+            return {
+                ...state,
+                categories: action.payload
+            }
         case 'GET_SPECIFIC_GAMES':
-            return{
+            return {
                 ...state,
                 games: action.payload.games
+            }
+        case 'GETCOMMENTARIES':
+            return {
+                ...state,
+                commentaries: action.payload
             }
         default:
             return state;

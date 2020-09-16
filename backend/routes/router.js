@@ -10,7 +10,7 @@ router.route("/games")
     .post(gameController.addGame)
 
 router.route("/games/:id")
-.get(gameController.getSpecificGames)
+    .get(gameController.getSpecificGames)
 
 router.route("/category")
     .post(gameController.addCategory)
@@ -29,6 +29,10 @@ router.route('/tokenVerificator')
 
 router.route('/news/comments')
     .post(passport.authenticate('jwt', { session: false }), newsController.putCommentary)
+    .get(newsController.getCommentaries)
+
+router.route('/games/comments')
+    .post(passport.authenticate('jwt', { session: false }), gameController.putCommentary)
     .get(newsController.getCommentaries)
 
 router.route('/news/deleteCommentary')

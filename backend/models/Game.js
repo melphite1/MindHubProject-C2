@@ -7,7 +7,7 @@ const gameSchema = new mongoose.Schema({
     body: String,
     rating: Number,
     platforms: Array,
-    idCategory: { type: mongoose.Types.ObjectId, ref: "Category" },
+    idCategory: { type: mongoose.SchemaTypes.ObjectId, ref: "Category" },
 
 })
 

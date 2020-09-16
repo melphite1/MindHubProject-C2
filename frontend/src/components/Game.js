@@ -1,5 +1,5 @@
 import React from 'react'
-import toArray from "react"
+
 
 class Game extends React.Component {
 
@@ -15,14 +15,8 @@ class Game extends React.Component {
           })}
         </div>
         <p className='text-light'>{this.props.game.rating}</p>
-        {
-                                            this.props.game.rating === 1 ? <p className='text-light'><span className='text-light'>$</span>$$$$</p> :
-                                                this.props.game.rating === 2 ? <p className='text-light'><span className='text-light'>$$</span>$$$</p> :
-                        
-                                                this.props.game.rating === 3 ? <p className='text-light'><span className='text-light'>$$$</span>$$</p> :
-                                                this.props.game.rating === 4? <p className='text-light'><span className='text-light'>$$</span>$$$</p> :
-                        
-                                                this.props.game.rating === 5 ? <p className='text-light'><span className='text-light'>$$$</span>$$</p>: null}
+        
+
       </>
       
 
