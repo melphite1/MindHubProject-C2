@@ -1,10 +1,10 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import "../styles/styles.css";
 import { connect } from "react-redux";
 import usersActions from "../redux/actions/usersActions";
 import user from "../images/person.png"
 import logo from "../images/logo.png"
+
 const Header = (props) => {
   const logout = () => {
     props.userLogOut();

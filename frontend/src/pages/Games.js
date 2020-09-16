@@ -56,7 +56,6 @@ const Games = (props) => {
 
   const [category, setCategory] = useState({})
 
-
   useEffect(() => {
     const specificCategory = props.categories.filter(category => category._id === props.match.params.id)
     stateModificator(specificCategory[0])
@@ -70,10 +69,25 @@ const Games = (props) => {
   const stateModificator = specificCategory => {
     setCategory(specificCategory)
   }
-  console.log(props.games)
+
+  const styleCategory = {
+    backgroundImage: `url(${category.picCategory})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPositionY: '30%',
+    fontSize: '5vh',
+    padding: '8vh 0vh',
+    marginTop: '1vh',
+  }
+  
   return (
     <>
       <Header />
+
+      <div style={styleCategory} className='center'>
+        <p style={{color: 'white'}} >{category.name}</p>
+      </div>
+
       <ul id="mainContainer">
         {props.games.length === 0
           ? (<div id="noItYet">
@@ -87,7 +101,7 @@ const Games = (props) => {
         }
       </ul>
     </>
-  );
+  )
 }
 
 const mapStateToProps = state => {

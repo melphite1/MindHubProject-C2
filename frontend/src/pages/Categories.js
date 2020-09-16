@@ -98,7 +98,8 @@ const Categories = (props) => {
       )
     };
   };
-  console.log(props)
+
+
   return (
     <>
       <Header />

@@ -24,9 +24,10 @@ const Profile = (props) => {
                                     {props.name}
                                 </h5>
                                 <h6>
-                                    Web Developer and Designer
+
+                                    A game lover
                                     </h6>
-                                <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                                <p class="proile-rating"></p>
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
@@ -61,10 +62,10 @@ const Profile = (props) => {
                                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>User Id</label>
+                                            <label>Username</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>Kshiti123</p>
+                                            <p>{props.username}</p>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -72,7 +73,7 @@ const Profile = (props) => {
                                             <label>Name</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>Kshiti Ghelani</p>
+                                            <p>{props.name}</p>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -80,12 +81,12 @@ const Profile = (props) => {
                                             <label>Email</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>kshitighelani@gmail.com</p>
+                                            <p>{props.username}</p>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>Phone</label>
+                                            <label>Favorite Console</label>
                                         </div>
                                         <div class="col-md-6">
                                             <p>123 456 7890</p>

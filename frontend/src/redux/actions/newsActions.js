@@ -14,7 +14,7 @@ const newsActions = {
     },
     putCommentary: (idNews, content, token) => {
         return async (dispatch, getState) => {
-            console.log(idNews, content, token)
+            
             const response = await axios.post(`http://localhost:4000/api/news/comments`, { idNews, content }, {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -24,9 +24,9 @@ const newsActions = {
     },
     getCommentaries: () => {
         return async (dispatch, getState) => {
-            console.log()
+            
             const response = await axios.get(`http://localhost:4000/api/news/comments`)
-            console.log(response.data)
+            
             dispatch({
                 type: 'GETCOMMENTARIES',
                 payload: response.data.commentary
@@ -35,7 +35,7 @@ const newsActions = {
     },
     deleteCommentary: (idComment) => {
         return async (dispatch, getState) => {
-            console.log(idComment)
+            
             const response = await axios.put(`http://localhost:4000/api/news/deleteCommentary`, { idComment })
             dispatch({
                 type: 'GETCOMMENTARIES',
@@ -45,7 +45,7 @@ const newsActions = {
     },
     modifyCommentary: (content, idComment) => {
         return async (dispatch, getState) => {
-            console.log(content, idComment)
+            
             const response = await axios.put(`http://localhost:4000/api/news/modifyCommentary`, { content, idComment })
             dispatch({
                 type: 'GETCOMMENTARIES',

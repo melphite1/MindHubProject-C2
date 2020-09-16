@@ -27,7 +27,7 @@ class OneNews extends React.Component {
   }
 
   enter = (e) => {
-    console.log(e.keyCode)
+    
     if (e.keyCode === 13) {
       this.sendCommentary()
     }

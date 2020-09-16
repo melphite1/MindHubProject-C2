@@ -15,7 +15,7 @@ const News = (props) => {
         })
 
     }, [])
-    console.log(props.newsRed)
+    
     return (
         <>
             <Header />

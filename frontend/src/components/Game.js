@@ -62,7 +62,7 @@ class Game extends React.Component {
     })
   }
   modifyCommentary = async (e) => {
-    console.log(this.state.id)
+    
     await this.props.modifyCommentary(this.state.commentary, this.state.idGame)
   }
   render() {
