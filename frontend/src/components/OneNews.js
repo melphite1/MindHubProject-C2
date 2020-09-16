@@ -12,20 +12,27 @@ class OneNews extends React.Component {
   componentDidMount() {
     this.props.getCommentaries()
   }
+
   readCommentary = (e) => {
     var commentary = e.target.value
     const id = e.target.id
+
 
     this.setState({
       commentary,
       id
     })
   }
-  sendCommentary = async (e) => {
+  enter = (e) => {
+    if (e.keyCode === 13) {
+      this.sendCommentary()
+    }
+  }
+  sendCommentary = async () => {
     var commentary = this.state.commentary
     if (commentary === '') {
       alert("You can't send empty comments", "", "error");
-      e.preventDefault()
+
     } else {
       await this.props.putCommentary(this.props.news._id, commentary, this.props.token)
       await this.props.getCommentaries()
@@ -78,7 +85,7 @@ class OneNews extends React.Component {
                 </>)
             }
             )}
-            <input onChange={this.readCommentary} id={this.props.news._id} value={this.state.commentary}></input>
+            <input onChange={this.readCommentary} id={this.props.news._id} value={this.state.commentary} onKeyUp={this.enter}></input>
             <button onClick={this.sendCommentary}>send</button>
           </div>
         </div>

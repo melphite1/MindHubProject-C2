@@ -34,7 +34,7 @@ const gameController = {
     },
 
     getSpecificGames: async (req, res) => {
-        const specificGames = await Game.findById({ idCategory: req.params.id })
+        const specificGames = await Game.find({ idCategory: req.params.id })
         console.log(specificGames)
         res.json({
             success: true,
@@ -50,8 +50,8 @@ const gameController = {
         console.log(commentary)
     },
     getCommentaries: async (req, res) => {
-        const commentary = await Comment.find()
-        res.json({ succes: true, commentary })
+        const comment = await Comment.find()
+        res.json({ succes: true, comment })
     }
 }
 

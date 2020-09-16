@@ -1,13 +1,13 @@
 import { connect } from "react-redux";
 import React, { useState, useEffect } from "react";
-import {NavLink} from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import Header from "../components/Header";
 import Category from "../components/Category";
 import Game from "../components/Game";
 import gamesActions from "../redux/actions/gamesActions";
 
 const Games = (props) => {
-  
+
   const [category, setCategory] = useState({})
 
 
@@ -25,27 +25,27 @@ const Games = (props) => {
     setCategory(specificCategory)
   }
   console.log(props.games)
-    return (
-      <>
-        <Header />
-        <ul id="mainContainer">
-            {props.games.length === 0 
-              ? (<div id="noItYet">
-                <p>No games loaded yet.</p>
-                </div>) 
-              : props.games.map((game) => {
-                  return <>
-                    <Game game={game} />
-                  </>
-                })
-            }
-        </ul>
-      </>
-    );
+  return (
+    <>
+      <Header />
+      <ul id="mainContainer">
+        {props.games.length === 0
+          ? (<div id="noItYet">
+            <p>No games loaded yet.</p>
+          </div>)
+          : props.games.map((game) => {
+            return (<>
+              <Game game={game} />
+            </>)
+          })
+        }
+      </ul>
+    </>
+  );
 }
 
 const mapStateToProps = state => {
-  return{
+  return {
     categories: state.gamesReducer.categories,
     games: state.gamesReducer.games
   }

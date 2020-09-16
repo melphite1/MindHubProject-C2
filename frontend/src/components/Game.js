@@ -62,6 +62,7 @@ class Game extends React.Component {
           <div>
             {this.props.commentaries.map(commentary => {
               return (
+                this.props.game._id === commentary.idGame &&
                 <div>
                   <h3 className="text-light">{commentary.username}</h3>
                   {this.state.sendModify && commentary.username === this.props.username ? <><input onChange={this.readCommentary} id={commentary._id} placeholder={commentary.content} /> <button onClick={this.modifyCommentary}>send</button></> : <p className="text-light">{commentary.content}</p>}
@@ -88,7 +89,7 @@ const mapStateToProps = state => {
     urlpic: state.usersReducer.urlpic,
     token: state.usersReducer.token,
     username: state.usersReducer.username,
-    commentaries: state.newsReducer.commentaries
+    commentaries: state.gamesReducer.commentaries
   }
 }
 

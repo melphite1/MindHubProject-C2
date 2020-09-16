@@ -12,6 +12,16 @@ const gamesActions = {
             })
         }
     },
+    getSpecificGames: categoryId => {
+        return async (dispatch, getState) => {
+            const response = await Axios.get('http://127.0.0.1:4000/api/games/' + categoryId);
+            const info = response.data;
+            dispatch({
+                type: 'GET_SPECIFIC_GAMES',
+                payload: info
+            })
+        }
+    },
     putCommentary: (idGame, content, token) => {
         return async (dispatch, getState) => {
             console.log(idGame, content, token)
@@ -24,25 +34,15 @@ const gamesActions = {
     },
     getCommentaries: () => {
         return async (dispatch, getState) => {
-            console.log()
             const response = await Axios.get(`http://localhost:4000/api/games/comments`)
             console.log(response.data)
             dispatch({
                 type: 'GETCOMMENTARIES',
-                payload: response.data.commentary
+                payload: response.data.comment
             })
         }
     },
-    getSpecificGames: categoryId => {
-        return async (dispatch, getState) => {
-            const response = await Axios.get('http://127.0.0.1:4000/api/games/' + categoryId);
-            const info = response.data;
-            dispatch({
-                type: 'GET_SPECIFIC_GAMES',
-                payload: info
-            })
-        }
-    }
+
 }
 
 export default gamesActions

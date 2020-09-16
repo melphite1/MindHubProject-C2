@@ -6,6 +6,9 @@ const usersController = require("../controllers/controllerUsers")
 const newsController = require("../controllers/controllerNews")
 const router = express.Router()
 
+router.route('/games/comments')
+    .post(passport.authenticate('jwt', { session: false }), gameController.putCommentary)
+    .get(gameController.getCommentaries)
 router.route("/games")
     .post(gameController.addGame)
 
@@ -31,9 +34,7 @@ router.route('/news/comments')
     .post(passport.authenticate('jwt', { session: false }), newsController.putCommentary)
     .get(newsController.getCommentaries)
 
-router.route('/games/comments')
-    .post(passport.authenticate('jwt', { session: false }), gameController.putCommentary)
-    .get(newsController.getCommentaries)
+
 
 router.route('/news/deleteCommentary')
     .put(newsController.deleteCommentary)
