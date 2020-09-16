@@ -8,17 +8,24 @@ const { findByIdAndUpdate } = require("../models/User")
 const usersController = {
 
     createAccount: async (req, res) => {
-        const { username, password, email, urlpic, name, lastname, logWithGoogle, firstTime, favConsole } = req.body
+        const { username, password, email, name, lastname, logWithGoogle, firstTime, favConsole } = req.body
 
+        console.log(req.body)
+        console.log(req.files.urlpic)
         const passwordHash = bcryptjs.hashSync(password.trim(), 10)
         const userExists = await User.findOne({ username: username })
 
         if (userExists) {
             res.json({ success: false, message: "Username already use" })
         } else {
-
-            const newUser = new User({ name, lastname, email, urlpic, username, password: passwordHash, logWithGoogle, firstTime, favConsole })
-
+            const archivo = req.files.urlpic
+            const nombreArchivo = req.files.urlpic.name
+            const serverURL =`${__dirname}/Uploads/${nombreArchivo}`
+     
+            archivo.mv(serverURL)
+            const newUser = new User({ name, lastname, email, username, password: passwordHash, logWithGoogle, firstTime, favConsole })
+     
+           
             const user = await newUser.save()
             jwt.sign({ ...newUser }, process.env.SECRETORKEY, {}, (error, token) => {
 
@@ -67,7 +74,7 @@ const usersController = {
     tokenVerificator: (req, res) => {
 
         const { name, urlpic, username, firstTime } = req.user
-        console.log(req.user)
+ 
         res.json({
             success: true,
             name,
@@ -78,7 +85,7 @@ const usersController = {
     },
     setConsole: async (req, res) => {
         const { favConsole, username } = req.body
-        console.log(favConsole)
+
         const user = await User.findOneAndUpdate({
             username
         }, {

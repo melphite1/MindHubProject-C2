@@ -9,7 +9,7 @@ const usersActions = {
 
             if (response.data.success !== true) {
                 alert(response.data.error)
-                console.log(response.data.message)
+                console.log(response.data)
             } else {
                 dispatch({
                     type: 'SET_USER',

@@ -12,7 +12,7 @@ const Register = (props) => {
     useEffect(() => {
         if (props.token) {
             alert(`Welcome to scape community ${props.name}!`)
-            // props.history.push("/home")
+
         }
 
     }, [props.token])
@@ -31,12 +31,12 @@ const Register = (props) => {
 
 
     const readInput = e => {
-        const camp = e.target.name
-        const value = e.target.value
+        const valor = e.target.name === "urlpic" ? e.target.files[0] : e.target.value
         setNewUser({
             ...newUser,
-            [camp]: value
+            [e.target.name]: valor
         })
+
     }
     const responseGoogle = (response) => {
         props.createAccount({
@@ -54,11 +54,25 @@ const Register = (props) => {
     }
 
     const sendInfo = async e => {
-        e.preventDefault()
 
-        await props.createAccount(newUser)
+        console.log(newUser)
+        const fd = new FormData()
+        fd.append("name", newUser.name)
+        fd.append("lastname", newUser.lastname)
+        fd.append("username", newUser.username)
+        fd.append("password", newUser.password)
+        fd.append("email", newUser.email)
+        fd.append("urlpic", newUser.urlpic)
+        fd.append(" favConsole", newUser. favConsole)
+        fd.append("logWithGoogle", newUser.logWithGoogle)
+        fd.append("firstTime", newUser.firstTime)
+        console.log(fd)
+
+
+        await props.createAccount(fd)
 
     }
+
 
 
 
@@ -82,7 +96,8 @@ const Register = (props) => {
                         onChange={readInput} />
                     <input type='text' name='email' placeholder='Type an email correct'
                         onChange={readInput} />
-                    <input type='text' name='urlpic' placeholder='Photo URL'
+                    <label htmlFor="urlpic">Select your profile pic</label>
+                    <input type='file' name='urlpic' id="urlpic"
                         onChange={readInput} />
                     <button onClick={sendInfo}>Create new account</button>
                     <GoogleLogin

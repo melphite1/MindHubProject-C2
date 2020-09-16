@@ -4,9 +4,9 @@ const Comment = require("../models/Comment")
 
 const gameController = {
     addGame: (req, res) => {
-        const { title, images, body, rating, platforms } = req.body
+        const { title, images, body, rating, platforms, idCategory } = req.body
         const gameSave = new Game({
-            title, images, body, rating, platforms
+            title, images, body, rating, platforms, idCategory
         })
 
         gameSave.save()
@@ -35,23 +35,29 @@ const gameController = {
 
     getSpecificGames: async (req, res) => {
         const specificGames = await Game.find({ idCategory: req.params.id })
-        console.log(specificGames)
+        console.log()
         res.json({
             success: true,
             games: specificGames,
         })
     },
     putCommentary: async (req, res) => {
-        console.log(req.body)
+      console.log("hola")
         const { idGame, content } = req.body
         const { username, urlpic } = req.user
         const newCommentary = new Comment({ content, userPic: urlpic, username, idGame })
         const commentary = await newCommentary.save()
-        console.log(commentary)
+               console.log(commentary)
+        res.json({
+            succes: true,
+            commentary
+        })
     },
+    
     getCommentaries: async (req, res) => {
-        const commentary = await Comment.find()
-        res.json({ succes: true, commentary })
+        const comment = await Comment.find()
+        console.log(comment)
+        res.json({ succes: true, comment })
     }
 }
 
