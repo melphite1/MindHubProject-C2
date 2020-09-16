@@ -4,7 +4,7 @@ import "../styles/styles.css";
 import { connect } from "react-redux";
 import usersActions from "../redux/actions/usersActions";
 import user from "../images/person.png"
-
+import logo from "../images/logo.png"
 const Header = (props) => {
 
 
@@ -42,6 +42,7 @@ const Header = (props) => {
     <>
       <header>
         <nav class="navbar navbar-expand-xl navbar-light">
+          <img src={logo} style={{ width: '62px' }}></img>
           <NavLink to="/" class="navbar-brand">SCAPE</NavLink>
           <button type="button" class="navbar-toggler col-2" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>

@@ -41,16 +41,10 @@ class OneNews extends React.Component {
   }
   openInput = async (e) => {
     const id = e.target.id
-    this.props.commentaries.map(commentary => {
-      if (commentary._id = id) {
-        this.setState({
-          sendModify: !this.state.sendModify
-        })
-      }
 
+    this.setState({
+      sendModify: !this.state.sendModify
     })
-
-
   }
   modifyCommentary = async (e) => {
     await this.props.modifyCommentary(this.state.commentary, this.state.id)
@@ -74,7 +68,7 @@ class OneNews extends React.Component {
                 <>
                   <div>
                     <h3 className="text-light">{commentary.username}</h3>
-                    {this.state.sendModify ? <><input onChange={this.readCommentary} id={commentary._id} placeholder={commentary.content} /> <button onClick={this.modifyCommentary}>send</button></> : <p className="text-light">{commentary.content}</p>}
+                    {this.state.sendModify && commentary.username === this.props.username ? <><input onChange={this.readCommentary} id={commentary._id} placeholder={commentary.content} /> <button onClick={this.modifyCommentary}>send</button></> : <p className="text-light">{commentary.content}</p>}
                     {this.props.username === commentary.username &&
                       <>
                         <p className="text-light" id={commentary._id} onClick={this.deleteCommentary}>borrar</p>
