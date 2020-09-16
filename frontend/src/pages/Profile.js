@@ -33,7 +33,7 @@ const Profile = (props) => {
                                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Likes</a>
                                     </li>
                                 </ul>
                             </div>
@@ -45,16 +45,11 @@ const Profile = (props) => {
                     <div class="row">
                         <div class="col-md-4">
                             <div class="profile-work">
-                                <p>WORK LINK</p>
-                                <a href="">Website Link</a><br />
-                                <a href="">Bootsnipp Profile</a><br />
-                                <a href="">Bootply Profile</a>
-                                <p>SKILLS</p>
-                                <a href="">Web Designer</a><br />
-                                <a href="">Web Developer</a><br />
-                                <a href="">WordPress</a><br />
-                                <a href="">WooCommerce</a><br />
-                                <a href="">PHP, .Net</a><br />
+                                <p>Fav Games</p>
+                                <a href="">Magic</a><br />
+                                <a href="">GTA V</a><br />
+                                <a href="">Battlefield 5</a>
+
                             </div>
                         </div>
                         <div class="col-md-8">
@@ -89,7 +84,7 @@ const Profile = (props) => {
                                             <label>Favorite Console</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>123 456 7890</p>
+                                            <p>not define yet</p>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -102,46 +97,7 @@ const Profile = (props) => {
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Experience</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>Expert</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Hourly Rate</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>10$/hr</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Total Projects</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>230</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>English Level</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>Expert</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Availability</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>6 months</p>
-                                        </div>
-                                    </div>
+
                                     <div class="row">
                                         <div class="col-md-12">
                                             <label>Your Bio</label><br />
