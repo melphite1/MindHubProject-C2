@@ -6,43 +6,18 @@ import usersActions from "../redux/actions/usersActions";
 import user from "../images/person.png"
 import logo from "../images/logo.png"
 const Header = (props) => {
-
-
-
   const logout = () => {
     props.userLogOut();
   };
-
-  /* ->AMOLDAR RENDERIZADO CONDICIONAL (TOKEN-USER LOGUED/VISITANTE)<- */
-  /* {props.token 
-        ? (<div id="ImgContainer" style={{backgroundImage: `url(${props.urlpic})`}}></div>) 
-        : (<i className="large material-icons left">account_circle</i>)
-      }
-    </div>
-    <ul id="dropdown1" className="dropdown-content">
-    {props.token 
-      ? (
-          <li>
-          <NavLink to='/'onClick={logout} style={{color:'whitesmoke'}}>Log Out</NavLink>
-          </li>
-        ) 
-      : (
-        <>
-        <li>
-          <NavLink to='/LogIn'>Log In</NavLink>
-        </li>
-        <li>
-          <NavLink to='/Register'>Register</NavLink>
-        </li>
-        </>
-        )
-    } */
 
   return (
     <>
       <header>
         <nav className="navbar navbar-expand-xl navbar-light">
-          <NavLink to="/" className="navbar-brand">SCAPE</NavLink>
+          <div>
+            <img src={logo} style={{ width: '50px', height: '50px' }}></img>
+            <NavLink to="/" className="navbar-brand">SCAPE</NavLink>
+          </div>
           <button type="button" className="navbar-toggler col-2" data-toggle="collapse" data-target="#navbarCollapse">
             <span className="navbar-toggler-icon"></span>
           </button>
