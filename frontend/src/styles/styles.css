@@ -8,9 +8,8 @@ body{
 }
 
 header{
-    background-color: #171A21;
-    
-    padding: 1vh 2vw;
+    background-color: #171A21;  
+    padding: 1vh 4vw;
     
 }
 
@@ -71,6 +70,11 @@ header{
 
 .form-inline {
 	display: inline-block;
+}
+
+
+.navbar-brand{
+	font-size: 2em;
 }
 .navbar-header.col {
 	padding: 0 !important;

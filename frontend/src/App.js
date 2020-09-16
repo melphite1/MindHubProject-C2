@@ -7,7 +7,7 @@ import LogIn from './components/LogIn';
 import Categories from './pages/Categories';
 import { connect } from 'react-redux';
 import usersActions from './redux/actions/usersActions'
-import Profile from './components/Profile';
+import Games from './pages/Games';
 
 
 
@@ -23,15 +23,16 @@ class App extends React.Component {
       var myRoutes = (<Switch>
         <Route exact path="/" component={Home} />
         <Route path="/news" component={News} />
-        <Route path="/games" component={Categories} />
-        <Route path="/profile" component={Profile} />
+        <Route path="/categories" component={Categories} />
+        <Route path="/games/:id" component={Games} />
         <Redirect to="/" />
       </Switch>)
     } else {
       var myRoutes = (< Switch >
         <Route exact path="/" component={Home} />
         <Route path="/news" component={News} />
-        <Route path="/games" component={Categories} />
+        <Route path="/categories" component={Categories} />
+        <Route path="/games/:id" component={Games} />
         <Route path="/signup" component={Register} />
         <Route path="/login" component={LogIn} />
         <Redirect to="/login" />

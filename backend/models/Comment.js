@@ -4,11 +4,9 @@ const mongoose = require("mongoose")
 const CommentSchema = new mongoose.Schema({
     content: String,
     userPic: String,
-    userID:{type: mongoose.Types.ObjectId, ref: "User"},
     username: String,
-    platforms: Array,
-    category: String
-
+    idNews: { type: mongoose.Types.ObjectId, ref: "News" },
+    idGame: { type: mongoose.Types.ObjectId, ref: "Game" },
 })
 
 
