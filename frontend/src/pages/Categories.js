@@ -20,7 +20,7 @@ const Categories = (props) => {
     props.getCategories()
     setCategories([...props.categories])
     setFilteredCategories([...props.categories])
-  }, [props.categories])
+  }, [])
 
 
   const consoles = [
@@ -60,10 +60,10 @@ const Categories = (props) => {
   }
 
   const captureValue = (e) => {
-    const valueCategory = e.target.value.trim().toLowerCase();
+    const valueCategory = e.target.value
     setFilteredCategories({
       filteredCategories: categories.filter(
-        (category) => category.category.toLowerCase().indexOf(valueCategory) === 0
+        (category) => valueCategory
       )
     });
   };
@@ -101,7 +101,7 @@ const Categories = (props) => {
     };
   };
 
-  console.log(props)
+  console.log(filteredCategories)
   return (
     <>
       <Header />
@@ -122,7 +122,28 @@ const Categories = (props) => {
           : ''
       }
       <div id="mainCategories">
-        <input type="text" placeholder="What category are you interested in?" name="category" id="category" onChange={captureValue} /> /* Cambiar a un input type select (mampeando props.categories) */
+      {/* <select name='favConsole' id='favConsole' onChange={readInput} className="text-center col-6">
+              <option value={-1} className="text-center">Choose your favourite console.</option>
+              {
+                consoles.map((console, i) => {
+                  return <option key={'console' + [i]} value={console} className="text-center">{console}</option>
+                })
+              }
+      </select> */}
+      <select name='categoriesFilter' onChange={captureValue}>
+          <option value={-1}>
+            Select a category
+          </option>
+          {
+            props.categories.map((category, i) => {
+              return <option key={'category' + [i]} value={category.name}>
+                {category.name}
+              </option>
+            })
+          }
+
+      </select>
+        
               <ul className="Container">
           {filteredSameZero()}
           {filteredCategories.map((category) => {

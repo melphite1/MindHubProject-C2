@@ -9,6 +9,7 @@ const router = express.Router()
 router.route('/games/comments')
     .post(passport.authenticate('jwt', { session: false }), gameController.putCommentary)
     .get(gameController.getCommentaries)
+    
 router.route("/games")
     .post(gameController.addGame)
 
