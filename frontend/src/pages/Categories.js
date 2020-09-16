@@ -18,7 +18,7 @@ const Categories = (props) => {
 
   useEffect(() => {
     props.getCategories()
-    setCategories([...props.orderedCategories])
+    setCategories([...orderedCategories])
     setFilteredCategories([...props.categories])
   }, [props.categories])
 
