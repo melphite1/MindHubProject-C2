@@ -11,31 +11,24 @@ import gamesActions from '../redux/actions/gamesActions'
 const Categories = (props) => {
 
   const [categories, setCategories] = useState([])
+  const [filteredCategories, setFilteredCategories] = useState([])
   const [favConsole, setFavConsole] = useState('')
 
-  /* const sortedCategories = props.categories.name.sort()
-  console.log(sortedCategories) */
+
 
   useEffect(() => {
     getCategories()
-    setCategories([...orderedCategories])
+    setCategories([...props.categories])
+    setFilteredCategories([...props.categories])
   }, [props.categories])
 
   const getCategories = async () => {
     await props.getCategories()
   }
-  
-  let orderedCategories = props.categories.sort(function (a, b) {
-    if (a.name > b.name) {
-      return 1;
-    }
-    if (a.name < b.name) {
-      return -1;
-    }
-    // a must be equal to b
-    return 0;
-  });
 
+  const stateModificator = specificCategory => {
+    setCategory(specificCategory)
+  }
   
   const consoles = [
     'Not defined yet',
@@ -73,6 +66,14 @@ const Categories = (props) => {
     )
   }
 
+  const captureValue = (e) => {
+    const valueCategory = e.target.value
+    setFilteredCategories({
+      filteredCategories: categories.filter(
+        (category) => valueCategory
+      )
+    });
+  };
 
   const sendConsole = () => {
     props.sendConsole(favConsole, props.username)
@@ -81,7 +82,7 @@ const Categories = (props) => {
   const categoryNotFound = require("../images/404notFound.png");
 
   const filteredSameZero = () => {
-    if (categories.length === 0) {
+    if (filteredCategories.length === 0) {
       return (
         <div
           id="categoryNotFound"
@@ -107,6 +108,7 @@ const Categories = (props) => {
     };
   };
 
+  console.log(filteredCategories)
   return (
     <>
       <Header />
@@ -127,9 +129,31 @@ const Categories = (props) => {
           : ''
       }
       <div id="mainCategories">
+      {/* <select name='favConsole' id='favConsole' onChange={readInput} className="text-center col-6">
+              <option value={-1} className="text-center">Choose your favourite console.</option>
+              {
+                consoles.map((console, i) => {
+                  return <option key={'console' + [i]} value={console} className="text-center">{console}</option>
+                })
+              }
+      </select> */}
+      <select name='categoriesFilter' onChange={captureValue}>
+          <option value={-1}>
+            Select a category
+          </option>
+          {
+            props.categories.map((category, i) => {
+              return <option key={'category' + [i]} value={category.name}>
+                {category.name}
+              </option>
+            })
+          }
+
+      </select>
+        
               <ul className="Container">
           {filteredSameZero()}
-          {categories.map((category) => {
+          {filteredCategories.map((category) => {
             return <>
               <NavLink to={`/games/${category._id}`}>
                 <Category category={category} />

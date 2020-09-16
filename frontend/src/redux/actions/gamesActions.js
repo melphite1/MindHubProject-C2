@@ -42,6 +42,26 @@ const gamesActions = {
             })
         }
     },
+    deleteCommentary: (idComment) => {
+        return async (dispatch, getState) => {
+            console.log(idComment)
+            const response = await Axios.put(`http://localhost:4000/api/games/deleteCommentary`, { idComment })
+            dispatch({
+                type: 'GETCOMMENTARIES',
+                payload: response.data.comments
+            })
+        }
+    },
+    modifyCommentary: (content, idComment) => {
+        return async (dispatch, getState) => {
+            console.log(content, idComment)
+            const response = await Axios.put(`http://localhost:4000/api/games/modifyCommentary`, { content, idComment })
+            dispatch({
+                type: 'GETCOMMENTARIES',
+                payload: response.data.comments
+            })
+        }
+    }
 
 }
 

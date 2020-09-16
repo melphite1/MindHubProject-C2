@@ -24,7 +24,7 @@ const Games = (props) => {
   const stateModificator = specificCategory => {
     setCategory(specificCategory)
   }
-  console.log(props.games)
+ 
   return (
     <>
       <Header />

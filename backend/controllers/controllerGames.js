@@ -48,10 +48,42 @@ const gameController = {
         const newCommentary = new Comment({ content, userPic: urlpic, username, idGame })
         const commentary = await newCommentary.save()
         console.log(commentary)
+        res.json({
+            succes: true,
+            commentary
+        })
     },
     getCommentaries: async (req, res) => {
         const comment = await Comment.find()
         res.json({ succes: true, comment })
+    },
+    deleteCommentary: async (req, res) => {
+        const { idComment } = req.body
+        const commentaryDeleted = await Comment.findByIdAndDelete({
+            _id: idComment
+        })
+        const comments = await Comment.find()
+        res.json({
+            success: true,
+            comments
+        })
+    },
+    modifyCommentary: async (req, res) => {
+        console.log('este es el controlador para modificar')
+        const { content, idComment } = req.body
+        const commentaryDeleted = await Comment.findByIdAndUpdate({
+            _id: idComment
+        }, {
+            content
+        },
+            {
+                returnNewDocument: true
+            })
+        const comments = await Comment.find()
+        res.json({
+            success: true,
+            comments
+        })
     }
 }
 
