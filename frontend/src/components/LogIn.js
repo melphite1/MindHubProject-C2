@@ -3,6 +3,7 @@ import Header from './Header'
 import { connect } from "react-redux";
 import usersActions from '../redux/actions/usersActions';
 import { GoogleLogin } from 'react-google-login';
+import Swal from 'sweetalert2'
 
 const LogIn = (props) => {
 
@@ -23,10 +24,15 @@ const LogIn = (props) => {
         e.preventDefault()
 
         if (newUser.username === '' || newUser.password === '') {
-            alert('All camps are required, please take a look again')
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: 'All camps are required, please take a look again',
+              })
         }
         else {
             const userToLogIn = { username: newUser.username, password: newUser.password }
+            
             props.userLogIn(userToLogIn)
         }
     };
@@ -37,12 +43,7 @@ const LogIn = (props) => {
         })
     }
 
-    useEffect(() => {
-        if (props.token) {
-            alert(`Welcome back ${props.name}`)
-            props.history.push('/Home')/* CREAR HOME */
-        }
-    }, [props.token]);
+
 
     return (
         <>
