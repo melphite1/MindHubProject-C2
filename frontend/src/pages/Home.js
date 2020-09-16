@@ -8,7 +8,7 @@ import gamesActions from '../redux/actions/gamesActions'
 import usersReducer from '../redux/reducers/usersReducer'
 import { NavLink } from 'react-router-dom'
 import Swal from 'sweetalert2'
-
+import Footer from '../components/Footer'
 
 
 const Home = (props) => {
@@ -137,10 +137,8 @@ const Home = (props) => {
                     </section>
                     {/* <!--END SECTION--> */}
                 </div>
-
-
-
             }
+            <Footer/>
         </>
     )
 }

@@ -113,7 +113,7 @@ const Categories = (props) => {
     };
   };
 
-  console.log(props)
+ 
   return (
     <>
       <Header />
@@ -140,8 +140,7 @@ const Categories = (props) => {
             return <>
 
               <NavLink to={`/games/${category._id}`} className="col- 5">
-                <Category category={category} />
-
+                <Category  category={category} />
               </NavLink>
 
             </>
