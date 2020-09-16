@@ -3,6 +3,7 @@ import gamesActions from '../redux/actions/gamesActions'
 import trash from '../images/trash.png'
 import edit from '../images/edit.png'
 import { connect } from "react-redux"
+import Comment from './Comment'
 
 class Game extends React.Component {
   state = {
@@ -93,24 +94,7 @@ class Game extends React.Component {
             return (
               this.props.game._id === commentary.idGame &&
               <>
-                <div className="col-12 mx-auto mt-5">
-                  <div className="d-flex justify-content-between">
-                    <div className="d-flex">
-                      <a className="comment-pic user-action text-light"> <img src={commentary.userPic} className="avatar" alt="Avatar" /><b className="caret"></b></a>
-                      <div>
-                        <h6 className="text-light">{commentary.username}</h6>
-                        {this.state.sendModify && commentary.username === this.props.username ? <><input onChange={this.readCommentary} id={commentary._id} placeholder={commentary.content} onKeyUp={this.escape} /> <p>escape to cancel • enter to save</p></> : <p className="text-light">{commentary.content}</p>}
-                      </div>
-                    </div>
-                    <div className="d-flex">
-                      {this.props.username === commentary.username &&
-                        <>
-                          <img src={edit} className="pr-2" data-toggle="tooltip" data-placement="top" title="Delete" id={commentary._id} onClick={this.openInput} style={{ height: '3vh', width: '2vw' }}></img>
-                          <img src={trash} className="pr-2" data-toggle="tooltip" data-placement="top" title="Modify" id={commentary._id} onClick={this.deleteCommentary} style={{ height: '3vh', width: '2vw' }}></img>
-                        </>}
-                    </div>
-                  </div>
-                </div>
+                <Comment />
               </>)
           })}
           <div className="p-5">
