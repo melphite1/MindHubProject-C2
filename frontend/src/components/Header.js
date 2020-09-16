@@ -58,7 +58,7 @@ const Header = (props) => {
               <div class="nav-item dropdown">
                 <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action text-light"><img src={props.token ? props.urlpic : user} class="avatar" alt="Avatar" /> {props.token ? props.name : 'guess'} <b class="caret"></b></a>
                 <div class="dropdown-menu">
-                  {props.token ? <Link to="/" className="dropdown-item">Your Account</Link> : <Link to="/signup" className="dropdown-item">Sign Up</Link>}
+                  {props.token ? <Link to="/profile" className="dropdown-item">Your Account</Link> : <Link to="/signup" className="dropdown-item">Sign Up</Link>}
 
                   <div class="dropdown-divider"></div>
                   {props.token ? <Link to="" onClick={logout} className="dropdown-item">Log Out</Link> : <Link to="/login" className="dropdown-item">Log in</Link>}
