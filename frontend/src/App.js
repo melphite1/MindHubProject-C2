@@ -12,6 +12,8 @@ import Profile from './pages/Profile'
 import "./styles/styles.css"
 import "./styles/profile.css"
 import "./styles/footer.css"
+import "./styles/categories.css"
+import "./styles/category.css"
 
 
 

@@ -1,0 +1,34 @@
+#imgContainer{
+    height: 40vh;
+    width: 45vw;
+    background-size: cover;
+    background-position: center;
+    margin: 2vh 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    border: 0.2vh solid #727272ef;
+    border-radius: 30px;
+    transition: width 2s, height 2s, margin 2s;
+    box-shadow: 10px 10px 10px #727272ef;
+    opacity: 80%;
+}
+
+
+
+#imgContainer:hover{
+    transform: scale(1.05);
+    box-shadow: 0vw 1.1vw 1.1vw rgb(0, 0, 0, 0.5)!important;
+}
+
+#textContainer{
+    font-size: 4vh;
+    font-weight: bold;
+    color: whitesmoke;
+    background-color: #1b28386b;
+    text-shadow: 2px 2px 2px black;
+    padding: 1vh 2vw;
+    margin-bottom: 3vh;
+    width: 100%;
+}

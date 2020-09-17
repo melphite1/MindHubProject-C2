@@ -12,7 +12,6 @@ import Footer from '../components/Footer'
 const Home = (props) => {
     const [news, setNews] = useState(null)
     useEffect(() => {
-        props.getCategories()
         props.getNews()
         setNews({
             news
@@ -148,8 +147,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    getNews: newsActions.getnews,
-    getCategories: gamesActions.getCategories
+    getNews: newsActions.getnews
 }
 
 

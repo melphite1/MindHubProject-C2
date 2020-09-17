@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
-import Header from '../components/Header'
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
+import Header from "../components/Header";
 import Category from "../components/Category";
 import auxActions from '../redux/actions/auxActions'
 import gamesActions from '../redux/actions/gamesActions'
 
+
 const Categories = (props) => {
-  const [categories, setCategories] = useState([])
-  const [filteredCategories, setFilteredCategories] = useState([])
-  const [favConsole, setFavConsole] = useState('')
+  const [categories, setCategories] = useState([]);
+  const [filteredCategories, setFilteredCategories] = useState([]);
+  const [favConsole, setFavConsole] = useState("");
 
   useEffect(() => {
-    props.getCategories()
-    setCategories([...orderedCategories])
-    setFilteredCategories([...props.categories])
-  }, [props.categories])
+    props.getCategories();
+    setCategories([...orderedCategories]);
+    setFilteredCategories([...props.categories]);
+  }, [props.categories]);
 
   let orderedCategories = props.categories.sort(function (a, b) {
     if (a.name > b.name) {
@@ -24,7 +25,6 @@ const Categories = (props) => {
     if (a.name < b.name) {
       return -1;
     }
-    // a must be equal to b
     return 0;
   });
   const consoles = [
@@ -62,11 +62,11 @@ const Categories = (props) => {
     )
   }
   const sendConsole = () => {
-    props.sendConsole(favConsole, props.username)
-  }
+    props.sendConsole(favConsole, props.username);
+  };
   const categoryNotFound = require("../images/404notFound.png");
   const filteredSameZero = () => {
-    if (filteredCategories.length === 0) {
+    if (categories.length === 0) {
       return (
         <div
           id="categoryNotFound"
@@ -74,7 +74,8 @@ const Categories = (props) => {
             backgroundImage: `url(${categoryNotFound})`,
           }}
         >
-          <p id='notFoundText'
+          <p
+            id="notFoundText"
             style={{
               fontSize: "3vh",
               fontWeight: "bold",
@@ -82,45 +83,78 @@ const Categories = (props) => {
               backgroundColor: "#32a08859",
               textShadow: "2px 2px 2px black",
               padding: "1vh 0vw",
-              textAlign: 'center',
+              textAlign: "center",
             }}
           >
             Categoy not found.. Try Again!
-              </p>
+          </p>
         </div>
-      )
-    };
+      );
+    }
   };
-
 
   return (
     <>
       <Header />
       <h1 className="text-center text-light">Games</h1>
-      {
-        props.firstTime && props.token ?
-          <>
-            <select name='favConsole' id='favConsole' onChange={readInput} className="text-center col-6">
-              <option value={-1} className="text-center">Choose your favourite console.</option>
-              {
-                consoles.map((console, i) => {
-                  return <option key={'console' + [i]} value={console} className="text-center">{console}</option>
-                })
-              }
-            </select>
-            <button htmlFor='favConsole' onClick={sendConsole} className="text-center col-6">Send your favorite console</button>
-          </>
-          : ''
-      }
+      {props.firstTime && props.token ? (
+        <>
+          <select
+            name="favConsole"
+            id="favConsole"
+            onChange={readInput}
+            className="text-center col-6"
+          >
+            <option value={-1} className="text-center">
+              Choose your favourite console.
+            </option>
+            {consoles.map((console, i) => {
+              return (
+                <option
+                  key={"console" + [i]}
+                  value={console}
+                  className="text-center"
+                >
+                  {console}
+                </option>
+              );
+            })}
+          </select>
+          <button
+            htmlFor="favConsole"
+            onClick={sendConsole}
+            className="text-center col-6"
+          >
+            Send your favorite console
+          </button>
+        </>
+      ) : (
+          ""
+        )}
       <div id="mainCategories">
-        <ul className="container col-5" style={{ listStyle: 'none' }}>
+        {/* <select name='categoriesFilter' onChange={captureValue}>
+            <option value={-1}>
+              Select a category
+            </option>
+            {
+              props.categories.map((category, i) => {
+                return <option key={'category' + [i]} value={category.name}>
+                  {category.name}
+                </option>
+              })
+            }
+
+        </select> */}
+        <ul className="categoriesContainer" style={{ listStyle: "none" }}>
           {filteredSameZero()}
-          {filteredCategories.map((category) => {
-            return <>
-              <NavLink to={`/games/${category._id}`} className="col- 5">
-                <Category category={category} />
-              </NavLink>
-            </>
+          {categories.map((category) => {
+            return (
+              <>
+                <NavLink to={`/games/${category._id}`} className="col- 5">
+                  <Category category={category} />
+                </NavLink>
+              </>
+            );
           })}
         </ul>
       </div>
@@ -132,11 +166,11 @@ const mapStateToProps = (state) => {
     username: state.usersReducer.username,
     firstTime: state.usersReducer.firstTime,
     token: state.usersReducer.token,
-    categories: state.gamesReducer.categories
-  }
-}
+    categories: state.gamesReducer.categories,
+  };
+};
 const mapDispatchToProps = {
   sendConsole: auxActions.sendConsole,
-  getCategories: gamesActions.getCategories
-}
+  getCategories: gamesActions.getCategories,
+};
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);
