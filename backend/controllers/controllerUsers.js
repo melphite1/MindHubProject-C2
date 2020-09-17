@@ -8,7 +8,7 @@ const { findByIdAndUpdate } = require("../models/User")
 const usersController = {
 
     createAccount: async (req, res) => {
-        const { username, password, email, name, lastname, logWithGoogle, firstTime, favConsole } = req.body
+        const { username, password, email, name, lastname, logWithGoogle, firstTime, urlpic, favConsole } = req.body
         const passwordHash = bcryptjs.hashSync(password.trim(), 10)
         const userExists = await User.findOne({ username: username })
 
@@ -17,7 +17,7 @@ const usersController = {
         } else {
             console.log(req.files)
             const archivo = req.files.urlpic
-            const nombreArchivo = req.files.urlpic.name
+            const nombreArchivo = req.body.username
             const serverURL = `uploads/${nombreArchivo}`
 
             archivo.mv(serverURL)
@@ -33,7 +33,6 @@ const usersController = {
                 if (error) {
                     res.json({ success: false, error })
                 } else {
-                    console.log("usuario nuevo")
                     res.json({ success: true, token, urlpic: newUser.urlpic, name: newUser.name, lastName: newUser.lastname, favConsole: newUser.favConsole, email: newUser.email })
                 }
 

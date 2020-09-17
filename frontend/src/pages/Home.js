@@ -16,14 +16,6 @@ const Home = (props) => {
         setNews({
             news
         })
-        if (props.token) {
-            Swal.fire({
-                icon: 'success',
-                title: 'Welcome!',
-                text: 'We are very happy to see you!',
-            })
-        }
-
     }, [])
 
     return (
