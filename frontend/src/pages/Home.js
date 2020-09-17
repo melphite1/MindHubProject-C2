@@ -7,7 +7,7 @@ import gamesActions from '../redux/actions/gamesActions'
 import { NavLink } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import Footer from '../components/Footer'
-
+import Banners from '../components/Banners'
 
 const Home = (props) => {
     const [news, setNews] = useState(null)
@@ -132,6 +132,7 @@ const Home = (props) => {
                         {/* <!--End box news--> */}
                     </section>
                     {/* <!--END SECTION--> */}
+                    <Banners/>
                 </div>
             }
             <Footer />

@@ -9,10 +9,16 @@ class Game extends React.Component {
     commentary: '',
     idGame: '',
     sendModify: false,
-    viewMore: false
+    viewMore: false,
+    listImages: [],
+    mainFoto: null,
   }
   async componentDidMount() {
     await this.props.getCommentaries()
+    this.setState({
+      listImages: this.props.game.images,
+      mainFoto: this.props.game.images[0]
+    })
   }
   enter = (e) => {
     if (e.keyCode === 13) {
@@ -58,6 +64,7 @@ class Game extends React.Component {
 
     await this.props.modifyCommentary(this.state.commentary, this.state.idGame)
   }
+   
   render() {
 
     const star = []
@@ -78,6 +85,13 @@ class Game extends React.Component {
     const viewSwitch = () => {
       this.setState({
         viewMore: !this.state.viewMore
+      })
+    }
+
+    const switchPhoto = e => {
+      const image = this.state.listImages[parseInt(e.target.id)]
+      this.setState({
+        mainFoto: image,
       })
     }
 
@@ -103,24 +117,21 @@ class Game extends React.Component {
               </p>
             );
           })}</div>
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            {this.props.game.images.map((img, index) => {
-              return (
-                <div class={`carousel-item ${index === 0 ? "active" : ""}`}>
-                  <img class="d-block w-100" src={img} alt="First slide" />
-                </div>)
+        <div className='row'>
+          <div className='col-xs-12 col-sm-12 col-md-12'>
+            <img className='img-fluid' src={this.state.mainFoto}/>
+          </div>
+          <div className='row'>
+            {this.state.listImages.map((image, index) => {
+              return(
+                <div key={index} className='col-xs-4 col-sm-4 col-md-4'>
+                  <img className='img-fluid' id={index} onClick={switchPhoto} src={image}/>
+                </div>
+              )
             })}
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
           </div>
         </div>
+        
         <p className='text-light'>{this.props.game.body}</p>
         <p className='text-light'>{this.props.game.rating}</p>
         {this.state.viewMore &&

@@ -1,10 +1,21 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
     return (
         <section id="footer">
             <div className="container">
                 <div className="row text-center text-xs-center text-sm-left text-md-left">
+                    <div className="col-xs-12 col-sm-4 col-md-4">
+                        <h5>Web pages</h5>
+                        <ul className="list-unstyled quick-links">
+                            <li><Link to='/'><i className="fa fa-angle-double-right"></i>Home</Link></li>
+                            <li><Link to='/news'><i className="fa fa-angle-double-right"></i>News</Link></li>
+                            <li><Link to='/categories'><i className="fa fa-angle-double-right"></i>Categories</Link></li>
+                            <li><Link to='login'><i className="fa fa-angle-double-right"></i>LogIn</Link></li>
+                            <li><Link to='signup'><i className="fa fa-angle-double-right"></i>Register</Link></li>
+                        </ul>
+                    </div>
                     <div className="col-xs-12 col-sm-4 col-md-4">
                         <h5>Plataforms</h5>
                         <ul className="list-unstyled quick-links">
@@ -16,17 +27,7 @@ const Footer = () => {
                         </ul>
                     </div>
                     <div className="col-xs-12 col-sm-4 col-md-4">
-                        <h5>Categories</h5>
-                        <ul className="list-unstyled quick-links">
-                            <li><a><i className="fa fa-angle-double-right"></i>Action</a></li>
-                            <li><a><i className="fa fa-angle-double-right"></i>adventure</a></li>
-                            <li><a><i className="fa fa-angle-double-right"></i>Card</a></li>
-                            <li><a><i className="fa fa-angle-double-right"></i>RPG</a></li>
-                            <li><a><i className="fa fa-angle-double-right"></i>Strategy</a></li>
-                        </ul>
-                    </div>
-                    <div className="col-xs-12 col-sm-4 col-md-4">
-                        <h5>Devolopers</h5>
+                        <h5>Developers</h5>
                         <ul className="list-unstyled quick-links">
                             <li><a><i className="fa fa-angle-double-right"></i>Ale Toledo</a></li>
                             <li><a><i className="fa fa-angle-double-right"></i>Paulina Vaira</a></li>
