@@ -37,7 +37,7 @@
 }
 .profile-edit-btn{
     border: none;
-    border-radius: 1.5rem;
+    border-radius: 0.2rem;
     width: 70%;
     padding: 2%;
     font-weight: 600;
@@ -64,6 +64,7 @@
 .profile-head .nav-tabs .nav-link.active{
     border: none;
     border-bottom:2px solid #0062cc;
+    margin-top: 8px;
 }
 .profile-work{
     padding: 14%;
@@ -91,3 +92,20 @@
     font-weight: 600;
     color: #0062cc;
 }
+@media (min-width: 768px) {
+	.contenido{
+        top: -60px;
+    }
+  }
+
+@media (min-width: 994px) {
+	.contenido{
+        top: -120px;
+    }
+  }
+
+  @media (min-width: 1000px) {
+	.contenido{
+        top: -125px;
+    }
+  }

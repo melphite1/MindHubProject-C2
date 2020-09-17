@@ -61,8 +61,7 @@ class CommentNews extends React.Component {
         await this.props.deleteCommentary(idCommentary)
 
     }
-    openInput = async (e) => {
-        const id = e.target.id
+    openInput = async () => {
 
         this.setState({
             sendModify: !this.state.sendModify
@@ -73,12 +72,6 @@ class CommentNews extends React.Component {
     }
     render() {
 
-        const viewSwitch = () => {
-            this.setState({
-                viewMore: !this.state.viewMore
-            })
-        }
-
         return (
             <>
 
@@ -87,6 +80,7 @@ class CommentNews extends React.Component {
                         <div className="col-12 mx-auto mt-5">
                             <div className="d-flex justify-content-between">
                                 <div className="d-flex">
+
                                     <a className="comment-pic user-action text-light"> <img src={this.props.commentary.userPic} className="avatar" alt="Avatar" /><b className="caret"></b></a>
                                     <div>
                                         <h6 className="text-light">{this.props.commentary.username}</h6>
@@ -96,8 +90,8 @@ class CommentNews extends React.Component {
                                 <div className="d-flex">
                                     {this.props.username === this.props.commentary.username &&
                                         <>
-                                            <img src={edit} className="pr-2" data-toggle="tooltip" data-placement="top" title="Delete" id={this.props.commentary._id} onClick={this.openInput} style={{ height: '4vh' }}></img>
-                                            <img src={trash} className="pr-2" data-toggle="tooltip" data-placement="top" title="Modify" id={this.props.commentary._id} onClick={this.deleteCommentary} style={{ height: '4vh' }}></img>
+                                            <img src={edit} alt="edit" className="pr-2" data-toggle="tooltip" data-placement="top" title="Delete" id={this.props.commentary._id} onClick={this.openInput} style={{ height: '4vh' }}></img>
+                                            <img src={trash} alt="trash" className="pr-2" data-toggle="tooltip" data-placement="top" title="Modify" id={this.props.commentary._id} onClick={this.deleteCommentary} style={{ height: '4vh' }}></img>
                                         </>
                                     }
                                 </div>

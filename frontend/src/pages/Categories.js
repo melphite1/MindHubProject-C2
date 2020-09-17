@@ -5,6 +5,7 @@ import Header from '../components/Header'
 import Category from "../components/Category";
 import auxActions from '../redux/actions/auxActions'
 import gamesActions from '../redux/actions/gamesActions'
+
 const Categories = (props) => {
   const [categories, setCategories] = useState([])
   const [filteredCategories, setFilteredCategories] = useState([])
@@ -60,14 +61,6 @@ const Categories = (props) => {
       value
     )
   }
-  const captureValue = (e) => {
-    const valueCategory = e.target.value.trim().toLowerCase();
-    setFilteredCategories({
-      filteredCategories: categories.filter(
-        (category) => category.category.toLowerCase().indexOf(valueCategory) === 0
-      )
-    });
-  };
   const sendConsole = () => {
     props.sendConsole(favConsole, props.username)
   }

@@ -1,6 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
-import Header from './Header'
+import { useState } from 'react'
 import { connect } from "react-redux";
 import usersActions from "../redux/actions/usersActions";
 import auxActions from '../redux/actions/auxActions';
@@ -9,14 +8,6 @@ import Swal from 'sweetalert2'
 
 
 const Register = (props) => {
-
-    // useEffect(() => {
-    //     if (props.token) {
-    //         alert(`Welcome to scape community ${props.name}!`)
-    //         // props.history.push("/home")
-    //     }
-
-    // }, [props.token])
 
     const [newUser, setNewUser] = useState({
         name: '',
@@ -55,16 +46,16 @@ const Register = (props) => {
 
     const sendInfo = async e => {
         e.preventDefault()
-        if (newUser.username === '' || newUser.password === ''|| newUser.name === ''|| newUser.lastname === ''|| newUser.email === ''|| newUser.urlpic === '') {
+        if (newUser.username === '' || newUser.password === '' || newUser.name === '' || newUser.lastname === '' || newUser.email === '' || newUser.urlpic === '') {
             Swal.fire({
                 icon: 'error',
                 title: 'Error!',
                 text: 'All camps are required, please take a look again',
-              })
+            })
         } else {
             await props.createAccount(newUser)
         }
-        
+
     }
 
     return (

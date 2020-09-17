@@ -2,32 +2,39 @@ import React from 'react'
 import { connect } from "react-redux"
 import Header from '../components/Header'
 
-const Profile = (props) => {
-    return (
-        <>
-            <Header />
-            <div class="container emp-profile">
-                <form method="post">
+class Profile extends React.Component {
+    state = {
+        changeInfo: false
+    }
+    editInfo = () => {
+
+        this.setState({
+            changeInfo: !this.state.changeInfo
+        })
+
+    }
+
+    render() {
+        console.log(this.state.changeInfo)
+        return (
+            <>
+                <Header />
+                <div class="container emp-profile">
+
                     <div class="row">
                         <div class="col-md-4">
                             <div class="profile-img">
-                                <img src={props.urlpic} alt="" />
+                                <img src={this.props.urlpic} alt="" />
                                 <div class="file btn btn-lg btn-primary">
                                     Change Photo
-                                <input type="file" name="file" />
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 profile-tab">
                             <div class="profile-head">
-                                <h5>
-                                    {props.name}
-                                </h5>
-                                <h6>
-
-                                    A game lover
-                                    </h6>
-                                <p class="proile-rating"></p>
+                                <h5> {this.props.name} {this.props.lastname}</h5>
+                                <h6> A game lover </h6>
+                                <p class="profile-rating"></p>
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
@@ -39,7 +46,7 @@ const Profile = (props) => {
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
+                            <button class="profile-edit-btn" onClick={this.editInfo} >Edit Profile</button>
                         </div>
                     </div>
                     <div class="row">
@@ -49,10 +56,9 @@ const Profile = (props) => {
                                 <a href="">Magic</a><br />
                                 <a href="">GTA V</a><br />
                                 <a href="">Battlefield 5</a>
-
                             </div>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-8 contenido">
                             <div class="tab-content profile-tab" id="myTabContent">
                                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <div class="row">
@@ -60,7 +66,8 @@ const Profile = (props) => {
                                             <label>Username</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{props.username}</p>
+                                            {this.state.changeInfo ? <input></input> : <p>{this.props.username}</p>}
+
                                         </div>
                                     </div>
                                     <div class="row">
@@ -68,7 +75,7 @@ const Profile = (props) => {
                                             <label>Name</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{props.name}</p>
+                                            {this.state.changeInfo ? <input></input> : <p>{this.props.name} {this.props.lastname}</p>}
                                         </div>
                                     </div>
                                     <div class="row">
@@ -76,7 +83,7 @@ const Profile = (props) => {
                                             <label>Email</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{props.username}</p>
+                                            {this.state.changeInfo ? <input></input> : <p>{this.props.username}</p>}
                                         </div>
                                     </div>
                                     <div class="row">
@@ -84,20 +91,12 @@ const Profile = (props) => {
                                             <label>Favorite Console</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>not define yet</p>
+                                            {this.state.changeInfo ? <input></input> : <p>not define yet</p>}
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Profession</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>Web Developer and Designer</p>
-                                        </div>
-                                    </div>
+
                                 </div>
                                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-
                                     <div class="row">
                                         <div class="col-md-12">
                                             <label>Your Bio</label><br />
@@ -108,10 +107,12 @@ const Profile = (props) => {
                             </div>
                         </div>
                     </div>
-                </form>
-            </div>
-        </>
-    )
+
+                </div>
+            </>
+
+        )
+    }
 }
 
 const mapStateToProps = state => {
@@ -119,12 +120,10 @@ const mapStateToProps = state => {
         name: state.usersReducer.name,
         urlpic: state.usersReducer.urlpic,
         username: state.usersReducer.username,
+        lastname: state.usersReducer.lastname
     }
 }
 
-const mapDispatchToProps = {
-
-}
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+export default connect(mapStateToProps)(Profile)

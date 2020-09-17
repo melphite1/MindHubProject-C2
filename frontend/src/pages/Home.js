@@ -3,9 +3,7 @@ import Header from '../components/Header'
 import Carousel from '../components/Carousel'
 import { connect } from "react-redux"
 import newsActions from '../redux/actions/newsActions'
-import One from "../components/OneNews"
 import gamesActions from '../redux/actions/gamesActions'
-import usersReducer from '../redux/reducers/usersReducer'
 import { NavLink } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import Footer from '../components/Footer'
@@ -19,12 +17,12 @@ const Home = (props) => {
         setNews({
             news
         })
-        if(props.token){
+        if (props.token) {
             Swal.fire({
                 icon: 'success',
                 title: 'Welcome!',
                 text: 'We are very happy to see you!',
-              })
+            })
         }
 
     }, [])
@@ -103,7 +101,6 @@ const Home = (props) => {
                         <div className="col-12 col-md-6 pt-2 pl-md-1 mb-3 mb-lg-4">
                             <div className="row">
                                 {props.newsRed.map((oneNews, index) => {
-                                    {/* <!--news box--> */ }
                                     return (
                                         <div key={index} className="col-6 pb-1 pt-0 pr-1">
                                             <div className="card border-0 rounded-0 text-white overflow zoom">
@@ -138,7 +135,7 @@ const Home = (props) => {
                     {/* <!--END SECTION--> */}
                 </div>
             }
-            <Footer/>
+            <Footer />
         </>
     )
 }

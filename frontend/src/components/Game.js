@@ -1,7 +1,5 @@
 import React from 'react'
 import gamesActions from '../redux/actions/gamesActions'
-import trash from '../images/trash.png'
-import edit from '../images/edit.png'
 import { connect } from "react-redux"
 import Comment from "./Comment"
 
@@ -56,13 +54,12 @@ class Game extends React.Component {
 
   }
   openInput = async (e) => {
-    const id = e.target.id
     this.setState({
       sendModify: !this.state.sendModify
     })
   }
   modifyCommentary = async (e) => {
-    
+
     await this.props.modifyCommentary(this.state.commentary, this.state.idGame)
   }
   render() {

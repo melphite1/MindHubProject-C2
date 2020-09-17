@@ -15,7 +15,7 @@ const News = (props) => {
         })
 
     }, [])
-    
+
     return (
         <>
             <Header />
@@ -58,7 +58,7 @@ const News = (props) => {
                                                             <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
                                                                 {/* <!--title--> */}
 
-                                                                <h2 class="h3 post-title text-white my-1">{oneNews._id}</h2>
+                                                                <h2 class="h3 post-title text-white my-1">{oneNews.title}</h2>
 
                                                                 {/* <!-- meta title --> */}
                                                                 <div class="news-meta">

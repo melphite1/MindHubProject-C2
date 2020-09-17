@@ -1,7 +1,5 @@
 import React from 'react';
 import newsActions from '../redux/actions/newsActions'
-import trash from '../images/trash.png'
-import edit from '../images/edit.png'
 import { connect } from "react-redux"
 import CommentNews from './CommentNews';
 
@@ -27,7 +25,7 @@ class OneNews extends React.Component {
   }
 
   enter = (e) => {
-    
+
     if (e.keyCode === 13) {
       this.sendCommentary()
     }
@@ -62,14 +60,12 @@ class OneNews extends React.Component {
     await this.props.deleteCommentary(idCommentary)
 
   }
-  openInput = async (e) => {
-    const id = e.target.id
-
+  openInput = async () => {
     this.setState({
       sendModify: !this.state.sendModify
     })
   }
-  modifyCommentary = async (e) => {
+  modifyCommentary = async () => {
     await this.props.modifyCommentary(this.state.commentary, this.state.id)
   }
   render() {
@@ -87,7 +83,7 @@ class OneNews extends React.Component {
 
           <h3 className="text-light text-center">{this.props.news.subtitle}</h3>
           <p className="text-light text-center">{this.props.news.date}</p>
-          <img className="mx-auto" src={this.props.news.images}></img>
+          <img alt={this.props.title} className="mx-auto" src={this.props.news.images}></img>
           <p className="text-light text-center">{this.props.news.body}</p>
           {this.state.viewMore &&
             <div className="col-10 mx-auto">

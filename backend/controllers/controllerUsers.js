@@ -26,7 +26,7 @@ const usersController = {
                     res.json({ success: false, error })
                 } else {
                     console.log("usuario nuevo")
-                    res.json({ success: true, token, urlpic: newUser.urlpic, name: newUser.name })
+                    res.json({ success: true, token, urlpic: newUser.urlpic, name: newUser.name, lastName: newUser.lastname, favConsole: newUser.favConsole, email: newUser.email })
                 }
 
 
@@ -57,7 +57,7 @@ const usersController = {
                         res.json({ success: false, error: "Ha ocurrido un error" })
                     } else {
 
-                        res.json({ success: true, token, urlpic: userExist.urlpic, username: userExist.username, name: userExist.name, firstTime: userExist.firstTime })
+                        res.json({ success: true, token, urlpic: userExist.urlpic, username: userExist.username, name: userExist.name, firstTime: userExist.firstTime, lastName: userExist.lastname, favConsole: userExist.favConsole, email: userExist.email })
                     }
                 })
             }
@@ -66,14 +66,16 @@ const usersController = {
     },
     tokenVerificator: (req, res) => {
 
-        const { name, urlpic, username, firstTime } = req.user
+        const { name, urlpic, username, firstTime, lastname, favConsole } = req.user
         console.log(req.user)
         res.json({
             success: true,
             name,
             urlpic,
             username,
-            firstTime
+            firstTime,
+            lastname,
+            favConsole
         })
     },
     setConsole: async (req, res) => {

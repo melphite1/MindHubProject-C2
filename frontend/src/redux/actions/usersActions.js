@@ -7,13 +7,13 @@ const usersActions = {
     createAccount: newUser => {
         return async (dispatch, getState) => {
             const response = await axios.post('http://127.0.0.1:4000/api/user', newUser)/* ->PEDIR RUTA AL BACKEND<- */
-
+            console.log(response.data)
             if (response.data.success !== true) {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error!',
                     text: response.data.message,
-                  })
+                })
             } else {
                 dispatch({
                     type: 'SET_USER',
@@ -21,7 +21,10 @@ const usersActions = {
                         name: response.data.name,
                         urlpic: response.data.urlpic,
                         token: response.data.token,
-                        firstTime: response.data.firstTime
+                        firstTime: response.data.firstTime,
+                        lastName: response.data.lastName,
+                        email: response.data.email,
+                        favconsole: response.data.favConsole
                     }
                 })
             }
@@ -33,13 +36,13 @@ const usersActions = {
     userLogIn: newUser => {
         return async (dispatch, getState) => {
             const response = await axios.post('http://127.0.0.1:4000/api/login', newUser)/* ->PEDIR RUTA AL BACKEND<- */
-
+            console.log(response.data)
             if (!response.data.success) {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error!',
                     text: response.data.message,
-                  })
+                })
             }
             else {
                 dispatch({
@@ -49,7 +52,10 @@ const usersActions = {
                         urlpic: response.data.urlpic,
                         token: response.data.token,
                         username: response.data.username,
-                        firstTime: response.data.firstTime
+                        firstTime: response.data.firstTime,
+                        lastName: response.data.lastName,
+                        email: response.data.email,
+                        favconsole: response.data.favConsole
                     }
                 })
             }
@@ -72,7 +78,7 @@ const usersActions = {
                     Authorization: `Bearer ${tokenLS}`
                 }
             })
-
+            console.log(response.data)
             dispatch({
                 type: "SET_USER",
                 payload: {
@@ -80,7 +86,11 @@ const usersActions = {
                     urlpic: response.data.urlpic,
                     token: tokenLS,
                     username: response.data.username,
-                    firstTime: response.data.firstTime
+                    firstTime: response.data.firstTime,
+                    lastname: response.data.lastname,
+                    email: response.data.email,
+                    favconsole: response.data.favConsole
+
                 }
             })
 
