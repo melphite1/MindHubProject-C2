@@ -9,6 +9,9 @@ import { connect } from 'react-redux';
 import usersActions from './redux/actions/usersActions'
 import Games from './pages/Games';
 import Profile from './pages/Profile'
+import "./styles/styles.css"
+import "./styles/profile.css"
+import "./styles/footer.css"
 
 
 
@@ -26,7 +29,7 @@ class App extends React.Component {
         <Route path="/news" component={News} />
         <Route path="/categories" component={Categories} />
         <Route path="/games/:id" component={Games} />
-        <Route path="/profile" component={Profile}/>
+        <Route path="/profile" component={Profile} />
         <Redirect to="/" />
       </Switch>)
     } else {

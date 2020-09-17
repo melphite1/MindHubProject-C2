@@ -15,7 +15,7 @@ const News = (props) => {
         })
 
     }, [])
-    console.log(props.newsRed)
+    
     return (
         <>
             <Header />
@@ -49,20 +49,20 @@ const News = (props) => {
                                                         <div class="position-relative">
                                                             {/* <!--thumbnail img--> */}
                                                             <div class="ratio_left-cover-1 image-wrapper">
-                                                                <NavLink to="/">
-                                                                    <img class="img-fluid w-100"
-                                                                        src={oneNews.images}
-                                                                        alt="Bootstrap news template" />
-                                                                </NavLink>
+
+                                                                <img class="img-fluid w-100"
+                                                                    src={oneNews.images}
+                                                                    alt={`${oneNews.title}`} />
+
                                                             </div>
                                                             <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
                                                                 {/* <!--title--> */}
-                                                                <NavLink to="/" >
-                                                                    <h2 class="h3 post-title text-white my-1">{oneNews.title}</h2>
-                                                                </NavLink>
+
+                                                                <h2 class="h3 post-title text-white my-1">{oneNews._id}</h2>
+
                                                                 {/* <!-- meta title --> */}
                                                                 <div class="news-meta">
-                                                                    <span class="news-author">by <a class="text-white font-weight-bold" href="../category/author.html">aleToledo </a></span>
+                                                                    <span class="news-author">by <a class="text-white font-weight-bold" >aleToledo </a></span>
                                                                     <span class="news-date">Sep 14, 2020</span>
                                                                 </div>
                                                             </div>

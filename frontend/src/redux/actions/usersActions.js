@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 const usersActions = {
 
@@ -8,8 +9,11 @@ const usersActions = {
             const response = await axios.post('http://127.0.0.1:4000/api/user', newUser)/* ->PEDIR RUTA AL BACKEND<- */
 
             if (response.data.success !== true) {
-                alert(response.data.error)
-                console.log(response.data.message)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: response.data.message,
+                  })
             } else {
                 dispatch({
                     type: 'SET_USER',
@@ -31,7 +35,11 @@ const usersActions = {
             const response = await axios.post('http://127.0.0.1:4000/api/login', newUser)/* ->PEDIR RUTA AL BACKEND<- */
 
             if (!response.data.success) {
-                alert(response.data.message)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: response.data.message,
+                  })
             }
             else {
                 dispatch({

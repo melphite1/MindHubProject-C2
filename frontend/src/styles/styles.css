@@ -17,6 +17,7 @@ input{
 	background: #2b3035;;
 	color: whitesmoke;
 	border: whitesmoke;
+	padding: 5px;
 }
 .register input,.register select, .register button{
     width: 70%;
@@ -92,8 +93,8 @@ input{
 }
 .nav-link img {
 	border-radius: 50%;
-	width: 36px;
-	height: 36px;
+	width: 45px;
+	height: 45px;
 	margin: -8px 0;
 	float: left;
 	margin-right: 10px;
@@ -146,7 +147,7 @@ input{
 
 
 
-
+/*Responsive*/
 @media (min-width: 1200px){
 	.form-inline .input-group {
 		width: 300px;

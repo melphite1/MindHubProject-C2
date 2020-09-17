@@ -3,12 +3,15 @@ import gamesActions from '../redux/actions/gamesActions'
 import trash from '../images/trash.png'
 import edit from '../images/edit.png'
 import { connect } from "react-redux"
+import Comment from "./Comment"
+
 
 class Game extends React.Component {
   state = {
     commentary: '',
     idGame: '',
     sendModify: false,
+    viewMore: false
   }
   componentDidMount() {
     this.props.getCommentaries()
@@ -59,10 +62,17 @@ class Game extends React.Component {
     })
   }
   modifyCommentary = async (e) => {
-    console.log(this.state.id)
+    
     await this.props.modifyCommentary(this.state.commentary, this.state.idGame)
   }
   render() {
+
+    const viewSwitch = () => {
+      this.setState({
+        viewMore: !this.state.viewMore
+      })
+    }
+
     return (
 
       <div className="border col-8 mx-auto m-5">
@@ -88,35 +98,24 @@ class Game extends React.Component {
         </div>
         <p className='text-light'>{this.props.game.body}</p>
         <p className='text-light'>{this.props.game.rating}</p>
-        <div className="col-10 mx-auto">
-          {this.props.commentaries.map(commentary => {
-            return (
-              this.props.game._id === commentary.idGame &&
-              <>
-                <div className="col-12 mx-auto mt-5">
-                  <div className="d-flex justify-content-between">
-                    <div className="d-flex">
-                      <a className="comment-pic user-action text-light"> <img src={commentary.userPic} className="avatar" alt="Avatar" /><b className="caret"></b></a>
-                      <div>
-                        <h6 className="text-light">{commentary.username}</h6>
-                        {this.state.sendModify && commentary.username === this.props.username ? <><input onChange={this.readCommentary} id={commentary._id} placeholder={commentary.content} onKeyUp={this.escape} /> <p>escape to cancel • enter to save</p></> : <p className="text-light">{commentary.content}</p>}
-                      </div>
-                    </div>
-                    <div className="d-flex">
-                      {this.props.username === commentary.username &&
-                        <>
-                          <img src={edit} className="pr-2" data-toggle="tooltip" data-placement="top" title="Delete" id={commentary._id} onClick={this.openInput} style={{ height: '3vh', width: '2vw' }}></img>
-                          <img src={trash} className="pr-2" data-toggle="tooltip" data-placement="top" title="Modify" id={commentary._id} onClick={this.deleteCommentary} style={{ height: '3vh', width: '2vw' }}></img>
-                        </>}
-                    </div>
-                  </div>
-                </div>
-              </>)
-          })}
-          <div className="p-5">
-            <input onChange={this.readCommentary} placeholder="Send a comment" className="sendComment col-12" id={this.props.game._id} value={this.state.commentary} onKeyUp={this.enter}></input>
-          </div>
-        </div>
+        {this.state.viewMore &&
+          <>
+            <div className="col-10 mx-auto">
+              {this.props.commentaries.map(commentary => {
+                return (
+                  this.props.game._id === commentary.idGame &&
+                  <>
+                    <Comment game={this.props.game} commentary={commentary} />
+                  </>)
+              })}
+
+              <div className="p-5">
+                <input onChange={this.readCommentary} placeholder="Send a comment" className="sendComment col-12" id={this.props.game._id} value={this.state.commentary} onKeyUp={this.enter}></input>
+              </div>
+            </div>
+          </>
+        }
+        <button onClick={viewSwitch}>{this.state.viewMore ? 'View less' : 'View more'}</button>
       </div >
 
 

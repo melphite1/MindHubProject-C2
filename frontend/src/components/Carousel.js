@@ -1,6 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
-import "../styles/styles.css"
+
 class Carousel extends React.Component {
     render() {
         return (
