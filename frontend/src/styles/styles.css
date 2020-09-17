@@ -144,7 +144,13 @@ input{
     width: 20%;
     margin: 9px;
 }
-
+/* ==== N E W S ==== */ 
+p.news, h4.news {
+	 color: #c6d4df;
+	 }
+ h1.news ,h3.news {
+	  color: 'white'; 
+	}
 
 
 /*Responsive*/

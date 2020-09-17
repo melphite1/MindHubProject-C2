@@ -4,11 +4,18 @@ require("./config/cnx-bd")
 const cors = require("cors")
 const app = express()
 const router = require("./routes/router")
+const fileUpload = require("express-fileupload")
+
+app.use('/uploads', express.static(`${__dirname}/uploads`))
 
 app.use(express.json())
 app.use(cors())
+app.use(fileUpload())
+
 
 app.use("/api", router)
+
+
 
 
 const port = process.env.PORT

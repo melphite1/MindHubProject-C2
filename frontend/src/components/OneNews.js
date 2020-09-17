@@ -9,7 +9,9 @@ class OneNews extends React.Component {
     commentary: '',
     idNews: '',
     sendModify: false,
-    viewMore: false
+    viewMoreComments: false,
+    viewAllNews: false
+
   }
   componentDidMount() {
     this.props.getCommentaries()
@@ -70,29 +72,56 @@ class OneNews extends React.Component {
   }
   render() {
 
-    const viewSwitch = () => {
+    const viewComments = () => {
       this.setState({
-        viewMore: !this.state.viewMore
+        viewMoreComments: !this.state.viewMoreComments
+      })
+    }
+    const viewNews = () => {
+      this.setState({
+        viewAllNews: !this.state.viewAllNews
       })
     }
 
     return (
       <>
-        <div className="mx-auto border col-10 m-5" id={this.props.news._id}>
-          <h1 className="text-light text-center">{this.props.news.title}</h1>
-
-          <h3 className="text-light text-center">{this.props.news.subtitle}</h3>
-          <p className="text-light text-center">{this.props.news.date}</p>
-          <img alt={this.props.title} className="mx-auto" src={this.props.news.images}></img>
-          <p className="text-light text-center">{this.props.news.body}</p>
-          {this.state.viewMore &&
-            <div className="col-10 mx-auto">
+        <hr style={{ border: '1px solid #4B75B1', opacity: '12%', margin: '2vh 15vh' }} />
+        <div className="news text-center" style={{ margin: '5vh 15vh', display: 'flex', flexDirection: 'column' }}>
+          <h1 className="news">{this.props.news.title}</h1>
+          <h3 className="news">{this.props.news.subtitle}</h3>
+          <h4 className="news">{this.props.news.date}</h4>
+          <img className="news mx-auto" src={this.props.news.images}></img>
+          {this.state.viewAllNews &&
+            <p className="news">{this.props.news.body}</p>}
+          <button style={{ margin: '2vh' }} class="btn btn-dark" onClick={viewNews}>{this.state.viewAllNews ? 'See less' : 'See all the news'}</button>
+          {this.state.viewMoreComments &&
+            <div>
               {this.props.commentaries.map(commentary => {
 
                 return (
                   this.props.news._id === commentary.idNews &&
                   <>
                     <CommentNews news={this.props.news} commentary={commentary} />
+                    {/* <div className="col-10 mx-auto mt-5">
+                      <div className="d-flex justify-content-between">
+                        <div className="d-flex">
+                          <a className="comment-pic user-action text-light"> <img src={commentary.userPic} className="avatar" alt="Avatar" /><b className="caret"></b></a>
+                          <div>
+                            <h6 className="text-light">{commentary.username}</h6>
+                            {this.state.sendModify && commentary.username === this.props.username ? <><input className='comment' onChange={this.readCommentary} id={commentary._id} placeholder={commentary.content} /> <button className='send' onClick={this.modifyCommentary}>Send</button></> : <p className="text-light">{commentary.content}</p>}
+                          </div>
+                        </div>
+                        <div className="d-flex">
+                          {this.props.username === commentary.username &&
+                            <>
+                              <img src={edit} data-toggle="tooltip" data-placement="top" title="Delete" id={commentary._id} onClick={this.openInput} style={{ height: '4vh' }}></img>
+                              <img src={trash} data-toggle="tooltip" data-placement="top" title="Modify" id={commentary._id} onClick={this.deleteCommentary} style={{ height: '4vh' }}></img>
+                            </>
+                          }
+                        </div>
+                      </div>
+
+                    </div> */}
                   </>)
               }
               )}
@@ -101,7 +130,7 @@ class OneNews extends React.Component {
               </div>
             </div>
           }
-          <button onClick={viewSwitch}>{this.state.viewMore ? 'View less' : 'View more'}</button>
+          <button style={{ margin: '2vh' }} class="btn btn-dark" onClick={viewComments}>{this.state.viewMoreComments ? 'See less' : 'See all the comments'}</button>
         </div>
       </>
     );

@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
-import Game from "../components/Game";
 import gamesActions from "../redux/actions/gamesActions";
+import Game from "../components/Game"
 
 const Games = (props) => {
 

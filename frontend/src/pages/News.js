@@ -19,10 +19,10 @@ const News = (props) => {
     return (
         <>
             <Header />
-            <h1>News</h1>
+            <h1 className="news" style={{display:'flex', justifyContent:'center', margin:'3vh', fontSize:'7vh'}}>News</h1>
             {/* <!--Start code--> */}
             {(props.newsRed == null) ?
-                <p>NO NEWS YET</p>
+                <p className='news' style={{display:'flex', justifyContent:'center'}}>NO NEWS YET</p>
                 :
                 <div>
                     <div class="col-10 pb-5 mx-auto ">
@@ -127,7 +127,7 @@ const News = (props) => {
                     </div>
                     {props.newsRed.map((oneNews) => {
                         return (
-                            <OneNews news={oneNews} />
+                                <OneNews news={oneNews} />
                         )
                     })}</div>}
 

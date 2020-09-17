@@ -18,6 +18,10 @@ router.route('/games/modifyCommentary')
 
 router.route("/games")
     .post(gameController.addGame)
+    
+router.route('/games/comments')
+.post(passport.authenticate('jwt', { session: false }), gameController.putCommentary)
+.get(gameController.getCommentaries)    
 
 router.route("/games/:id")
     .get(gameController.getSpecificGames)
@@ -32,7 +36,7 @@ router.route('/categories')
 //     .get(gameController.getListGamesCategory)
 
 router.route('/user')
-    .post(validator.validateData, usersController.createAccount)
+    .post(usersController.createAccount)
 
 router.route('/login')
     .post(usersController.userLogin)

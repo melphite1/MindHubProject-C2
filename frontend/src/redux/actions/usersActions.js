@@ -4,10 +4,13 @@ import Swal from 'sweetalert2'
 const usersActions = {
 
 
-    createAccount: newUser => {
+    createAccount: fd => {
         return async (dispatch, getState) => {
-            const response = await axios.post('http://127.0.0.1:4000/api/user', newUser)/* ->PEDIR RUTA AL BACKEND<- */
-            console.log(response.data)
+            const response = await axios.post('http://127.0.0.1:4000/api/user', fd, {
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
+            })/* ->PEDIR RUTA AL BACKEND<- */
             if (response.data.success !== true) {
                 Swal.fire({
                     icon: 'error',

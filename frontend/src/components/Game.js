@@ -11,8 +11,8 @@ class Game extends React.Component {
     sendModify: false,
     viewMore: false
   }
-  componentDidMount() {
-    this.props.getCommentaries()
+  async componentDidMount() {
+    await this.props.getCommentaries()
   }
   enter = (e) => {
     if (e.keyCode === 13) {
@@ -48,11 +48,7 @@ class Game extends React.Component {
       commentary: ''
     })
   }
-  deleteCommentary = async (e) => {
-    const idCommentary = e.target.id
-    await this.props.deleteCommentary(idCommentary)
 
-  }
   openInput = async (e) => {
     this.setState({
       sendModify: !this.state.sendModify
@@ -64,6 +60,21 @@ class Game extends React.Component {
   }
   render() {
 
+    const star = []
+    const emptyStar = []
+
+    function iconGenerator(quantity, filledValor, emptyValor) {
+
+
+      for (var i = 0; i < quantity; i++) {
+        filledValor.push("instance");
+      }
+      for (var i = 0; i < 5 - quantity; i++) {
+        emptyValor.push("instance");
+      }
+    }
+    iconGenerator(this.props.game.rating, star, emptyStar);
+
     const viewSwitch = () => {
       this.setState({
         viewMore: !this.state.viewMore
@@ -74,7 +85,24 @@ class Game extends React.Component {
 
       <div className="border col-8 mx-auto m-5">
         <h1 >{this.props.game.title}</h1>
-
+        <div style={{ display: "flex" }}>  {star.map((star) => {
+          return (
+            <p className="valor">
+              <i id="dollar" className="small material-icons">
+                <img style={{ width: "50px" }} src={require("../images/staron.png")}></img>
+              </i>
+            </p>
+          );
+        })}
+          {emptyStar.map((star) => {
+            return (
+              <p className="valor">
+                <i id="dollar" className="small material-icons">
+                  <img style={{ width: "50px" }} src={require("../images/star.png")}></img>
+                </i>
+              </p>
+            );
+          })}</div>
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             {this.props.game.images.map((img, index) => {
