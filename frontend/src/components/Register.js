@@ -31,7 +31,7 @@ const Register = (props) => {
 
     }
     const responseGoogle = (response) => {
-        props.createAccount({
+        props.createAccountGoogle({
             name: response.profileObj.givenName,
             lastname: response.profileObj.familyName,
             username: response.profileObj.email,
@@ -42,6 +42,7 @@ const Register = (props) => {
             logWithGoogle: true,
             firstTime: true
         })
+        alert(response)
     }
 
 
@@ -55,7 +56,7 @@ const Register = (props) => {
                 text: 'All camps are required, please take a look again',
             })
         } else {
-            
+
             const fd = new FormData()
             fd.append("name", newUser.name)
             fd.append("lastname", newUser.lastname)
@@ -119,7 +120,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     createAccount: usersActions.createAccount,
-    getCountries: auxActions.getCountries
+    createAccountGoogle: usersActions.createAccountGoogle,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

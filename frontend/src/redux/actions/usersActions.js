@@ -25,7 +25,7 @@ const usersActions = {
                         text: 'We are very happy to see you!',
                         timer: 2000
                     })
-                    setTimeout(()=> {
+                    setTimeout(() => {
                         dispatch({
                             type: 'SET_USER',
                             payload: {
@@ -39,15 +39,39 @@ const usersActions = {
                             }
                         })
                     }, 2000)
-                    
+
                 }
-                
+
             }
 
 
         }
     },
-
+    createAccountGoogle: newUser => {
+        return async (dispatch, getState) => {
+            const response = await axios.post('http://127.0.0.1:4000/api/userGoogle', newUser)/* ->PEDIR RUTA AL BACKEND<- */
+            console.log('hola')
+            if (response.data.success !== true) {
+                alert(response.data.error)
+                console.log(response.data.message)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: response.data.message,
+                })
+            } else {
+                dispatch({
+                    type: 'SET_USER',
+                    payload: {
+                        name: response.data.name,
+                        urlpic: response.data.urlpic,
+                        token: response.data.token,
+                        firstTime: response.data.firstTime
+                    }
+                })
+            }
+        }
+    },
     userLogIn: newUser => {
         return async (dispatch, getState) => {
             const response = await axios.post('http://127.0.0.1:4000/api/login', newUser)/* ->PEDIR RUTA AL BACKEND<- */
@@ -66,7 +90,7 @@ const usersActions = {
                         text: 'We are very happy to see you!',
                         timer: 2000
                     })
-                    setTimeout(()=> {
+                    setTimeout(() => {
                         dispatch({
                             type: 'SET_USER',
                             payload: {
@@ -81,7 +105,7 @@ const usersActions = {
                             }
                         })
                     }, 2000)
-                    
+
                 }
             }
 

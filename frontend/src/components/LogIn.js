@@ -37,7 +37,6 @@ const LogIn = (props) => {
         }
     };
     const responseGoogle = (response) => {
-        alert(response.profileObj.googleId)
         props.userLogIn({
             username: response.profileObj.email,
             password: response.profileObj.googleId,
