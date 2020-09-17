@@ -82,17 +82,26 @@ class OneNews extends React.Component {
         viewAllNews: !this.state.viewAllNews
       })
     }
+    console.log(this.props.news)
 
     return (
       <>
         <hr style={{ border: '1px solid #4B75B1', opacity: '12%', margin: '2vh 15vh' }} />
         <div className="news text-center" style={{ margin: '5vh 15vh', display: 'flex', flexDirection: 'column' }}>
           <h1 className="news">{this.props.news.title}</h1>
-          <h3 className="news">{this.props.news.subtitle}</h3>
           <h4 className="news">{this.props.news.date}</h4>
           <img className="news mx-auto" src={this.props.news.images}></img>
+          <h3 className="news">{this.props.news.subtitle}</h3>
           {this.state.viewAllNews &&
-            <p className="news">{this.props.news.body}</p>}
+            this.props.news.body.map(bodySection => {
+            return <>
+              <p>
+                {<br></br>}
+                {bodySection}
+                {<br></br>}
+              </p>
+            </>
+            })}
           <button style={{ margin: '2vh' }} class="btn btn-dark" onClick={viewNews}>{this.state.viewAllNews ? 'See less' : 'See all the news'}</button>
           {this.state.viewMoreComments &&
             <div>

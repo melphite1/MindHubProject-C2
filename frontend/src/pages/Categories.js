@@ -19,7 +19,6 @@ const Categories = (props) => {
     props.getCategories();
   }, []);
 
-  console.log("hola")
   let orderedCategories = props.categories.sort(function (a, b) {
     if (a.name > b.name) {
       return 1;

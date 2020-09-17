@@ -5,9 +5,7 @@ const Category = (props) => {
   return (
     <>
       <li className="col- 5">
-        <div id="imgContainer"
-        style={{
-          backgroundImage: `url(${props.category.picCategory})`}}>
+        <div id="imgContainer" style={{backgroundImage: `url(${props.category.picCategory})`}}>
           <p id='textContainer'>
             {props.category.name}
           </p>
