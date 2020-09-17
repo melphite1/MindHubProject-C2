@@ -18,18 +18,30 @@ const usersActions = {
                     text: response.data.message,
                 })
             } else {
-                dispatch({
-                    type: 'SET_USER',
-                    payload: {
-                        name: response.data.name,
-                        urlpic: response.data.urlpic,
-                        token: response.data.token,
-                        firstTime: response.data.firstTime,
-                        lastName: response.data.lastName,
-                        email: response.data.email,
-                        favconsole: response.data.favConsole
-                    }
-                })
+                if (response.data.token) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Welcome!',
+                        text: 'We are very happy to see you!',
+                        timer: 2000
+                    })
+                    setTimeout(()=> {
+                        dispatch({
+                            type: 'SET_USER',
+                            payload: {
+                                name: response.data.name,
+                                urlpic: response.data.urlpic,
+                                token: response.data.token,
+                                firstTime: response.data.firstTime,
+                                lastName: response.data.lastName,
+                                email: response.data.email,
+                                favconsole: response.data.favConsole
+                            }
+                        })
+                    }, 2000)
+                    
+                }
+                
             }
 
 
@@ -46,21 +58,31 @@ const usersActions = {
                     title: 'Error!',
                     text: response.data.message,
                 })
-            }
-            else {
-                dispatch({
-                    type: 'SET_USER',
-                    payload: {
-                        name: response.data.name,
-                        urlpic: response.data.urlpic,
-                        token: response.data.token,
-                        username: response.data.username,
-                        firstTime: response.data.firstTime,
-                        lastName: response.data.lastName,
-                        email: response.data.email,
-                        favconsole: response.data.favConsole
-                    }
-                })
+            } else {
+                if (response.data.token) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Welcome!',
+                        text: 'We are very happy to see you!',
+                        timer: 2000
+                    })
+                    setTimeout(()=> {
+                        dispatch({
+                            type: 'SET_USER',
+                            payload: {
+                                name: response.data.name,
+                                urlpic: response.data.urlpic,
+                                token: response.data.token,
+                                username: response.data.username,
+                                firstTime: response.data.firstTime,
+                                lastName: response.data.lastName,
+                                email: response.data.email,
+                                favconsole: response.data.favConsole
+                            }
+                        })
+                    }, 2000)
+                    
+                }
             }
 
         }

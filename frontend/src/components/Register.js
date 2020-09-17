@@ -55,7 +55,7 @@ const Register = (props) => {
                 text: 'All camps are required, please take a look again',
             })
         } else {
-
+            
             const fd = new FormData()
             fd.append("name", newUser.name)
             fd.append("lastname", newUser.lastname)
@@ -63,13 +63,13 @@ const Register = (props) => {
             fd.append("password", newUser.password)
             fd.append("email", newUser.email)
             fd.append("urlpic", newUser.urlpic)
-            fd.append(" favConsole", newUser.favConsole)
             fd.append("logWithGoogle", newUser.logWithGoogle)
             fd.append("firstTime", newUser.firstTime)
+            fd.append("favConsole", newUser.favConsole)
 
             await props.createAccount(fd)
-
         }
+
 
     }
 

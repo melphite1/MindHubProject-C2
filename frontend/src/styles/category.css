@@ -8,19 +8,28 @@
     flex-direction: column;
     justify-content: flex-end;
     flex-wrap: wrap;
-    border: 0.2vh solid #727272ef;
-    border-radius: 30px;
+    border-radius: 5px;
+    /* border: 0.2vh solid #727272ef;
+    
     transition: width 2s, height 2s, margin 2s;
     box-shadow: 10px 10px 10px #727272ef;
-    opacity: 80%;
+    opacity: 80%; */
 }
 
 
+#imgContainer  {
+    transition: all 0.2s linear;
+}
+#imgContainer:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
 
-#imgContainer:hover{
+/* 
+{
     transform: scale(1.05);
     box-shadow: 0vw 1.1vw 1.1vw rgb(0, 0, 0, 0.5)!important;
-}
+} */
 
 #textContainer{
     font-size: 4vh;
