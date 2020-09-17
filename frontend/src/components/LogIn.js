@@ -28,18 +28,20 @@ const LogIn = (props) => {
                 icon: 'error',
                 title: 'Error!',
                 text: 'All camps are required, please take a look again',
-              })
+            })
         }
         else {
             const userToLogIn = { username: newUser.username, password: newUser.password }
-            
+
             props.userLogIn(userToLogIn)
         }
     };
     const responseGoogle = (response) => {
+        alert(response.profileObj.googleId)
         props.userLogIn({
             username: response.profileObj.email,
-            password: response.profileObj.googleId
+            password: response.profileObj.googleId,
+            logInMethod: 'google'
         })
     }
 

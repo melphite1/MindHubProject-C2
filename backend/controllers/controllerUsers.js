@@ -59,7 +59,12 @@ const usersController = {
                 res.json({
                     success: false, message: "Incorrect username or password"
                 })
-            } else {
+            } else if (userExist.logWithGoogle && !req.body.logInMethod) {
+                res.json({
+                    success: false, message: "You can't login here"
+                })
+            }
+            else {
                 jwt.sign({ ...userExist }, process.env.SECRETORKEY, {}, (error, token) => {
                     if (error) {
                         res.json({ success: false, error: "Ha ocurrido un error" })
