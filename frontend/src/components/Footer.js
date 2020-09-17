@@ -8,11 +8,11 @@ const Footer = () => {
                     <div className="col-xs-12 col-sm-4 col-md-4">
                         <h5>Plataforms</h5>
                         <ul className="list-unstyled quick-links">
-                            <li><a><i className="fa fa-angle-double-right"></i>Steam</a></li>
-                            <li><a><i className="fa fa-angle-double-right"></i>Epic games</a></li>
-                            <li><a><i className="fa fa-angle-double-right"></i>Battle.net</a></li>
-                            <li><a><i className="fa fa-angle-double-right"></i>Origin</a></li>
-                            <li><a><i className="fa fa-angle-double-right"></i>Uplay</a></li>
+                            <li><a href="https://https://store.steampowered.com/" target="_blank"><i className="fa fa-angle-double-right" ></i>Steam</a></li>
+                            <li><a href="https://www.epicgames.com/" target="_blank"><i className="fa fa-angle-double-right" ></i>Epic games</a></li>
+                            <li><a href="https://www.battle.net/" target="_blank"><i className="fa fa-angle-double-right" ></i>Battle.net</a></li>
+                            <li><a href="https://www.origin.com/" target="_blank"><i className="fa fa-angle-double-right" ></i>Origin</a></li>
+                            <li><a href="https://www.uplay.com/" target="_blank"><i className="fa fa-angle-double-right" ></i>Uplay</a></li>
                         </ul>
                     </div>
                     <div className="col-xs-12 col-sm-4 col-md-4">
