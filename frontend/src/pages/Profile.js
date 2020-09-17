@@ -107,7 +107,6 @@ class Profile extends React.Component {
                             </div>
                         </div>
                     </div>
-
                 </div>
             </>
 
