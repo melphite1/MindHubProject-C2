@@ -36,9 +36,9 @@ const controllerNews = {
     },
     deleteCommentary: async (req, res) => {
         const { idComment } = req.body
-        const commentaryDeleted = await Comment.findByIdAndDelete({
-            _id: idComment
-        })
+        const commentaryDeleted = await Comment.findByIdAndDelete(
+           idComment
+        )
         const comments = await Comment.find()
         res.json({
             success: true,
@@ -48,9 +48,9 @@ const controllerNews = {
     modifyCommentary: async (req, res) => {
         console.log('este es el controlador para modificar')
         const { content, idComment } = req.body
-        const commentaryDeleted = await Comment.findByIdAndUpdate({
-            _id: idComment
-        }, {
+        const commentaryDeleted = await Comment.findByIdAndUpdate(
+            idComment
+        , {
             content
         },
             {

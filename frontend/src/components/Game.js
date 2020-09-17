@@ -11,8 +11,8 @@ class Game extends React.Component {
     sendModify: false,
     viewMore: false
   }
-  componentDidMount() {
-    this.props.getCommentaries()
+  async componentDidMount() {
+    await this.props.getCommentaries()
   }
   enter = (e) => {
     if (e.keyCode === 13) {
@@ -48,22 +48,23 @@ class Game extends React.Component {
       commentary: ''
     })
   }
-  deleteCommentary = async (e) => {
-    const idCommentary = e.target.id
-    await this.props.deleteCommentary(idCommentary)
 
-  }
-  openInput = async (e) => {
-    const id = e.target.id
-    this.setState({
-      sendModify: !this.state.sendModify
-    })
-  }
-  modifyCommentary = async (e) => {
-    console.log(this.state.id)
-    await this.props.modifyCommentary(this.state.commentary, this.state.idGame)
-  }
   render() {
+
+    const star = []
+    const emptyStar = []
+
+    function iconGenerator(quantity, filledValor, emptyValor) {
+
+
+      for (var i = 0; i < quantity; i++) {
+        filledValor.push("instance");
+      }
+      for (var i = 0; i < 5 - quantity; i++) {
+        emptyValor.push("instance");
+      }
+    }
+    iconGenerator(this.props.game.rating, star, emptyStar);
 
     const viewSwitch = () => {
       this.setState({
@@ -75,7 +76,24 @@ class Game extends React.Component {
 
       <div className="border col-8 mx-auto m-5">
         <h1 >{this.props.game.title}</h1>
-
+        <div style={{display:"flex"}}>  {star.map((star) => {
+                    return (
+                      <p className="valor">
+                        <i id="dollar" className="small material-icons">
+                         <img style={{width:"50px"}}src={require("../images/staron.png")}></img>
+                        </i>
+                      </p>
+                    );
+                  })}
+                  {emptyStar.map((star) => {
+                    return (
+                      <p className="valor">
+                        <i id="dollar" className="small material-icons">
+                         <img style={{width:"50px"}} src={require("../images/star.png")}></img>
+                        </i>
+                      </p>
+                    );
+                  })}</div>
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             {this.props.game.images.map((img, index) => {
@@ -92,6 +110,26 @@ class Game extends React.Component {
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="sr-only">Next</span>
             </a>
+          </div>
+  
+          <div>
+            {this.props.commentaries.map(commentary => {
+              return (
+                <div>
+                  <h3 className="text-light">{commentary.username}</h3>
+                  {this.state.sendModify && commentary.username === this.props.username ? <><input onChange={this.readCommentary} id={commentary._id} placeholder={commentary.content} /> <button onClick={this.modifyCommentary}>send</button></> : <p className="text-light">{commentary.content}</p>}
+                  {this.props.username === commentary.username &&
+
+                    <>
+                      <p className="text-light" id={commentary._id} >borrar</p>
+                      <p className="text-light" id={commentary._id} >modificar</p>
+                    </>
+                  }
+
+                </div>)
+            })}
+            <input onChange={this.readCommentary} id={this.props.game._id} value={this.state.commentary}></input>
+            <button onClick={this.sendCommentary}>send</button>
           </div>
         </div>
         <p className='text-light'>{this.props.game.body}</p>

@@ -145,8 +145,19 @@ input{
     margin: 9px;
 }
 
+/* ==== N E W S ==== */
 
+p.news, h4.news {
+	color: #c6d4df;
+}
 
+h1.news ,h3.news {
+	color: 'white';
+}
+
+input.comment{
+	width: 20vh !important;
+}
 
 @media (min-width: 1200px){
 	.form-inline .input-group {
