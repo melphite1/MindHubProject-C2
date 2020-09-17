@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import newsActions from '../redux/actions/newsActions'
 import { NavLink } from 'react-router-dom'
 import OneNews from '../components/OneNews'
-
+import Footer from '../components/Footer'
 
 const News = (props) => {
     const [news, setNews] = useState(null)
@@ -129,12 +129,9 @@ const News = (props) => {
                         return (
                                 <OneNews news={oneNews} />
                         )
-                    })}</div>}
-
-
-
-
-
+                    })}
+                </div>}
+            <Footer />
         </>
     )
 }

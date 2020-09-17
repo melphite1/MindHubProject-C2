@@ -37,3 +37,7 @@
     color: white;
     background: linear-gradient(0deg, rgba(0,0,0,0.7791491596638656) 0%, rgba(0,0,0,0.6587009803921569) 35%, rgba(0,0,0,0) 100%);
 }
+
+.aGame {
+    background-color: #162333;
+}

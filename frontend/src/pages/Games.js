@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import gamesActions from "../redux/actions/gamesActions";
 import Game from "../components/Game"
+import Footer from '../components/Footer'
+import '../styles/category.css'
 
 const Games = (props) => {
 
@@ -52,6 +54,7 @@ const Games = (props) => {
           })
         }
       </ul>
+      <Footer/>
     </>
   )
 }

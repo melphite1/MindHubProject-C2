@@ -7,6 +7,7 @@ import auxActions from '../redux/actions/auxActions'
 import gamesActions from '../redux/actions/gamesActions'
 import '../styles/category.css'
 
+import Footer from '../components/Footer'
 
 const Categories = (props) => {
   const [categories, setCategories] = useState([]);
@@ -161,6 +162,7 @@ const Categories = (props) => {
           })}
         </ul>
       </div>
+      <Footer/>
     </>
   );
 };

@@ -2,6 +2,8 @@ import React from 'react'
 import gamesActions from '../redux/actions/gamesActions'
 import { connect } from "react-redux"
 import Comment from "./Comment"
+import '../styles/category.css'
+
 
 
 class Game extends React.Component {
@@ -9,10 +11,16 @@ class Game extends React.Component {
     commentary: '',
     idGame: '',
     sendModify: false,
-    viewMore: false
+    viewMore: false,
+    listImages: [],
+    mainFoto: null,
   }
   async componentDidMount() {
     await this.props.getCommentaries()
+    this.setState({
+      listImages: this.props.game.images,
+      mainFoto: this.props.game.images[0]
+    })
   }
   enter = (e) => {
     if (e.keyCode === 13) {
@@ -58,6 +66,7 @@ class Game extends React.Component {
 
     await this.props.modifyCommentary(this.state.commentary, this.state.idGame)
   }
+   
   render() {
 
     const star = []
@@ -81,20 +90,98 @@ class Game extends React.Component {
       })
     }
 
+    const switchPhoto = e => {
+      const image = this.state.listImages[parseInt(e.target.id)]
+      this.setState({
+        mainFoto: image,
+      })
+    }
+
     return (
-      <div style={{display:'flex'}}>
-        <div className="col-8 mx-auto m-5">
-          <h1 >{this.props.game.title}</h1>
-          <div style={{ display: "flex" }}>  {star.map((star) => {
-            return (
-              <p className="valor">
-                <i id="dollar" className="small material-icons">
-                  <img style={{ width: "50px" }} src={require("../images/staron.png")}></img>
-                </i>
-              </p>
-            );
-          })}
-            {emptyStar.map((star) => {
+      <div style={{display:'flex', margin:'3vh'}}>
+        <div className="col-8 offset-md-2">
+          <div className="aGame" style={{display:'flex'}}>
+            <div className='row' style={{display:'flex'}}>
+              <div className="col-12" style={{height:'50vh'}}>
+                <div className='img-fluid' style={{backgroundImage:`url(${this.state.mainFoto})`, backgroundSize:'cover', height:'50vh'}}>
+                  
+                </div>
+                
+              </div>
+              <div style={{display:'flex', justifyContent:'center', alignContent:'center'}}>
+                {this.state.listImages.map((image, index) => {
+                  return(
+                    <div key={index} className='col-sm' style={{margin:'2vh auto'}}>
+                      <div className='img-fluid' id={index} onClick={switchPhoto} style={{backgroundImage:`url(${image})`, width:'12vw', height:'18vh', backgroundSize:'cover'}}/>
+                    </div>
+                  )
+                })}
+              </div>
+              {this.state.viewMore &&
+              <>
+                <div className="col-10 mx-auto">
+                  {this.props.commentaries.map(commentary => {
+                    return (
+                      this.props.game._id === commentary.idGame &&
+                      <>
+                        <Comment game={this.props.game} commentary={commentary} />
+                      </>)
+                  })}
+
+                  <div className="p-5">
+                    <input onChange={this.readCommentary} placeholder="Send a comment" className="sendComment col-12" id={this.props.game._id} value={this.state.commentary} onKeyUp={this.enter}></input>
+                  </div>
+                </div>
+              </>
+              }
+              <button class="btn btn-dark" onClick={viewSwitch}>{this.state.viewMore ? 'View less' : 'View more'}</button>
+            </div>
+            <div className="col-4" style={{fontSize:'2vh'}}>
+              <div>
+                <h1 style={{margin:'1vh'}}>{this.props.game.title}</h1>
+                    <div style={{ display: "flex", margin:'1vh' }}>  
+                      {star.map((star) => {
+                        return (
+                          <p className="valor"> 
+                            <i id="dollar" className="small material-icons">
+                              <img style={{ width: "3vh"}} src={require("../images/staron.png")}></img>
+                            </i>
+                          </p>
+                        );
+                      })}
+                    </div> 
+              </div >
+              <p style={{margin:'1vh'}} className='font-weight-light text-light'>{this.props.game.body}</p>
+            </div>
+          </div >
+
+      </div>
+    </div>
+
+    )
+  }
+}
+const mapStateToProps = state => {
+  return {
+    name: state.usersReducer.name,
+    urlpic: state.usersReducer.urlpic,
+    token: state.usersReducer.token,
+    username: state.usersReducer.username,
+    commentaries: state.gamesReducer.commentaries
+  }
+}
+
+const mapDispatchToProps = {
+  putCommentary: gamesActions.putCommentary,
+  getCommentaries: gamesActions.getCommentaries,
+  deleteCommentary: gamesActions.deleteCommentary,
+  modifyCommentary: gamesActions.modifyCommentary,
+
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Game)
+
+/*
+ {/* {emptyStar.map((star) => {
               return (
                 <p className="valor">
                   <i id="dollar" className="small material-icons">
@@ -120,49 +207,4 @@ class Game extends React.Component {
                 <span class="sr-only">Next</span>
               </a>
             </div>
-          </div>
-        </div>
-        <p className='text-light'>{this.props.game.body}</p>
-        {this.state.viewMore &&
-          <>
-            <div className="col-10 mx-auto">
-              {this.props.commentaries.map(commentary => {
-                return (
-                  this.props.game._id === commentary.idGame &&
-                  <>
-                    <Comment game={this.props.game} commentary={commentary} />
-                  </>)
-              })}
-
-              <div className="p-5">
-                <input onChange={this.readCommentary} placeholder="Send a comment" className="sendComment col-12" id={this.props.game._id} value={this.state.commentary} onKeyUp={this.enter}></input>
-              </div>
-            </div>
-          </>
-        }
-        <button onClick={viewSwitch}>{this.state.viewMore ? 'View less' : 'View more'}</button>
-      </div >
-
-
-
-    )
-  }
-}
-const mapStateToProps = state => {
-  return {
-    name: state.usersReducer.name,
-    urlpic: state.usersReducer.urlpic,
-    token: state.usersReducer.token,
-    username: state.usersReducer.username,
-    commentaries: state.gamesReducer.commentaries
-  }
-}
-
-const mapDispatchToProps = {
-  putCommentary: gamesActions.putCommentary,
-  getCommentaries: gamesActions.getCommentaries,
-  deleteCommentary: gamesActions.deleteCommentary,
-  modifyCommentary: gamesActions.modifyCommentary,
-
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Game)
+          })}*/
