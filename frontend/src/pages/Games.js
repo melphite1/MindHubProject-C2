@@ -27,17 +27,17 @@ const Games = (props) => {
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPositionY: '30%',
-    fontSize: '5vh',
-    padding: '8vh 0vh',
-    marginTop: '1vh',
+    height:'50vh'
   }
 
   return (
     <>
       <Header />
 
-      <div style={styleCategory} className='center'>
-        <p style={{ color: 'white' }} >{category.name}</p>
+      <div style={styleCategory}>
+        <div style={{display:'flex', alignContent:'flex-end'}}>
+          <p className="categoryName">{category.name}</p>
+        </div>
       </div>
 
       <ul id="mainContainer">

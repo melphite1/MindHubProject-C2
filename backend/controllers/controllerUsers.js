@@ -8,6 +8,7 @@ const { findByIdAndUpdate } = require("../models/User")
 const usersController = {
 
     createAccount: async (req, res) => {
+        console.log(req.body)
         const { username, password, email, name, lastname, logWithGoogle, firstTime, urlpic, favConsole } = req.body
         const passwordHash = bcryptjs.hashSync(password.trim(), 10)
         const userExists = await User.findOne({ username: username })

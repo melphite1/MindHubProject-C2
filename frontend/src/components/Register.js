@@ -15,10 +15,10 @@ const Register = (props) => {
         username: '',
         password: '',
         email: '',
-        favConsole: 'not defined',
         urlpic: '',
         logWithGoogle: false,
-        firstTime: true
+        firstTime: true,
+        favConsole: 'not defined',
     })
 
 
@@ -30,22 +30,21 @@ const Register = (props) => {
         })
 
     }
-    const responseGoogle = (response) => {
-        props.createAccount({
+
+    const responseGoogle = async (response) => {
+        await props.createAccount({
             name: response.profileObj.givenName,
             lastname: response.profileObj.familyName,
             username: response.profileObj.email,
             password: response.profileObj.googleId,
             email: response.profileObj.email,
             urlpic: response.profileObj.imageUrl,
-            favConsole: 'not defined',
             logWithGoogle: true,
-            firstTime: true
+            firstTime: true,
+            favConsole: 'not defined',
         })
     }
-
-
-
+    
     const sendInfo = async e => {
         e.preventDefault()
         if (newUser.username === '' || newUser.password === '' || newUser.name === '' || newUser.lastname === '' || newUser.email === '') {
@@ -69,8 +68,6 @@ const Register = (props) => {
 
             await props.createAccount(fd)
         }
-
-
     }
 
     return (

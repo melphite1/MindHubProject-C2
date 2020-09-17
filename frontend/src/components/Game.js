@@ -82,47 +82,47 @@ class Game extends React.Component {
     }
 
     return (
-
-      <div className="border col-8 mx-auto m-5">
-        <h1 >{this.props.game.title}</h1>
-        <div style={{ display: "flex" }}>  {star.map((star) => {
-          return (
-            <p className="valor">
-              <i id="dollar" className="small material-icons">
-                <img style={{ width: "50px" }} src={require("../images/staron.png")}></img>
-              </i>
-            </p>
-          );
-        })}
-          {emptyStar.map((star) => {
+      <div style={{display:'flex'}}>
+        <div className="col-8 mx-auto m-5">
+          <h1 >{this.props.game.title}</h1>
+          <div style={{ display: "flex" }}>  {star.map((star) => {
             return (
               <p className="valor">
                 <i id="dollar" className="small material-icons">
-                  <img style={{ width: "50px" }} src={require("../images/star.png")}></img>
+                  <img style={{ width: "50px" }} src={require("../images/staron.png")}></img>
                 </i>
               </p>
             );
-          })}</div>
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            {this.props.game.images.map((img, index) => {
+          })}
+            {emptyStar.map((star) => {
               return (
-                <div class={`carousel-item ${index === 0 ? "active" : ""}`}>
-                  <img class="d-block w-100" src={img} alt="First slide" />
-                </div>)
-            })}
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
+                <p className="valor">
+                  <i id="dollar" className="small material-icons">
+                    <img style={{ width: "50px" }} src={require("../images/star.png")}></img>
+                  </i>
+                </p>
+              );
+            })}</div>
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              {this.props.game.images.map((img, index) => {
+                return (
+                  <div class={`carousel-item ${index === 0 ? "active" : ""}`}>
+                    <img class="d-block w-100" src={img} alt="First slide" />
+                  </div>)
+              })}
+              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
           </div>
         </div>
         <p className='text-light'>{this.props.game.body}</p>
-        <p className='text-light'>{this.props.game.rating}</p>
         {this.state.viewMore &&
           <>
             <div className="col-10 mx-auto">

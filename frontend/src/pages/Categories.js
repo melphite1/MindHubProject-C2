@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Category from "../components/Category";
 import auxActions from '../redux/actions/auxActions'
 import gamesActions from '../redux/actions/gamesActions'
+import '../styles/category.css'
 
 
 const Categories = (props) => {
@@ -96,7 +97,9 @@ const Categories = (props) => {
   return (
     <>
       <Header />
-      <h1 className="text-center text-light">Games</h1>
+      <h1 className="text-light" style={{padding:'2vh 0vh', margin:'auto 15vh'}}>Games</h1>
+      <h3 className="text-light font-weight-light" style={{margin:'auto 15vh'}}>Find the best and most entertaining games</h3>
+      <hr style={{ border: '1px solid #4B75B1', opacity: '12%', margin: '2vh 12vh' }} />
       {props.firstTime && props.token ? (
         <>
           <select

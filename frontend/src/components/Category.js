@@ -8,7 +8,7 @@ const Category = (props) => {
         <div id="imgContainer"
         style={{
           backgroundImage: `url(${props.category.picCategory})`}}>
-          <p id='textContainer'>
+          <p id='textContainer' className="font-weight-light" style={{textDecorationLine:'none', listStyle:'none'}}>
             {props.category.name}
           </p>
         </div>
