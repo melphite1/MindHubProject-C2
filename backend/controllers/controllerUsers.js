@@ -1,14 +1,14 @@
 const User = require("../models/User")
 const bcryptjs = require("bcryptjs")
 const jwt = require("jsonwebtoken")
-const { findByIdAndUpdate } = require("../models/User")
 
 
 
 const usersController = {
 
     createAccount: async (req, res) => {
-        const { username, password, email, name, lastname, logWithGoogle, firstTime, urlpic, favConsole } = req.body
+        const { username, password, email, name, lastname, logWithGoogle, firstTime, favConsole } = req.body
+        console.log(req.body)
         const passwordHash = bcryptjs.hashSync(password.trim(), 10)
         const userExists = await User.findOne({ username: username })
 
@@ -33,10 +33,34 @@ const usersController = {
                 if (error) {
                     res.json({ success: false, error })
                 } else {
+                    console.log("usuario nuevo")
                     res.json({ success: true, token, urlpic: newUser.urlpic, name: newUser.name, lastName: newUser.lastname, favConsole: newUser.favConsole, email: newUser.email })
                 }
 
 
+            }
+            )
+        }
+    },
+    createAccountGoogle: async (req, res) => {
+
+        const { username, password, email, urlpic, name, lastname, logWithGoogle, firstTime, favConsole } = req.body
+
+        const passwordHash = bcryptjs.hashSync(password.trim(), 10)
+        const userExists = await User.findOne({ username: username })
+        if (userExists) {
+            res.json({ success: false, message: "Username already use" })
+        } else {
+            const newUser = new User({ name, lastname, email, urlpic, username, password: passwordHash, logWithGoogle, firstTime, favConsole })
+
+            const user = await newUser.save()
+            jwt.sign({ ...newUser }, process.env.SECRETORKEY, {}, (error, token) => {
+                if (error) {
+                    res.json({ success: false, error })
+                } else {
+                    console.log("usuario nuevo")
+                    res.json({ success: true, token, urlpic: newUser.urlpic, name: newUser.name })
+                }
             }
             )
         }
@@ -90,18 +114,29 @@ const usersController = {
             favConsole
         })
     },
-    setConsole: async (req, res) => {
-        const { favConsole, username } = req.body
+    modifyUser: async (req, res) => {
 
-        const user = await User.findOneAndUpdate({
-            username
-        }, {
+        const { favConsole, username, name, lastname, urlpic } = req.body
+        if (req.files) {
+            var archivo = req.files.urlpic
+            // var extension = archivo.name.split('.')[1]
+            // var nombreArchivo = req.body.username + '.' + extension
+            var nombreArchivo = archivo.name
+            var serverURL = `uploads/${nombreArchivo}`
+            archivo.mv(serverURL)
+            var photoUrl = `http://localhost:4000/uploads/${nombreArchivo}`
+        } else {
+            var photoUrl = urlpic
+        }
+
+        const userModify = await User.findOneAndUpdate({ username: username }, { name, urlpic: photoUrl, lastname, favConsole }, { returnNewDocument: true })
+        res.json({
+            success: true,
+            name,
+            lastname,
             favConsole,
-            firstTime: false
-        }, {
-            returnNewDocument: true
+            photoUrl
         })
-
 
     }
 

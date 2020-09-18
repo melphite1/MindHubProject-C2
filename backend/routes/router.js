@@ -18,10 +18,10 @@ router.route('/games/modifyCommentary')
 
 router.route("/games")
     .post(gameController.addGame)
-    
+
 router.route('/games/comments')
-.post(passport.authenticate('jwt', { session: false }), gameController.putCommentary)
-.get(gameController.getCommentaries)    
+    .post(passport.authenticate('jwt', { session: false }), gameController.putCommentary)
+    .get(gameController.getCommentaries)
 
 router.route("/games/:id")
     .get(gameController.getSpecificGames)
@@ -37,6 +37,9 @@ router.route('/categories')
 
 router.route('/user')
     .post(usersController.createAccount)
+router.route('/userGoogle')
+    .post(usersController.createAccountGoogle)
+
 
 router.route('/login')
     .post(usersController.userLogin)
@@ -54,8 +57,8 @@ router.route('/news/deleteCommentary')
 router.route('/news/modifyCommentary')
     .put(newsController.modifyCommentary)
 
-router.route('/setConsole')
-    .put(usersController.setConsole)
+router.route('/modifyUser')
+    .put(usersController.modifyUser)
 
 router.route('/news')
     .post(newsController.addNews)

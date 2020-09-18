@@ -15,10 +15,10 @@ const Register = (props) => {
         username: '',
         password: '',
         email: '',
-        favConsole: 'not defined',
         urlpic: '',
         logWithGoogle: false,
-        firstTime: true
+        firstTime: true,
+        favConsole: 'not defined',
     })
 
 
@@ -31,7 +31,7 @@ const Register = (props) => {
 
     }
     const responseGoogle = (response) => {
-        props.createAccount({
+        props.createAccountGoogle({
             name: response.profileObj.givenName,
             lastname: response.profileObj.familyName,
             username: response.profileObj.email,
@@ -44,8 +44,6 @@ const Register = (props) => {
         })
     }
 
-
-
     const sendInfo = async e => {
         e.preventDefault()
         if (newUser.username === '' || newUser.password === '' || newUser.name === '' || newUser.lastname === '' || newUser.email === '') {
@@ -55,7 +53,7 @@ const Register = (props) => {
                 text: 'All camps are required, please take a look again',
             })
         } else {
-            
+
             const fd = new FormData()
             fd.append("name", newUser.name)
             fd.append("lastname", newUser.lastname)
@@ -69,8 +67,6 @@ const Register = (props) => {
 
             await props.createAccount(fd)
         }
-
-
     }
 
     return (
@@ -119,7 +115,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     createAccount: usersActions.createAccount,
-    getCountries: auxActions.getCountries
+    createAccountGoogle: usersActions.createAccountGoogle,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

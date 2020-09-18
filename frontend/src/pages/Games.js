@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import gamesActions from "../redux/actions/gamesActions";
 import Game from "../components/Game"
+import Footer from '../components/Footer'
+import '../styles/category.css'
 
 const Games = (props) => {
 
@@ -27,17 +29,17 @@ const Games = (props) => {
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPositionY: '30%',
-    fontSize: '5vh',
-    padding: '8vh 0vh',
-    marginTop: '1vh',
+    height:'50vh'
   }
 
   return (
     <>
       <Header />
 
-      <div style={styleCategory} className='center'>
-        <p style={{ color: 'white' }} >{category.name}</p>
+      <div style={styleCategory}>
+        <div style={{display:'flex', alignContent:'flex-end'}}>
+          <p className="categoryName">{category.name}</p>
+        </div>
       </div>
 
       <ul id="mainContainer">
@@ -52,6 +54,7 @@ const Games = (props) => {
           })
         }
       </ul>
+      <Footer/>
     </>
   )
 }

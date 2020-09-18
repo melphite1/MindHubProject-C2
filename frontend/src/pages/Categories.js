@@ -5,7 +5,9 @@ import Header from "../components/Header";
 import Category from "../components/Category";
 import auxActions from '../redux/actions/auxActions'
 import gamesActions from '../redux/actions/gamesActions'
+import '../styles/category.css'
 
+import Footer from '../components/Footer'
 
 const Categories = (props) => {
   const [categories, setCategories] = useState([]);
@@ -29,43 +31,6 @@ const Categories = (props) => {
     return 0;
   });
 
-  const consoles = [
-    'Not defined yet',
-    'Pc',
-    'PlayStation, Sony',
-    'PlayStation2, Sony',
-    'PlayStation3, Sony',
-    'PlayStation4, Sony',
-    'PSP, Sony',
-    'GameBoy, Nintendo',
-    'GameBoyColor, Nintendo',
-    'GameBoyAdvance, Nintendo',
-    'Nintendo, Nintendo',
-    'Nintendo64, Nintendo',
-    'Nintendo3DS, Nintendo',
-    'NintendoSwitch, Nintendo',
-    'NintendoDS, Nintendo',
-    'SuperNintendo, Nintendo',
-    'GameCube, Nintendo',
-    'NintendoSwitch, Nintendo',
-    'Wii, Nintendo',
-    'Xbox360, Microsoft',
-    'XboxOne, Microsoft',
-    'Xbox, Microsoft',
-    'SegaGameGear, Sega',
-    'Dreamcast, Sega',
-    'Atari2600, Atari',
-    'Atari5200, Atari'
-  ]
-  const readInput = e => {
-    const value = e.target.value
-    setFavConsole(
-      value
-    )
-  }
-  const sendConsole = () => {
-    props.sendConsole(favConsole, props.username);
-  };
   const categoryNotFound = require("../images/404notFound.png");
   const filteredSameZero = () => {
     if (categories.length === 0) {
@@ -95,50 +60,15 @@ const Categories = (props) => {
     }
   };
 
-  
+
 
   return (
     <>
       <Header />
-      <h1 className="text-center text-light">Games</h1>
-      {props.firstTime && props.token ? (
-        <>
-          <section id="favConsoleContainer">
-            <h3 className='container'>Since this is your first time entering, would you be so kind to tell us what's your favorite console?</h3>
-            <select
-              name="favConsole"
-              onChange={readInput}
-              className="favConsole text-center col-6"
+      <h1 className="text-light" style={{ padding: '2vh 0vh', margin: 'auto 15vh' }}>Games</h1>
+      <h3 className="text-light font-weight-light" style={{ margin: 'auto 15vh' }}>Find the best and most entertaining games</h3>
+      <hr style={{ border: '1px solid #4B75B1', opacity: '12%', margin: '2vh 12vh' }} />
 
-            >
-              <option value={-1} className="text-center">
-                Choose your favourite console.
-              </option>
-              {consoles.map((console, i) => {
-                return (
-                  <option
-                    key={"console" + [i]}
-                    value={console}
-                    className="text-center"
-                  >
-                    {console}
-                  </option>
-                );
-              })}
-            </select>
-            <button
-              htmlFor="favConsole"
-              onClick={sendConsole}
-              className="text-center col-6"
-              id='sendFavConsole'
-            >
-              Send your favorite console
-            </button>
-          </section>
-        </>
-      ) : (
-          ""
-        )}
       <div id="mainCategories">
         <ul className="categoriesContainer" style={{ listStyle: "none" }}>
           {filteredSameZero()}
@@ -153,6 +83,7 @@ const Categories = (props) => {
           })}
         </ul>
       </div>
+      <Footer />
     </>
   );
 };

@@ -7,7 +7,7 @@ import gamesActions from '../redux/actions/gamesActions'
 import { NavLink } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import Footer from '../components/Footer'
-
+import Banners from '../components/Banners'
 
 const Home = (props) => {
     const [news, setNews] = useState(null)
@@ -28,7 +28,7 @@ const Home = (props) => {
                 :
                 <div className="col-10 pb-5 mx-auto mt-3 pt-3">
                     {/* <!--SECTION START--> */}
-                    <section className="row">
+                    <section className="row sectionContainer">
                         {/* <!--Start slider news--> */}
                         <div className="col-12 col-md-6 pb-0 pb-md-3 pt-2 pr-md-1">
                             <div id="featured" className="carousel slide carousel" data-ride="carousel">
@@ -124,6 +124,7 @@ const Home = (props) => {
                         {/* <!--End box news--> */}
                     </section>
                     {/* <!--END SECTION--> */}
+                    <Banners/>
                 </div>
             }
             <Footer />

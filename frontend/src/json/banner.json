@@ -1,0 +1,26 @@
+[
+    {
+        "logo": "https://comicvine1.cbsistatic.com/uploads/original/11123/111235159/5635787-3314405484-acec-.png",
+        "titleBanner": "News",
+        "wallpaper": "https://i.pinimg.com/originals/49/4c/6b/494c6b914a7842e7c0e18cb68d41255e.png",
+        "subTitle": "News!!",
+        "description": "Fresh and controversial news from the world of digital entertainment about video games.",
+        "link": "/news"
+    },
+    {
+        "logo": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/25627d58-d99c-4ac7-a6fe-7a4bb329f3f5/d8rkvp5-bf8331b2-2591-4dda-8171-6e782a4445e9.png/v1/fill/w_1024,h_862,q_75,strp/call_of_duty__black_ops_iii_render_by_ashish_kumar_by_ashish_kumar-d8rkvp5.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl0sIm9iaiI6W1t7InBhdGgiOiIvZi8yNTYyN2Q1OC1kOTljLTRhYzctYTZmZS03YTRiYjMyOWYzZjUvZDhya3ZwNS1iZjgzMzFiMi0yNTkxLTRkZGEtODE3MS02ZTc4MmE0NDQ1ZTkucG5nIiwid2lkdGgiOiI8PTEwMjQiLCJoZWlnaHQiOiI8PTg2MiJ9XV19.eIbS93AhciJ1N3hddukQqaEeGADWfblWR2QpIa63Dgw",
+        "titleBanner": "Categories",
+        "wallpaper": "https://i.pinimg.com/originals/2f/77/88/2f77880be2f62ae3b727b293b9cd4568.jpg",
+        "subTitle": "Category like",
+        "description": "All categories of games that you have yet to play on one website.",
+        "link": "/categories"
+    },
+    {
+        "logo": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d099d316-98cf-4095-a2f9-32cca4219baa/dbeubmx-9a806308-3574-46bf-a8de-b03d04559431.png/v1/fill/w_1024,h_854,q_75,strp/_overwatch__rose_tracer__render__by_popokupingupop90-dbeubmx.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl0sIm9iaiI6W1t7InBhdGgiOiIvZi9kMDk5ZDMxNi05OGNmLTQwOTUtYTJmOS0zMmNjYTQyMTliYWEvZGJldWJteC05YTgwNjMwOC0zNTc0LTQ2YmYtYThkZS1iMDNkMDQ1NTk0MzEucG5nIiwid2lkdGgiOiI8PTEwMjQiLCJoZWlnaHQiOiI8PTg1NCJ9XV19.rRv4xkwK-zlyL49EYzq_a7R1YdWXIauV7MNU6GaeLwA",
+        "titleBanner": "Register",
+        "wallpaper": "https://png.pngtree.com/thumb_back/fw800/background/20190222/ourmid/pngtree-space-universe-banner-background-universetechnology-backgroundgradient-backgroundgradual-image_54068.jpg",
+        "subTitle": "Register now",
+        "description": "For more information and content about your favorite hobby, register now!",
+        "link": "/register"
+    }
+]

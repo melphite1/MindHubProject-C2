@@ -4,7 +4,8 @@ const initialState = {
     token: '',
     username: '',
     firstTime: '',
-    lastname: ''
+    lastname: '',
+    favConsole: ''
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -18,8 +19,20 @@ const usersReducer = (state = initialState, action) => {
                 token: action.payload.token,
                 username: action.payload.username,
                 firstTime: action.payload.firstTime,
-                lastname: action.payload.lastname
+                lastname: action.payload.lastname,
+                favConsole: action.payload.favConsole
             }
+        case 'UPDATE_USER':
+            console.log(action.payload.urlpic)
+            return {
+
+                ...state,
+                name: action.payload.name,
+                urlpic: action.payload.urlpic,
+                lastname: action.payload.lastname,
+                favConsole: action.payload.favConsole
+            }
+
         case 'LOGOUT_USER':
             localStorage.clear()
             return {
