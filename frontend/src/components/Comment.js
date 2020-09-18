@@ -117,5 +117,6 @@ const mapDispatchToProps = {
     deleteCommentary: gamesActions.deleteCommentary,
     modifyCommentary: gamesActions.modifyCommentary,
 
+
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Comment)

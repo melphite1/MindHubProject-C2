@@ -4,7 +4,8 @@ const initialState = {
     token: '',
     username: '',
     firstTime: '',
-    lastname: ''
+    lastname: '',
+    favConsole: ''
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -18,7 +19,8 @@ const usersReducer = (state = initialState, action) => {
                 token: action.payload.token,
                 username: action.payload.username,
                 firstTime: action.payload.firstTime,
-                lastname: action.payload.lastname
+                lastname: action.payload.lastname,
+                favConsole: action.payload.favConsole
             }
         case 'LOGOUT_USER':
             localStorage.clear()

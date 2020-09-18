@@ -42,7 +42,6 @@ const Register = (props) => {
             logWithGoogle: true,
             firstTime: true
         })
-        alert(response)
     }
 
 

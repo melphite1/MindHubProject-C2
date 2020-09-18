@@ -1,7 +1,6 @@
 const User = require("../models/User")
 const bcryptjs = require("bcryptjs")
 const jwt = require("jsonwebtoken")
-const { findByIdAndUpdate } = require("../models/User")
 
 
 
@@ -18,7 +17,7 @@ const usersController = {
         } else {
             console.log(req.files)
             const archivo = req.files.urlpic
-            const nombreArchivo = req.files.urlpic.name
+            const nombreArchivo = req.body.username
             const serverURL = `uploads/${nombreArchivo}`
 
             archivo.mv(serverURL)
@@ -115,18 +114,16 @@ const usersController = {
             favConsole
         })
     },
-    setConsole: async (req, res) => {
-        const { favConsole, username } = req.body
+    modifyUser: async (req, res) => {
+        const { favConsole, username, name, lastname } = req.body
+        const archivo = req.files.urlpic
+        const nombreArchivo = req.body.username
+        const serverURL = `uploads/${nombreArchivo}`
+        archivo.mv(serverURL)
+        const photoUrl = `http://localhost:4000/uploads/${nombreArchivo}`
 
-        const user = await User.findOneAndUpdate({
-            username
-        }, {
-            favConsole,
-            firstTime: false
-        }, {
-            returnNewDocument: true
-        })
-
+        const userModify = await User.findOneAndUpdate({ username: username }, { name, urlpic: photoUrl, lastname, favConsole }, { returnNewDocument: true })
+        console.log(favConsole)
 
     }
 

@@ -35,7 +35,7 @@ const usersActions = {
                                 firstTime: response.data.firstTime,
                                 lastName: response.data.lastName,
                                 email: response.data.email,
-                                favconsole: response.data.favConsole
+                                favConsole: response.data.favConsole
                             }
                         })
                     }, 2000)
@@ -66,7 +66,8 @@ const usersActions = {
                         name: response.data.name,
                         urlpic: response.data.urlpic,
                         token: response.data.token,
-                        firstTime: response.data.firstTime
+                        firstTime: response.data.firstTime,
+                        favConsole: response.data.favConsole
                     }
                 })
             }
@@ -101,7 +102,7 @@ const usersActions = {
                                 firstTime: response.data.firstTime,
                                 lastName: response.data.lastName,
                                 email: response.data.email,
-                                favconsole: response.data.favConsole
+                                favConsole: response.data.favConsole
                             }
                         })
                     }, 2000)
@@ -138,11 +139,21 @@ const usersActions = {
                     firstTime: response.data.firstTime,
                     lastname: response.data.lastname,
                     email: response.data.email,
-                    favconsole: response.data.favConsole
+                    favConsole: response.data.favConsole
 
                 }
             })
 
+        }
+    },
+    modifyUser: (fd) => {
+        return async (dispatch, getState) => {
+            console.log(fd)
+            const response = await axios.put('http://127.0.0.1:4000/api/modifyUser', fd, {
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
+            })
         }
     }
 

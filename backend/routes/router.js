@@ -56,8 +56,8 @@ router.route('/news/deleteCommentary')
 router.route('/news/modifyCommentary')
     .put(newsController.modifyCommentary)
 
-router.route('/setConsole')
-    .put(usersController.setConsole)
+router.route('/modifyUser')
+    .put(usersController.modifyUser)
 
 router.route('/news')
     .post(newsController.addNews)
