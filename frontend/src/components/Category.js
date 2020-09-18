@@ -4,7 +4,7 @@ import '../styles/category.css'
 const Category = (props) => {
   return (
     <>
-      <li className="col- 5">
+      <li>
         <div id="imgContainer"
         style={{
           backgroundImage: `url(${props.category.picCategory})`}}>

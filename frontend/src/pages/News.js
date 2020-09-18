@@ -19,8 +19,9 @@ const News = (props) => {
     return (
         <>
             <Header />
-            <h1 className="news" style={{display:'flex', justifyContent:'center', margin:'3vh', fontSize:'7vh'}}>News</h1>
-            {/* <!--Start code--> */}
+            <h1 className="title text-light">News</h1>
+            <h3 className="subtitle  text-light font-weight-light">The most recent news can be found here</h3>
+            <hr style={{ border: '1px solid #4B75B1', opacity: '12%', margin: '2vh 12vh' }} />    
             {(props.newsRed == null) ?
                 <p className='news' style={{display:'flex', justifyContent:'center'}}>NO NEWS YET</p>
                 :

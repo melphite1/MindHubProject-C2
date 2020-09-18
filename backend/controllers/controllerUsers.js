@@ -8,7 +8,6 @@ const usersController = {
 
     createAccount: async (req, res) => {
         const { username, password, email, name, lastname, logWithGoogle, firstTime, favConsole } = req.body
-        console.log(req.body)
         const passwordHash = bcryptjs.hashSync(password.trim(), 10)
         const userExists = await User.findOne({ username: username })
 
@@ -103,7 +102,6 @@ const usersController = {
     tokenVerificator: (req, res) => {
 
         const { name, urlpic, username, firstTime, lastname, favConsole } = req.user
-        console.log(req.user)
         res.json({
             success: true,
             name,

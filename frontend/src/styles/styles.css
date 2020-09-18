@@ -156,6 +156,16 @@ p.news, h4.news {
  h1.news ,h3.news {
 	  color: 'white'; 
 	}
+div .img {
+	width: 30vw;
+	height: 40vh;
+}
+
+div #flexNews {
+	display: flex;
+	width: 70%;
+	margin: 5vh auto;
+}
 
 /* ==== G A M E S ==== */ 
 
@@ -177,6 +187,16 @@ p.news, h4.news {
 	.input-group {
 		width: 100%;
 	}
+	#flexNews {
+		display: flex;
+		flex-direction: column;
+		width: 80%;
+	}
+	div .img {
+		width: 45vh;
+		height: 40vh;
+	}
+
 }
 
 @media (max-width: 900px) {
@@ -199,3 +219,21 @@ p.news, h4.news {
   }
 
  
+
+  @media (max-width: 600px) {
+	#flexNews {
+		display: flex;
+		flex-direction: column;
+		width: 90%;
+	}
+	div .img {
+		width: 35vh;
+		height: 30vh;
+	}
+	div .news h1{
+		font-size: 3.5vh;
+	}
+	div .news h4{
+		font-size: 2.5vh;
+	}
+  }

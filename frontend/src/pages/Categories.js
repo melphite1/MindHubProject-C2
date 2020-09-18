@@ -65,8 +65,8 @@ const Categories = (props) => {
   return (
     <>
       <Header />
-      <h1 className="text-light" style={{ padding: '2vh 0vh', margin: 'auto 15vh' }}>Games</h1>
-      <h3 className="text-light font-weight-light" style={{ margin: 'auto 15vh' }}>Find the best and most entertaining games</h3>
+      <h1 className="title text-light">Games</h1>
+      <h3 className="subtitle text-light font-weight-light">Find the best and most entertaining games</h3>
       <hr style={{ border: '1px solid #4B75B1', opacity: '12%', margin: '2vh 12vh' }} />
 
       <div id="mainCategories">

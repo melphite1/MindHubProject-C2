@@ -2,6 +2,7 @@ import React from 'react';
 import newsActions from '../redux/actions/newsActions'
 import { connect } from "react-redux"
 import CommentNews from './CommentNews';
+import "../styles/styles.css"
 
 class OneNews extends React.Component {
 
@@ -83,63 +84,52 @@ class OneNews extends React.Component {
       })
     }
     console.log(this.props.news)
-
+//className="col-8 offset-md-2"  className="col-6"
     return (
       <>
         <hr style={{ border: '1px solid #4B75B1', opacity: '12%', margin: '2vh 15vh' }} />
-        <div className="news text-center" style={{ margin: '5vh 15vh', display: 'flex', flexDirection: 'column' }}>
-          <h1 className="news">{this.props.news.title}</h1>
-          <h4 className="news">{this.props.news.date}</h4>
-          <img className="news mx-auto" src={this.props.news.images}></img>
-          <h3 className="news">{this.props.news.subtitle}</h3>
-          {this.state.viewAllNews &&
-            this.props.news.body.map(bodySection => {
-            return <>
-              <p>
-                {<br></br>}
-                {bodySection}
-                {<br></br>}
-              </p>
-            </>
-            })}
-          <button style={{ margin: '2vh' }} class="btn btn-dark" onClick={viewNews}>{this.state.viewAllNews ? 'See less' : 'See all the news'}</button>
-          {this.state.viewMoreComments &&
+        <div className="news text-center">
+          <div id="flexNews" >
             <div>
-              {this.props.commentaries.map(commentary => {
-
-                return (
-                  this.props.news._id === commentary.idNews &&
-                  <>
-                    <CommentNews news={this.props.news} commentary={commentary} />
-                    {/* <div className="col-10 mx-auto mt-5">
-                      <div className="d-flex justify-content-between">
-                        <div className="d-flex">
-                          <a className="comment-pic user-action text-light"> <img src={commentary.userPic} className="avatar" alt="Avatar" /><b className="caret"></b></a>
-                          <div>
-                            <h6 className="text-light">{commentary.username}</h6>
-                            {this.state.sendModify && commentary.username === this.props.username ? <><input className='comment' onChange={this.readCommentary} id={commentary._id} placeholder={commentary.content} /> <button className='send' onClick={this.modifyCommentary}>Send</button></> : <p className="text-light">{commentary.content}</p>}
-                          </div>
-                        </div>
-                        <div className="d-flex">
-                          {this.props.username === commentary.username &&
-                            <>
-                              <img src={edit} data-toggle="tooltip" data-placement="top" title="Delete" id={commentary._id} onClick={this.openInput} style={{ height: '4vh' }}></img>
-                              <img src={trash} data-toggle="tooltip" data-placement="top" title="Modify" id={commentary._id} onClick={this.deleteCommentary} style={{ height: '4vh' }}></img>
-                            </>
-                          }
-                        </div>
-                      </div>
-
-                    </div> */}
-                  </>)
-              }
-              )}
-              <div className="p-5">
-                <input onChange={this.readCommentary} id={this.props.news._id} value={this.state.commentary} placeholder="Send a comment" className="sendComment col-12" onKeyUp={this.enter}></input>
-              </div>
+              <div className="img mx-auto" style={{backgroundImage:`url(${this.props.news.images})`, backgroundSize:'cover',backgroundPosition:'center', borderRadius:'7px'}}></div>
             </div>
-          }
-          <button style={{ margin: '2vh' }} class="btn btn-dark" onClick={viewComments}>{this.state.viewMoreComments ? 'See less' : 'See all the comments'}</button>
+            <div>
+              <h1 className="news">{this.props.news.title}</h1>
+              <h4 className="news font-weight-light" style={{ margin: '2vh' }}>{this.props.news.date}</h4>
+              <h4 className="news font-weight-light">{this.props.news.subtitle}</h4>
+            </div>
+          </div>
+          <div>
+            {this.state.viewAllNews &&
+              this.props.news.body.map(bodySection => {
+              return <>
+                <p class="font-weight-light text-left">
+                  {<br></br>}
+                  {bodySection}
+                  {<br></br>}
+                </p>
+              </>
+              })}
+            <button style={{ margin: '2vh' }} class="btn btn-dark" onClick={viewNews}>{this.state.viewAllNews ? 'See less' : 'See all the news'}</button>
+            {this.state.viewMoreComments &&
+              <div>
+                {this.props.commentaries.map(commentary => {
+
+                  return (
+                    this.props.news._id === commentary.idNews &&
+                    <>
+                      <CommentNews news={this.props.news} commentary={commentary} />
+
+                    </>)
+                }
+                )}
+                <div className="p-5">
+                  <input onChange={this.readCommentary} id={this.props.news._id} value={this.state.commentary} placeholder="Send a comment" className="sendComment col-12" onKeyUp={this.enter}></input>
+                </div>
+              </div>
+            }
+            <button style={{ margin: '2vh' }} class="btn btn-dark" onClick={viewComments}>{this.state.viewMoreComments ? 'See less' : 'See all the comments'}</button>
+          </div>
         </div>
       </>
     );

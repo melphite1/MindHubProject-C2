@@ -14,7 +14,7 @@ const Header = (props) => {
     <>
       <header>
         <nav className="navbar navbar-expand-sm navbar-light">
-          <div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
             <img src={logo} style={{ width: '50px', height: '50px' }}></img>
             <NavLink to="/" className="navbar-brand">SCAPE</NavLink>
           </div>
