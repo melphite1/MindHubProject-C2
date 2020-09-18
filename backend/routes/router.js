@@ -36,7 +36,7 @@ router.route('/categories')
 //     .get(gameController.getListGamesCategory)
 
 router.route('/user')
-    .post(usersController.createAccount)
+    .post(validator.validateData, usersController.createAccount)
 router.route('/userGoogle')
     .post(usersController.createAccountGoogle)
 

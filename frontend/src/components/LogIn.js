@@ -68,7 +68,7 @@ const LogIn = (props) => {
                         cookiePolicy={'single_host_origin'}
                     />
                 </div>
-        /</div>
+        </div>
         </>
     )
 }

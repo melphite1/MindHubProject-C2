@@ -54,7 +54,7 @@ class CommentNews extends React.Component {
                 imageWidth: 180,
                 imageHeight: 180,
                 imageAlt: 'Sad square :(',
-                text: "You can't comment air :(",
+                text: "You can't comment air",
             })
 
         } else {
@@ -90,17 +90,17 @@ class CommentNews extends React.Component {
                             <div className="d-flex justify-content-between">
                                 <div className="d-flex">
 
-                                    <a className="comment-pic user-action text-light"> <img src={this.props.commentary.userPic} className="avatar" alt="Avatar" /><b className="caret"></b></a>
+                                    <a className="comment-pic user-action text-light align-bottom"> <img src={this.props.commentary.userPic} className="avatar" alt="Avatar" /><b className="caret"></b></a>
                                     <div>
-                                        <h6 className="text-light">{this.props.commentary.username}</h6>
-                                        {this.state.sendModify && this.props.commentary.username === this.props.username ? <><input onChange={this.readCommentary} id={this.props.commentary._id} placeholder={this.props.commentary.content} onKeyUp={this.escape} /> <p>escape to cancel • enter to save</p></> : <p className="text-light">{this.props.commentary.content}</p>}
+                                        <h6 className="username font-weight-bold text-light">{this.props.commentary.username}</h6>
+                                        {this.state.sendModify && this.props.commentary.username === this.props.username ? <><input onChange={this.readCommentary} id={this.props.commentary._id} placeholder={this.props.commentary.content} onKeyUp={this.escape} /> <p>escape to cancel • enter to save</p></> : <p className="username font-weight-light text-light">{this.props.commentary.content}</p>}
                                     </div>
                                 </div>
                                 <div className="d-flex">
                                     {this.props.username === this.props.commentary.username &&
                                         <>
-                                            <img src={edit} alt="edit" className="pr-2" data-toggle="tooltip" data-placement="top" title="Delete" id={this.props.commentary._id} onClick={this.openInput} style={{ height: '4vh' }}></img>
-                                            <img src={trash} alt="trash" className="pr-2" data-toggle="tooltip" data-placement="top" title="Modify" id={this.props.commentary._id} onClick={this.deleteCommentary} style={{ height: '4vh' }}></img>
+                                            <img src={edit} alt="edit" className="pr-2" data-toggle="tooltip" data-placement="top" title="Modify" id={this.props.commentary._id} onClick={this.openInput} style={{ height: '4vh' }}></img>
+                                            <img src={trash} alt="trash" className="pr-2" data-toggle="tooltip" data-placement="top" title="Delete" id={this.props.commentary._id} onClick={this.deleteCommentary} style={{ height: '4vh' }}></img>
                                         </>
                                     }
                                 </div>

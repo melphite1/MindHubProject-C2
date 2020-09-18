@@ -51,7 +51,7 @@ class Comment extends React.Component {
                 imageWidth: 180,
                 imageHeight: 180,
                 imageAlt: 'Sad square :(',
-                text: "You can't comment air :(",
+                text: "You can't comment air",
             })
 
         } else {
@@ -92,8 +92,8 @@ class Comment extends React.Component {
                         <div className="d-flex">
                             {this.props.username === this.props.commentary.username &&
                                 <>
-                                    <img src={edit} alt="edit" className="pr-2" data-toggle="tooltip" data-placement="top" title="Delete" id={this.props.commentary._id} onClick={this.openInput} style={{ height: '3vh', width: '2vw' }}></img>
-                                    <img src={trash} alt="trash" className="pr-2" data-toggle="tooltip" data-placement="top" title="Modify" id={this.props.commentary._id} onClick={this.deleteCommentary} style={{ height: '3vh', width: '2vw' }}></img>
+                                    <img src={edit} alt="edit" className="pr-2" data-toggle="tooltip" data-placement="top" title="Modify" id={this.props.commentary._id} onClick={this.openInput} style={{ height: '3vh', width: '2vw' }}></img>
+                                    <img src={trash} alt="trash" className="pr-2" data-toggle="tooltip" data-placement="top" title="Delete" id={this.props.commentary._id} onClick={this.deleteCommentary} style={{ height: '3vh', width: '2vw' }}></img>
                                 </>}
                         </div>
                     </div>
