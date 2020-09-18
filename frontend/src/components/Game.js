@@ -15,6 +15,7 @@ class Game extends React.Component {
     listImages: [],
     mainFoto: null,
   }
+
   async componentDidMount() {
     await this.props.getCommentaries()
     this.setState({
@@ -62,8 +63,8 @@ class Game extends React.Component {
       sendModify: !this.state.sendModify
     })
   }
-  modifyCommentary = async (e) => {
 
+  modifyCommentary = async (e) => {
     await this.props.modifyCommentary(this.state.commentary, this.state.idGame)
   }
    
@@ -82,6 +83,7 @@ class Game extends React.Component {
         emptyValor.push("instance");
       }
     }
+    
     iconGenerator(this.props.game.rating, star, emptyStar);
 
     const viewSwitch = () => {

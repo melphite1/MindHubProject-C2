@@ -18,6 +18,7 @@ const controllerNews = {
         const news = await News.find()
         res.json({ succes: true, news })
     },
+    
     putCommentary: async (req, res) => {
         console.log(req.body)
         const { idNews, content } = req.body
