@@ -99,27 +99,27 @@ class Game extends React.Component {
 
     return (
       <div style={{display:'flex', margin:'3vh'}}>
-        <div className="col-8 offset-md-2">
-          <div className="aGame" style={{display:'flex'}}>
+        <div className="divGame" >
+          <div className="aGame" style={{boxShadow: '5px 5px 5px #141629d8'}}>
             <div>
-              <div className="col-12" style={{height:'50vh', margin:'2vh 0vh'}}>
-                <div className='img-fluid' style={{backgroundImage:`url(${this.state.mainFoto})`, backgroundSize:'cover', height:'50vh'}}>
+              <div className=" col-12" style={{margin:'2vh 0vh'}}>
+                <div className='imgMain img-fluid' style={{backgroundImage:`url(${this.state.mainFoto})`, backgroundSize:'cover'}}>
                 </div>
               </div>
               <div style={{display:'flex', justifyContent:'center', alignContent:'center', margin:'2vh auto'}}>
                 {this.state.listImages.map((image, index) => {
                   return(
-                    <div key={index} className='col-sm' style={{margin:'2vh auto'}}>
-                      <div className='img-fluid' id={index} onClick={switchPhoto} style={{backgroundImage:`url(${image})`, width:'12vw', height:'18vh', backgroundSize:'cover'}}/>
+                    <div key={index} className='imgFluid col-sm'>
+                      <div className='fluid img-fluid' id={index} onClick={switchPhoto} style={{backgroundImage:`url(${image})`,backgroundSize:'cover'}}/>
                     </div>
                   )
                 })}
               </div>
-              <div className="col-12">
+              <div className="comments col-12">
                 {this.state.viewMore &&
                 <>
                   <div className="col-12" >
-                    <h3>Reviews</h3>
+                    <h3 style={{fontSize:'3vh'}}>Reviews</h3>
                     {this.props.commentaries.map(commentary => {
                       return (
                         this.props.game._id === commentary.idGame &&
@@ -128,21 +128,21 @@ class Game extends React.Component {
                         </>)
                     })}
 
-                    <div className="col-12" style={{margin:'2vh 0vh'}}>
+                    <div className="col-12" style={{margin:'3vh 0vh'}}>
                       <input onChange={this.readCommentary} placeholder="Send a comment" className="sendComment col-12" id={this.props.game._id} value={this.state.commentary} onKeyUp={this.enter}></input>
                     </div>
                   </div>
                 </>
                 }
-                  <div style={{margin:'2vh 0vh'}}>
-                    <button style={{backgroundColor:'#101E30', border:'0px'}} class="btn btn-primary col-6 offset-md-3" onClick={viewSwitch}>{this.state.viewMore ? 'See less reviews' : 'See all reviews'}</button>
+                  <div style={{margin:'2vh auto'}}>
+                    <button style={{backgroundColor:'#101E30', border:'0px'}} class=" text-center btn btn-primary col-6 offset-md-3" onClick={viewSwitch}>{this.state.viewMore ? 'See less reviews' : 'See all reviews'}</button>
                 </div>
               </div>
               
             </div>
-            <div className="col-4" style={{fontSize:'2vh'}}>
+            <div className="text" style={{fontSize:'2vh'}}>
               <div>
-                <h1 style={{margin:'1vh'}}>{this.props.game.title}</h1>
+                <h1 style={{fontSize:'4.5vh' , margin:'1vh'}}>{this.props.game.title}</h1>
                     <div style={{ display: "flex", margin:'1vh' }}>  
                       {star.map((star) => {
                         return (

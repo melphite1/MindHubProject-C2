@@ -29,11 +29,11 @@ const Footer = () => {
                     <div className="col-xs-12 col-sm-4 col-md-4">
                         <h5>Developers</h5>
                         <ul className="list-unstyled quick-links">
-                            <li><a><i className="fa fa-angle-double-right"></i>Ale Toledo</a></li>
-                            <li><a><i className="fa fa-angle-double-right"></i>Paulina Vaira</a></li>
-                            <li><a><i className="fa fa-angle-double-right"></i>Cristian Suarez</a></li>
-                            <li><a><i className="fa fa-angle-double-right"></i>Santi Chiavelini</a></li>
-                            <li><a><i className="fa fa-angle-double-right"></i>Eddy Vega</a></li>
+                            <li><a href="https://github.com/alejandroToledo"><i className="fa fa-angle-double-right"></i>Ale Toledo</a></li>
+                            <li><a href="https://github.com/paulinavaira"><i className="fa fa-angle-double-right"></i>Paulina Vaira</a></li>
+                            <li><a href="https://github.com/melphite1"><i className="fa fa-angle-double-right"></i>Cristian Suarez</a></li>
+                            <li><a href="https://github.com/SantiChiavellini"><i className="fa fa-angle-double-right"></i>Santi Chiavelini</a></li>
+                            <li><a href="https://github.com/EddyVega-dev"><i className="fa fa-angle-double-right"></i>Eddy Vega</a></li>
                         </ul>
                     </div>
                     <div className="row col-xs-12 col-sm-12 col-md-12">

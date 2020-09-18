@@ -19,6 +19,7 @@
     transform: scale(1.02);
     -webkit-transform: scale(1.02);
     transform: scale(1.02);
+    text-decoration: none !important;
 }
 
 #textContainer{
@@ -32,12 +33,123 @@
 }
 
 .categoryName {
-    display: flex;
-    align-content: flex-end;
+    font-size: 8vh;
     color: white;
     background: linear-gradient(0deg, rgba(0,0,0,0.7791491596638656) 0%, rgba(0,0,0,0.6587009803921569) 35%, rgba(0,0,0,0) 100%);
 }
 
 .aGame {
     background-color: #162333;
+    display:flex !important;
+}
+
+div .divGame {
+    width: 65%;
+    margin: 3vh auto;
+}
+
+div .fluid {
+    width: 12vw;
+    height: 18vh;
+}
+.imgMain {
+    height: 50vh;       
+}
+
+.username {
+    font-size: 1vw;
+}
+
+.title {
+    padding: 2vh 0vh;
+    margin: auto 15vh;
+}
+
+.subtitle {
+    margin: auto 15vh;
+}
+
+@media (max-width: 600px) {
+    #imgContainer {
+        display: flex;
+        flex-direction: column;
+        height: 30vh;
+        width:80vw;
+    }
+    div .fluid {
+        width: 10vw;
+        height: 12vh;
+        margin: 0vh auto;
+    }
+    .imgMain {
+        height: 20vh;
+    }
+  }
+
+  @media (max-width: 650px) {
+    div .fluid {
+        display: none;
+    }
+    div .imgMain {
+        height: 25vh;
+    }
+}
+@media (max-width: 940px) {
+    .imgMain {
+        height: 35vh;
+    }
+    .username {
+        font-size: 2vw;
+    }
+    .title {
+        padding: 2vh 0vh;
+        margin: auto 5vh;
+    }
+    
+    .subtitle {
+        margin: auto 5vh;
+    }
+}
+
+@media (max-width: 450px) {
+    div .imgMain {
+        height: 20vh;
+    }
+    .username {
+        font-size: 4vw;
+    }
+}
+
+  @media (max-width: 1400px) {
+    div .aGame {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    /* div .imgFluid {
+        margin: 1vh auto;
+    } */
+    div .fluid {
+        width: 18vw;
+        height: 15vh;
+        margin: 0vh auto;
+    }
+    .username {
+        font-size: 1.5vw;
+    }
+}
+
+@media (max-width: 1100px) {
+    div .fluid {
+        width: 20vw;
+        height: 15vh;
+        margin: 0vh auto;
+    }
+    div .divGame {
+        width: 80%;
+        margin: 3vh auto;
+    }
+    .username {
+        font-size: 2vw;
+    }
 }
