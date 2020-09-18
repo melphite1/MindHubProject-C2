@@ -2,6 +2,8 @@ import React from 'react'
 import gamesActions from '../redux/actions/gamesActions'
 import { connect } from "react-redux"
 import Comment from "./Comment"
+import '../styles/category.css'
+
 
 
 class Game extends React.Component {
@@ -9,10 +11,16 @@ class Game extends React.Component {
     commentary: '',
     idGame: '',
     sendModify: false,
-    viewMore: false
+    viewMore: false,
+    listImages: [],
+    mainFoto: null,
   }
   async componentDidMount() {
     await this.props.getCommentaries()
+    this.setState({
+      listImages: this.props.game.images,
+      mainFoto: this.props.game.images[0]
+    })
   }
   enter = (e) => {
     if (e.keyCode === 13) {
@@ -58,6 +66,7 @@ class Game extends React.Component {
 
     await this.props.modifyCommentary(this.state.commentary, this.state.idGame)
   }
+   
   render() {
 
     const star = []
@@ -81,69 +90,77 @@ class Game extends React.Component {
       })
     }
 
+    const switchPhoto = e => {
+      const image = this.state.listImages[parseInt(e.target.id)]
+      this.setState({
+        mainFoto: image,
+      })
+    }
+
     return (
-
-      <div className="border col-8 mx-auto m-5">
-        <h1 >{this.props.game.title}</h1>
-        <div style={{ display: "flex" }}>  {star.map((star) => {
-          return (
-            <p className="valor">
-              <i id="dollar" className="small material-icons">
-                <img style={{ width: "50px" }} src={require("../images/staron.png")}></img>
-              </i>
-            </p>
-          );
-        })}
-          {emptyStar.map((star) => {
-            return (
-              <p className="valor">
-                <i id="dollar" className="small material-icons">
-                  <img style={{ width: "50px" }} src={require("../images/star.png")}></img>
-                </i>
-              </p>
-            );
-          })}</div>
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            {this.props.game.images.map((img, index) => {
-              return (
-                <div class={`carousel-item ${index === 0 ? "active" : ""}`}>
-                  <img class="d-block w-100" src={img} alt="First slide" />
-                </div>)
-            })}
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-        </div>
-        <p className='text-light'>{this.props.game.body}</p>
-        <p className='text-light'>{this.props.game.rating}</p>
-        {this.state.viewMore &&
-          <>
-            <div className="col-10 mx-auto">
-              {this.props.commentaries.map(commentary => {
-                return (
-                  this.props.game._id === commentary.idGame &&
-                  <>
-                    <Comment game={this.props.game} commentary={commentary} />
-                  </>)
-              })}
-
-              <div className="p-5">
-                <input onChange={this.readCommentary} placeholder="Send a comment" className="sendComment col-12" id={this.props.game._id} value={this.state.commentary} onKeyUp={this.enter}></input>
+      <div style={{display:'flex', margin:'3vh'}}>
+        <div className="col-8 offset-md-2">
+          <div className="aGame" style={{display:'flex'}}>
+            <div>
+              <div className="col-12" style={{height:'50vh', margin:'2vh 0vh'}}>
+                <div className='img-fluid' style={{backgroundImage:`url(${this.state.mainFoto})`, backgroundSize:'cover', height:'50vh'}}>
+                </div>
               </div>
+              <div style={{display:'flex', justifyContent:'center', alignContent:'center', margin:'2vh auto'}}>
+                {this.state.listImages.map((image, index) => {
+                  return(
+                    <div key={index} className='col-sm' style={{margin:'2vh auto'}}>
+                      <div className='img-fluid' id={index} onClick={switchPhoto} style={{backgroundImage:`url(${image})`, width:'12vw', height:'18vh', backgroundSize:'cover'}}/>
+                    </div>
+                  )
+                })}
+              </div>
+              <div className="col-12">
+                {this.state.viewMore &&
+                <>
+                  <div className="col-12" >
+                    <h3>Reviews</h3>
+                    {this.props.commentaries.map(commentary => {
+                      return (
+                        this.props.game._id === commentary.idGame &&
+                        <>
+                          <Comment game={this.props.game} commentary={commentary} />
+                        </>)
+                    })}
+
+                    <div className="col-12" style={{margin:'2vh 0vh'}}>
+                      <input onChange={this.readCommentary} placeholder="Send a comment" className="sendComment col-12" id={this.props.game._id} value={this.state.commentary} onKeyUp={this.enter}></input>
+                    </div>
+                  </div>
+                </>
+                }
+                  <div style={{margin:'2vh 0vh'}}>
+                    <button style={{backgroundColor:'#101E30', border:'0px'}} class="btn btn-primary col-6 offset-md-3" onClick={viewSwitch}>{this.state.viewMore ? 'See less reviews' : 'See all reviews'}</button>
+                </div>
+              </div>
+              
             </div>
-          </>
-        }
-        <button onClick={viewSwitch}>{this.state.viewMore ? 'View less' : 'View more'}</button>
-      </div >
+            <div className="col-4" style={{fontSize:'2vh'}}>
+              <div>
+                <h1 style={{margin:'1vh'}}>{this.props.game.title}</h1>
+                    <div style={{ display: "flex", margin:'1vh' }}>  
+                      {star.map((star) => {
+                        return (
+                          <p className="valor"> 
+                            <i id="dollar" className="small material-icons">
+                              <img style={{ width: "3vh"}} src={require("../images/staron.png")}></img>
+                            </i>
+                          </p>
+                        );
+                      })}
+                    </div> 
+              </div >
+              <p style={{margin:'1vh'}} className='font-weight-light text-light'>{this.props.game.body}</p>
+            </div>
+          </div >
 
-
+      </div>
+    </div>
 
     )
   }
@@ -166,3 +183,32 @@ const mapDispatchToProps = {
 
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Game)
+
+/*
+ {/* {emptyStar.map((star) => {
+              return (
+                <p className="valor">
+                  <i id="dollar" className="small material-icons">
+                    <img style={{ width: "50px" }} src={require("../images/star.png")}></img>
+                  </i>
+                </p>
+              );
+            })}</div>
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              {this.props.game.images.map((img, index) => {
+                return (
+                  <div class={`carousel-item ${index === 0 ? "active" : ""}`}>
+                    <img class="d-block w-100" src={img} alt="First slide" />
+                  </div>)
+              })}
+              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          })}*/

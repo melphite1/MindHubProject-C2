@@ -8,38 +8,47 @@ class Profile extends React.Component {
         changeInfo: false,
         flagbutton: false,
 
+
     }
+
     editInfo = () => {
 
         this.setState({
             changeInfo: !this.state.changeInfo,
-            flagbutton: !this.state.flagbutton
+            flagbutton: !this.state.flagbutton,
+            name: this.props.name,
+            lastname: this.props.lastname,
+            favConsole: this.props.favConsole,
+            urlpic: this.props.urlpic,
         })
 
     }
     readInput = e => {
-
         const value = e.target.name === "urlpic" ? e.target.files[0] : e.target.value
         this.setState({
             ...this.state,
             [e.target.name]: value
         })
     }
-    sendInfo = () => {
+    sendInfo = async () => {
         const fd = new FormData()
+        console.log(this.state.urlpic)
 
-        if (!this.state.name) {
-            var name = this.props.name
-        } else { var name = this.state.name }
-        console.log(name)
-        fd.append("name", name)
+        fd.append("name", this.state.name)
         fd.append("lastname", this.state.lastname)
         fd.append("username", this.props.username)
         fd.append("urlpic", this.state.urlpic)
         fd.append("favConsole", this.state.favConsole)
-        this.props.modifyUser(fd)
+        this.setState({
+            ...this.state,
+            urlpic: ""
+        })
+        await this.props.modifyUser(fd)
+        this.editInfo()
+
     }
     render() {
+        console.log(this.props)
         const consoles = [
             'Not defined yet',
             'Pc',
@@ -72,16 +81,20 @@ class Profile extends React.Component {
         return (
             <>
                 <Header />
-                <div class="container emp-profile">
+                <div class="container emp-profile inputEdit">
 
                     <div class="row">
                         <div class="col-md-4">
-                            <div class="profile-img">
-                                <img src={this.props.urlpic} alt="" />
-                                <div class="file btn btn-lg btn-primary">
-                                    <input type="file" name="urlpic" onChange={this.readInput}></input>
+                            <div class="profile-img" style={{
+                                backgroundImage: `url(${this.props.urlpic})`, height: '38vh', width: '20vw',
+                                backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center center',
+                                display: 'flex', flexDirection: 'column', justifyContent: 'flex-end'
+                            }}>
+                                {this.state.flagbutton &&
+                                    <div class="file btn btn-lg btn-primary" style={{ width: '100%' }}>
+                                        <input type="file" name="urlpic" onChange={this.readInput} ></input>
                                     Change Photo
-                                </div>
+                                </div>}
                             </div>
                         </div>
                         <div class="col-md-6 profile-tab">
@@ -99,14 +112,14 @@ class Profile extends React.Component {
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            {this.state.flagbutton ? <button class="profile-edit-btn" onClick={this.editInfo} >Cancel Edit </button> : <button class="profile-edit-btn" onClick={this.editInfo} >Edit Profile</button>}
-                            {this.state.flagbutton && <button class="profile-edit-btn" onClick={this.sendInfo} >Send Info </button>}
+                        <div class="col-md-2" >
+                            {this.state.flagbutton ? <button class="profile-edit-btn mb-2" onClick={this.editInfo} >Cancel Edit </button> : <button class="profile-edit-btn" onClick={this.editInfo} >Edit Profile</button>}
+                            {this.state.flagbutton && <button class="profile-edit-btn " onClick={this.sendInfo} >Send Info </button>}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <div class="profile-work">
+                            <div class="profile-work mt-2">
                                 <p>Fav Games</p>
                                 <a href="">Magic</a><br />
                                 <a href="">GTA V</a><br />
@@ -138,7 +151,7 @@ class Profile extends React.Component {
                                             <label>Last Name</label>
                                         </div>
                                         <div class="col-md-6">
-                                            {this.state.changeInfo ? <input placeholder="Lastname" name="lastname" onChange={this.readInput}></input> : <p>{this.props.lastname}</p>}
+                                            {this.state.changeInfo ? <input placeholder="Lastname" name="lastname" value={this.state.lastname} onChange={this.readInput}></input> : <p>{this.props.lastname}</p>}
                                         </div>
                                     </div>
                                     <div class="row">
@@ -167,7 +180,7 @@ class Profile extends React.Component {
                                                     return (
                                                         <option
                                                             key={"console" + [i]}
-                                                            value={console}
+                                                            value={this.state.favConsole}
                                                             className="text-center"
                                                         >
                                                             {console}
@@ -190,7 +203,6 @@ class Profile extends React.Component {
                             </div>
                         </div>
                     </div>
-
                 </div>
             </>
 

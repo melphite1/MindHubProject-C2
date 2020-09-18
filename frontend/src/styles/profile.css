@@ -92,6 +92,10 @@
     font-weight: 600;
     color: #0062cc;
 }
+
+div#home div.row{
+    height: 8vh;
+}
 @media (min-width: 768px) {
 	.contenido{
         top: -60px;

@@ -22,6 +22,17 @@ const usersReducer = (state = initialState, action) => {
                 lastname: action.payload.lastname,
                 favConsole: action.payload.favConsole
             }
+        case 'UPDATE_USER':
+            console.log(action.payload.urlpic)
+            return {
+
+                ...state,
+                name: action.payload.name,
+                urlpic: action.payload.urlpic,
+                lastname: action.payload.lastname,
+                favConsole: action.payload.favConsole
+            }
+
         case 'LOGOUT_USER':
             localStorage.clear()
             return {

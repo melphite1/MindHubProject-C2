@@ -115,15 +115,28 @@ const usersController = {
         })
     },
     modifyUser: async (req, res) => {
-        const { favConsole, username, name, lastname } = req.body
-        const archivo = req.files.urlpic
-        const nombreArchivo = req.body.username
-        const serverURL = `uploads/${nombreArchivo}`
-        archivo.mv(serverURL)
-        const photoUrl = `http://localhost:4000/uploads/${nombreArchivo}`
+
+        const { favConsole, username, name, lastname, urlpic } = req.body
+        if (req.files) {
+            var archivo = req.files.urlpic
+            // var extension = archivo.name.split('.')[1]
+            // var nombreArchivo = req.body.username + '.' + extension
+            var nombreArchivo = archivo.name
+            var serverURL = `uploads/${nombreArchivo}`
+            archivo.mv(serverURL)
+            var photoUrl = `http://localhost:4000/uploads/${nombreArchivo}`
+        } else {
+            var photoUrl = urlpic
+        }
 
         const userModify = await User.findOneAndUpdate({ username: username }, { name, urlpic: photoUrl, lastname, favConsole }, { returnNewDocument: true })
-        console.log(favConsole)
+        res.json({
+            success: true,
+            name,
+            lastname,
+            favConsole,
+            photoUrl
+        })
 
     }
 

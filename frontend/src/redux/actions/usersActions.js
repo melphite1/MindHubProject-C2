@@ -1,29 +1,44 @@
 import axios from 'axios'
-import Swal from 'sweetalert2'
+import Swal from '../../../node_modules/sweetalert2/src/sweetalert2'
+import HappySquare from '../../images/happysquare.png'
+import SadSquare from '../../images/sadsquare.png'
+import '../../styles/styles.css'
 
 const usersActions = {
 
-
     createAccount: fd => {
+        console.log(fd)
         return async (dispatch, getState) => {
             const response = await axios.post('http://127.0.0.1:4000/api/user', fd, {
                 headers: {
-                    "Content-Type": "multipart/form-data"
+                    'Content-Type': 'multipart/form-data'
                 }
-            })/* ->PEDIR RUTA AL BACKEND<- */
+
+            })
+            console.log(`llega ${response}`)
+            /* ->PEDIR RUTA AL BACKEND<- */
             if (response.data.success !== true) {
+                console.log(response.data.message)
                 Swal.fire({
-                    icon: 'error',
-                    title: 'Error!',
+                    title: 'Im sorry :(',
+                    imageUrl: `${SadSquare}`,
+                    imageWidth: 180,
+                    imageHeight: 180,
+                    imageAlt: 'Sad square :(',
                     text: response.data.message,
                 })
             } else {
                 if (response.data.token) {
                     Swal.fire({
-                        icon: 'success',
                         title: 'Welcome!',
-                        text: 'We are very happy to see you!',
-                        timer: 2000
+                        imageUrl: `${HappySquare}`,
+                        imageWidth: 180,
+                        imageHeight: 180,
+                        imageAlt: 'Happy square :D',
+                        animation: false,
+                        text: 'I am very happy to meet you!',
+                        timer: 2000,
+                        showConfirmButton: false
                     })
                     setTimeout(() => {
                         dispatch({
@@ -66,8 +81,7 @@ const usersActions = {
                         name: response.data.name,
                         urlpic: response.data.urlpic,
                         token: response.data.token,
-                        firstTime: response.data.firstTime,
-                        favConsole: response.data.favConsole
+                        firstTime: response.data.firstTime
                     }
                 })
             }
@@ -79,17 +93,25 @@ const usersActions = {
             console.log(response.data)
             if (!response.data.success) {
                 Swal.fire({
-                    icon: 'error',
-                    title: 'Error!',
+                    title: 'Im sorry :(',
+                    imageUrl: `${SadSquare}`,
+                    imageWidth: 180,
+                    imageHeight: 180,
+                    imageAlt: 'Sad square :(',
                     text: response.data.message,
                 })
             } else {
                 if (response.data.token) {
                     Swal.fire({
-                        icon: 'success',
                         title: 'Welcome!',
-                        text: 'We are very happy to see you!',
-                        timer: 2000
+                        imageUrl: `${HappySquare}`,
+                        imageWidth: 180,
+                        imageHeight: 180,
+                        imageAlt: 'Custom image',
+                        animation: false,
+                        text: 'I miss you a lot!',
+                        timer: 2000,
+                        showConfirmButton: false
                     })
                     setTimeout(() => {
                         dispatch({
@@ -128,7 +150,6 @@ const usersActions = {
                     Authorization: `Bearer ${tokenLS}`
                 }
             })
-            console.log(response.data)
             dispatch({
                 type: "SET_USER",
                 payload: {
@@ -147,11 +168,21 @@ const usersActions = {
         }
     },
     modifyUser: (fd) => {
+        console.log(fd)
         return async (dispatch, getState) => {
-            console.log(fd)
             const response = await axios.put('http://127.0.0.1:4000/api/modifyUser', fd, {
                 headers: {
                     "Content-Type": "multipart/form-data"
+                }
+            })
+
+            dispatch({
+                type: 'UPDATE_USER',
+                payload: {
+                    name: response.data.name,
+                    lastname: response.data.lastname,
+                    favConsole: response.data.favConsole,
+                    urlpic: response.data.photoUrl,
                 }
             })
         }

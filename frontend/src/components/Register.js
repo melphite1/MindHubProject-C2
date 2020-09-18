@@ -15,10 +15,10 @@ const Register = (props) => {
         username: '',
         password: '',
         email: '',
-        favConsole: 'not defined',
         urlpic: '',
         logWithGoogle: false,
-        firstTime: true
+        firstTime: true,
+        favConsole: 'not defined',
     })
 
 
@@ -44,8 +44,6 @@ const Register = (props) => {
         })
     }
 
-
-
     const sendInfo = async e => {
         e.preventDefault()
         if (newUser.username === '' || newUser.password === '' || newUser.name === '' || newUser.lastname === '' || newUser.email === '') {
@@ -69,8 +67,6 @@ const Register = (props) => {
 
             await props.createAccount(fd)
         }
-
-
     }
 
     return (

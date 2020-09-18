@@ -5,7 +5,9 @@ import Header from "../components/Header";
 import Category from "../components/Category";
 import auxActions from '../redux/actions/auxActions'
 import gamesActions from '../redux/actions/gamesActions'
+import '../styles/category.css'
 
+import Footer from '../components/Footer'
 
 const Categories = (props) => {
   const [categories, setCategories] = useState([]);
@@ -19,7 +21,6 @@ const Categories = (props) => {
     props.getCategories();
   }, []);
 
-  console.log("hola")
   let orderedCategories = props.categories.sort(function (a, b) {
     if (a.name > b.name) {
       return 1;
@@ -65,7 +66,9 @@ const Categories = (props) => {
   return (
     <>
       <Header />
-      <h1 className="text-center text-light">Games</h1>
+      <h1 className="text-light" style={{ padding: '2vh 0vh', margin: 'auto 15vh' }}>Games</h1>
+      <h3 className="text-light font-weight-light" style={{ margin: 'auto 15vh' }}>Find the best and most entertaining games</h3>
+      <hr style={{ border: '1px solid #4B75B1', opacity: '12%', margin: '2vh 12vh' }} />
 
       <div id="mainCategories">
         <ul className="categoriesContainer" style={{ listStyle: "none" }}>
@@ -81,6 +84,7 @@ const Categories = (props) => {
           })}
         </ul>
       </div>
+      <Footer />
     </>
   );
 };
