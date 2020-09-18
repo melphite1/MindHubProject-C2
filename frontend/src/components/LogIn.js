@@ -52,7 +52,7 @@ const LogIn = (props) => {
                 <div style={{ backgroundImage: 'url(https://www.playerone.vg/wp-content/uploads/2019/07/cd-projekt-red-creacion-personaje-jugabilidad-cyberpunk-2077-1-772x1024.jpg)', width: '45%', height: '100vh', backgroundPosition: 'top right', backgroundSize: 'cover' }}>
 
                 </div>
-                <div className='form section container center d-flex flex-column align-items-center login' style={{ width: '55%', height: '100vh' }}>
+                <div className='form section container center d-flex flex-column align-items-center login' style={{ width: '55%', maxHeight: '100vh' }}>
                     <h1>Please, choose your account</h1>
                     <input type='text' name='username' placeholder='Type your username'
                         onChange={readInput} />
@@ -68,7 +68,7 @@ const LogIn = (props) => {
                         cookiePolicy={'single_host_origin'}
                     />
                 </div>
-        /</div>
+            </div>
         </>
     )
 }

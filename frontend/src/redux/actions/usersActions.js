@@ -13,7 +13,6 @@ const usersActions = {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
-
             })
             console.log(`llega ${response}`)
             /* ->PEDIR RUTA AL BACKEND<- */

@@ -27,7 +27,8 @@ input{
 .register input,.register select, .register button{
     width: 70%;
     padding: 11px;
-    margin: 9px;
+	margin: 9px;
+	border-radius: 50px;
 }
 
 .register button, .login button{
@@ -40,13 +41,16 @@ input{
 .login input, .login select,.login button{
     width: 70%;
     padding: 13px;
-    margin: 13px;
+	margin: 13px;
+	border-radius: 10px;
 }
 .register h1, .login h1{
     text-align: center;
     color: whitesmoke;
 }
-
+#buttonGoogle{
+	background-color: #2b3035;
+}
 
 .login  {
     margin-top: 15vh;
