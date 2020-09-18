@@ -9,9 +9,9 @@
 .profile-img{
     text-align: center;
 }
-.profile-img img{
-    width: 70%;
-    height: 100%;
+.profile-img {
+    height: 38vh;
+    width: 20vw,
 }
 .profile-img .file {
     position: relative;
@@ -66,10 +66,7 @@
     border-bottom:2px solid #0062cc;
     margin-top: 8px;
 }
-.profile-work{
-    padding: 14%;
-    margin-top: -15%;
-}
+
 .profile-work p{
     font-size: 20px;
     color: #0062cc;
@@ -96,6 +93,100 @@
 div#home div.row{
     height: 8vh;
 }
+
+div#home input{
+    background: #8593a018;
+    margin-bottom: 10px!important;
+}
+footer{
+    padding-top:10px ;
+}
+
+.sectionContainer{
+    margin-bottom: 15vh;
+}
+@media (min-width: 10px) {
+	.sectionContainer{
+        margin-bottom: 0vh;
+    }
+  }
+@media (min-width: 500px) {
+	.sectionContainer{
+        margin-bottom: 4vh;
+    }
+  }
+  @media (min-width: 840px) {
+	.sectionContainer{
+        margin-bottom: 2vh;
+    }
+    .carousel-item{
+        height: 50vh!important;
+    }
+  }
+@media (min-width: 900px) {
+	.sectionContainer{
+        margin-bottom: 3vh;
+    }
+    .carousel-item{
+        height: 60vh!important;
+    }
+  }
+  @media (min-width: 1000px) {
+	.sectionContainer{
+        margin-bottom:5vh;
+    }
+    .carousel-item{
+        height: 70vh!important;
+    }
+  }
+  @media (min-width: 1100px) {
+	.sectionContainer{
+        margin-bottom:9vh;
+    }
+    .carousel-item{
+        height: 80vh!important;
+    }
+  }
+  @media (min-width: 1200px) {
+	.sectionContainer{
+        margin-bottom: 15vh;
+    }
+  }
+  @media (min-width: 1329px) {
+	.sectionContainer{
+        margin-bottom: 19vh;
+    }
+  }
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+	.profile-edit-btn{
+        margin-left: 70px;
+    }
+  }
+  @media (max-width: 768px) {
+	.profile-edit-btn{
+        margin-left: 70px;
+    }
+  }
+  @media (max-width: 768px) {
+	.put{
+        margin: 2vh 0;
+    }
+  }
+@media (max-width: 768px) {
+	.profile-head h5{
+        margin: 10px!important;
+    }
+    .profile-head h6{
+        margin: 10px!important;
+    }
+  }
 @media (min-width: 768px) {
 	.contenido{
         top: -60px;
