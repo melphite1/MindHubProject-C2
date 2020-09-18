@@ -23,11 +23,15 @@ class Game extends React.Component {
       mainFoto: this.props.game.images[0]
     })
   }
+
+  
+
   enter = (e) => {
     if (e.keyCode === 13) {
       this.sendCommentary()
     }
   }
+
   escape = (e) => {
     if (e.keyCode === 27) {
       this.setState({
@@ -69,7 +73,7 @@ class Game extends React.Component {
   }
    
   render() {
-
+    console.log(this.props)
     const star = []
     const emptyStar = []
 
@@ -83,7 +87,7 @@ class Game extends React.Component {
         emptyValor.push("instance");
       }
     }
-    
+
     iconGenerator(this.props.game.rating, star, emptyStar);
 
     const viewSwitch = () => {

@@ -10,19 +10,29 @@ const Games = (props) => {
 
   const [category, setCategory] = useState({})
 
+
   useEffect(() => {
-    const specificCategory = props.categories.filter(category => category._id === props.match.params.id)
-    stateModificator(specificCategory[0])
-    getSpecificGames()
-  }, [...props.games])
-
-  const getSpecificGames = async () => {
-    await props.getSpecificGames(props.match.params.id)
-  }
-
+    async function traedorDeJuegos(){
+     await props.getSpecificGames(props.match.params.id);
+    }
+    traedorDeJuegos()
+    
+  }, []);
+ 
+  const specificCategory = props.categories.filter(category => category._id === props.  match.params.id)
   const stateModificator = specificCategory => {
     setCategory(specificCategory)
   }
+
+  useEffect(() => {
+    stateModificator(specificCategory[0])
+  }, [stateModificator])
+
+  
+
+  
+
+  
 
   const styleCategory = {
     backgroundImage: `url(${category.picCategory})`,

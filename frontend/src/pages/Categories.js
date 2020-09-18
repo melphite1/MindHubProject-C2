@@ -11,15 +11,16 @@ import Footer from '../components/Footer'
 
 const Categories = (props) => {
   const [categories, setCategories] = useState([]);
-  const [favConsole, setFavConsole] = useState("");
-
-  useEffect(() => {
-    setCategories([...orderedCategories]);
-  }, [props.categories]);
 
   useEffect(() => {
     props.getCategories();
   }, []);
+  
+  useEffect(() => {
+    setCategories([...orderedCategories]);
+  }, [props.categories]);
+
+  
 
   let orderedCategories = props.categories.sort(function (a, b) {
     if (a.name > b.name) {
@@ -98,5 +99,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   sendConsole: auxActions.sendConsole,
   getCategories: gamesActions.getCategories,
+  getSpecificGames: gamesActions.getSpecificGames
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);
