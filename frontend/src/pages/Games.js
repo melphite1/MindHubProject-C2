@@ -29,9 +29,9 @@ const Games = (props) => {
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPositionY: '30%',
-    height:'50vh',
-    display:'flex', flexDirection:'column',justifyContent: 'flex-end',
-    flexWrap: 'wrap', 
+    height: '50vh',
+    display: 'flex', flexDirection: 'column', justifyContent: 'flex-end',
+    flexWrap: 'wrap',
   }
 
   return (
@@ -39,7 +39,7 @@ const Games = (props) => {
       <Header />
 
       <div style={styleCategory}>
-          <h1 className="categoryName" style={{padding: '2vh 2vw'}}>{category.name}</h1>
+        <h1 className="categoryName" style={{ padding: '2vh 2vw' }}>{category.name}</h1>
       </div>
 
       <ul id="mainContainer">
@@ -54,7 +54,7 @@ const Games = (props) => {
           })
         }
       </ul>
-      <Footer/>
+      <Footer />
     </>
   )
 }

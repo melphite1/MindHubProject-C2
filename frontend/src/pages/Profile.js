@@ -86,7 +86,7 @@ class Profile extends React.Component {
                     <div class="row">
                         <div class="col-md-4">
                             <div class="profile-img" style={{
-                                backgroundImage: `url(${this.props.urlpic})`, height: '38vh', width: '20vw',
+                                backgroundImage: `url(${this.props.urlpic})`,
                                 backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center center',
                                 display: 'flex', flexDirection: 'column', justifyContent: 'flex-end'
                             }}>
@@ -126,10 +126,10 @@ class Profile extends React.Component {
                                 <a href="">Battlefield 5</a>
                             </div>
                         </div>
-                        <div class="col-md-8 contenido mt-5 pt-5">
+                        <div class="col-md-8 contenido">
                             <div class="tab-content profile-tab" id="myTabContent">
                                 <div className="tab-pane fade show active " id="home" role="tabpanel" aria-labelledby="home-tab">
-                                    <div class="row">
+                                    <div class="row put">
                                         <div class="col-md-6">
                                             <label>Username</label>
                                         </div>
@@ -138,7 +138,7 @@ class Profile extends React.Component {
 
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row put">
                                         <div class="col-md-6">
                                             <label>Name</label>
                                         </div>
@@ -146,7 +146,7 @@ class Profile extends React.Component {
                                             {this.state.changeInfo ? <input placeholder="Name" name="name" value={this.state.name} onChange={this.readInput}></input> : <p>{this.props.name}</p>}
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row put">
                                         <div class="col-md-6">
                                             <label>Last Name</label>
                                         </div>
@@ -154,7 +154,7 @@ class Profile extends React.Component {
                                             {this.state.changeInfo ? <input placeholder="Lastname" name="lastname" value={this.state.lastname} onChange={this.readInput}></input> : <p>{this.props.lastname}</p>}
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row put">
                                         <div class="col-md-6">
                                             <label>Email</label>
                                         </div>
@@ -162,7 +162,7 @@ class Profile extends React.Component {
                                             <p>{this.props.username}</p>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row put">
                                         <div class="col-md-6">
                                             <label>Favorite Console</label>
                                         </div>
@@ -193,6 +193,9 @@ class Profile extends React.Component {
                                 </div>
                                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                     <div class="row">
+                                        <div class="col-md-12">
+                                            <p>functionality under development</p>
+                                        </div>
                                         <div class="col-md-12">
                                             <label>Your Bio</label><br />
                                             <p>Your detail description</p>

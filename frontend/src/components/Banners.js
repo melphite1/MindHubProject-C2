@@ -6,11 +6,11 @@ import '../styles/banner.css'
 const Banners = () => {
     return (
         <>
-            <div style={{ padding: '5vw 0vw' }}>
+            <div style={{ padding: '2vw 0vw' }}>
                 {ContBanners.map((banner, index) => {
                     return (
                         <div className='cardContainer' style={{
-                            padding: '1vw 0vw 4vw 0vw'
+                            padding: '4vw 0vw 2vw 0vw'
                         }}>
                             <div style={{
                                 fontSize: '3vh',
@@ -34,7 +34,7 @@ const Banners = () => {
                                     }}>{banner.description}</p>
                                     <Link to={banner.link}>{banner.titleBanner}</Link>
                                 </div>
-                                <div className='col-xs-7 col-sm-12 col-md-7'>
+                                <div className='col-xs-7 col-sm-10 col-md-7'>
                                     <div id="banner" style={{
                                         bottom: '0',
 
