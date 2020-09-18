@@ -3,6 +3,8 @@ import newsActions from '../redux/actions/newsActions'
 import trash from '../images/trash.png'
 import edit from '../images/edit.png'
 import { connect } from "react-redux"
+import Swal from '../../node_modules/sweetalert2/src/sweetalert2'
+import SadSquare from '../images/sadsquare.png'
 
 class CommentNews extends React.Component {
 
@@ -46,7 +48,14 @@ class CommentNews extends React.Component {
     sendCommentary = async () => {
         var commentary = this.state.commentary
         if (commentary === '') {
-            alert("You can't send empty comments", "", "error");
+            Swal.fire({
+                title: 'Im sorry :(',
+                imageUrl: `${SadSquare}`,
+                imageWidth: 180,
+                imageHeight: 180,
+                imageAlt: 'Sad square :(',
+                text: "You can't comment air :(",
+            })
 
         } else {
             await this.props.putCommentary(this.props.news._id, commentary, this.props.token)
