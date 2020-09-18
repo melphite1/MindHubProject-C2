@@ -2,10 +2,9 @@ import React from 'react'
 import { useState } from 'react'
 import { connect } from "react-redux";
 import usersActions from "../redux/actions/usersActions";
-import auxActions from '../redux/actions/auxActions';
 import { GoogleLogin } from 'react-google-login';
 import Swal from 'sweetalert2'
-
+import { Link } from 'react-router-dom'
 
 const Register = (props) => {
 
@@ -75,23 +74,45 @@ const Register = (props) => {
                 <div style={{ backgroundImage: 'url(https://www.filmsjackets.com/image/cache/catalog/ilse-schattenwolf-battlefield-5-cotton-jacket/ilse-schattenwolf-battlefield-5-cotton-jacket-800x980.jpg)', width: '40%', height: '100vh', backgroundPosition: 'top right', backgroundSize: 'cover' }}>
 
                 </div>
-                <div className='form section container center d-flex flex-column align-items-center register' style={{ width: '60%', height: '100vh' }}>
-                    <h1 className="text-center">Create new account</h1>
-                    <input type='text' name='name' placeholder='Type your name'
+                <div className='form section container center d-flex flex-column align-items-center register' style={{ width: '60%', height: 'auto', marginTop: '8%'}}>
+                    <h1 className="text-center responsiveText">Create new account</h1>
+                    <label className='labelInput text-left'>Name</label>
+                    <input style={{
+                        borderRadius: '3vw'
+                    }} type='text' name='name' placeholder='Type your name'
                         onChange={readInput} />
-                    <input type='text' name='lastname' placeholder='Type your lastname'
+                    <label className='labelInput'>Lastname</label>
+                    <input style={{
+                        borderRadius: '3vw'
+                    }} type='text' name='lastname' placeholder='Type your lastname'
                         onChange={readInput} />
-                    <input type='text' name='username' placeholder='Choose your username (Min 5 characters)'
+                    <label  className='labelInput'>Username</label>
+                    <input style={{
+                        borderRadius: '3vw'
+                    }} type='text' name='username' placeholder='Choose your username (Min 5 characters)'
                         onChange={readInput} />
-                    <input type='password' name='password' placeholder='Choose your password (Min 5 characters)'
+                    <label className='labelInput'>Password</label>
+                    <input style={{
+                        borderRadius: '3vw'
+                    }} type='password' name='password' placeholder='Choose your password (Min 5 characters)'
                         onChange={readInput} />
-                    <input type='text' name='email' placeholder='Type an email correct'
+                    <label className='labelInput'>Email</label>
+                    <input style={{
+                        borderRadius: '3vw'
+                    }} type='text' name='email' placeholder='Type an email correct'
                         onChange={readInput} />
                     <label htmlFor="urlpic">Select your profile pic</label>
-                    <input type='file' name='urlpic' id="urlpic"
+                    <input style={{
+                        borderRadius: '3vw'
+                    }} type='file' name='urlpic' id="urlpic"
                         onChange={readInput} />
-                    <button onClick={sendInfo}>Create new account</button>
-                    <GoogleLogin
+                    <button style={{
+                        borderRadius: '3vw'
+                    }} onClick={sendInfo}>Create new account</button>
+                    <button style={{
+                        borderRadius: '3vw'
+                    }} ><Link to='/login'>LogIn</Link></button>
+                    <GoogleLogin 
                         clientId="575358746516-8ot9u4rh9irr4uf17ogf1bcqjt2aqneu.apps.googleusercontent.com"
                         buttonText="Create Account with Google"
                         onSuccess={responseGoogle}
