@@ -103,7 +103,7 @@ class Game extends React.Component {
       <div style={{display:'flex', margin:'3vh'}}>
         <div className="divGame" >
           <div className="aGame" style={{boxShadow: '5px 5px 5px #141629d8'}}>
-            <div>
+            <div >
               <div className=" col-12" style={{margin:'2vh 0vh'}}>
                 <div className='imgMain img-fluid' style={{backgroundImage:`url(${this.state.mainFoto})`, backgroundSize:'cover'}}>
                 </div>

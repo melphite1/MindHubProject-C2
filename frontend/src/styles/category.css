@@ -69,6 +69,8 @@ div .fluid {
     margin: auto 15vh;
 }
 
+
+
 @media (max-width: 600px) {
     #imgContainer {
         display: flex;
@@ -92,6 +94,9 @@ div .fluid {
     }
     div .imgMain {
         height: 25vh;
+    }
+    p .parrafo {
+        margin: auto 5vh;
     }
 }
 @media (max-width: 940px) {

@@ -41,7 +41,7 @@ const Categories = (props) => {
             backgroundImage: `url(${categoryNotFound})`,
           }}
         >
-          <p
+          {/* <p
             id="notFoundText"
             style={{
               fontSize: "3vh",
@@ -54,7 +54,7 @@ const Categories = (props) => {
             }}
           >
             Categoy not found.. Try Again!
-          </p>
+          </p> */}
         </div>
       );
     }
