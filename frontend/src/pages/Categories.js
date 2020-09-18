@@ -28,6 +28,7 @@ const Categories = (props) => {
     }
     return 0;
   });
+
   const consoles = [
     'Not defined yet',
     'Pc',
@@ -102,34 +103,38 @@ const Categories = (props) => {
       <h1 className="text-center text-light">Games</h1>
       {props.firstTime && props.token ? (
         <>
-          <select
-            name="favConsole"
-            id="favConsole"
-            onChange={readInput}
-            className="text-center col-6"
-          >
-            <option value={-1} className="text-center">
-              Choose your favourite console.
-            </option>
-            {consoles.map((console, i) => {
-              return (
-                <option
-                  key={"console" + [i]}
-                  value={console}
-                  className="text-center"
-                >
-                  {console}
-                </option>
-              );
-            })}
-          </select>
-          <button
-            htmlFor="favConsole"
-            onClick={sendConsole}
-            className="text-center col-6"
-          >
-            Send your favorite console
-          </button>
+          <section id="favConsoleContainer">
+            <h3 className='container'>Since this is your first time entering, would you be so kind to tell us what's your favorite console?</h3>
+            <select
+              name="favConsole"
+              onChange={readInput}
+              className="favConsole text-center col-6"
+
+            >
+              <option value={-1} className="text-center">
+                Choose your favourite console.
+              </option>
+              {consoles.map((console, i) => {
+                return (
+                  <option
+                    key={"console" + [i]}
+                    value={console}
+                    className="text-center"
+                  >
+                    {console}
+                  </option>
+                );
+              })}
+            </select>
+            <button
+              htmlFor="favConsole"
+              onClick={sendConsole}
+              className="text-center col-6"
+              id='sendFavConsole'
+            >
+              Send your favorite console
+            </button>
+          </section>
         </>
       ) : (
           ""
