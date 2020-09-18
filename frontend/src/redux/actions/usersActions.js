@@ -67,7 +67,6 @@ const usersActions = {
             const response = await axios.post('http://127.0.0.1:4000/api/userGoogle', newUser)/* ->PEDIR RUTA AL BACKEND<- */
             console.log('hola')
             if (response.data.success !== true) {
-                alert(response.data.error)
                 console.log(response.data.message)
                 Swal.fire({
                     icon: 'error',

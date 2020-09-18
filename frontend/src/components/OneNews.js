@@ -94,13 +94,13 @@ class OneNews extends React.Component {
           <h3 className="news">{this.props.news.subtitle}</h3>
           {this.state.viewAllNews &&
             this.props.news.body.map(bodySection => {
-            return <>
-              <p>
-                {<br></br>}
-                {bodySection}
-                {<br></br>}
-              </p>
-            </>
+              return <>
+                <p>
+                  {<br></br>}
+                  {bodySection}
+                  {<br></br>}
+                </p>
+              </>
             })}
           <button style={{ margin: '2vh' }} class="btn btn-dark" onClick={viewNews}>{this.state.viewAllNews ? 'See less' : 'See all the news'}</button>
           {this.state.viewMoreComments &&
