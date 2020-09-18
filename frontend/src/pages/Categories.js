@@ -11,14 +11,15 @@ import Footer from '../components/Footer'
 
 const Categories = (props) => {
   const [categories, setCategories] = useState([]);
-  const [filteredCategories, setFilteredCategories] = useState([]);
   const [favConsole, setFavConsole] = useState("");
 
   useEffect(() => {
-    props.getCategories();
     setCategories([...orderedCategories]);
-    setFilteredCategories([...props.categories]);
   }, [props.categories]);
+
+  useEffect(() => {
+    props.getCategories();
+  }, []);
 
   let orderedCategories = props.categories.sort(function (a, b) {
     if (a.name > b.name) {
@@ -95,6 +96,8 @@ const Categories = (props) => {
     }
   };
 
+  
+
   return (
     <>
       <Header />
@@ -136,19 +139,6 @@ const Categories = (props) => {
           ""
         )}
       <div id="mainCategories">
-        {/* <select name='categoriesFilter' onChange={captureValue}>
-            <option value={-1}>
-              Select a category
-            </option>
-            {
-              props.categories.map((category, i) => {
-                return <option key={'category' + [i]} value={category.name}>
-                  {category.name}
-                </option>
-              })
-            }
-
-        </select> */}
         <ul className="categoriesContainer" style={{ listStyle: "none" }}>
           {filteredSameZero()}
           {categories.map((category) => {

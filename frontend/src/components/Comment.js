@@ -74,13 +74,13 @@ class Comment extends React.Component {
 
             this.props.game._id === this.props.commentary.idGame &&
             <>
-                <div className="col-12 mx-auto mt-5">
+                <div className="col-12 mx-auto mt-4">
                     <div className="d-flex justify-content-between">
                         <div className="d-flex">
-                            <a className="comment-pic user-action text-light"> <img src={this.props.commentary.userPic} className="avatar" alt="Avatar" /><b className="caret"></b></a>
-                            <div>
-                                <h6 className="text-light">{this.props.commentary.username}</h6>
-                                {this.state.sendModify && this.props.commentary.username === this.props.username ? <><input onChange={this.readCommentary} id={this.props.commentary._id} placeholder={this.props.commentary.content} onKeyUp={this.escape} /> <p>escape to cancel • enter to save</p></> : <p className="text-light">{this.props.commentary.content}</p>}
+                            <a className="comment-pic user-action text-light align-bottom"> <div style={{backgroundImage:`url(${this.props.commentary.userPic})`, backgroundSize:'cover', width:'5vh', height:'5vh',  margin:'0vh 1vh', borderRadius:"50%", border:'4px solid #233347'}} className="avatar" alt="Avatar" ></div><b className="caret"></b></a>
+                            <div >
+                                <h5 className="font-weight-bold text-light">{this.props.commentary.username}</h5>
+                                {this.state.sendModify && this.props.commentary.username === this.props.username ? <><input onChange={this.readCommentary} id={this.props.commentary._id} placeholder={this.props.commentary.content} onKeyUp={this.escape} /> <h5>escape to cancel • enter to save</h5></> : <h5 className="text-light">{this.props.commentary.content}</h5>}
                             </div>
                         </div>
                         <div className="d-flex">

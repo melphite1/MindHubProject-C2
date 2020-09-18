@@ -20,7 +20,7 @@ const usersActions = {
             if (response.data.success !== true) {
                 console.log(response.data.message)
                 Swal.fire({
-                    title: 'Error!',
+                    title: 'Im sorry :(',
                     imageUrl: `${SadSquare}`,
                     imageWidth: 180,
                     imageHeight: 180,
@@ -69,7 +69,7 @@ const usersActions = {
             console.log(response.data)
             if (!response.data.success) {
                 Swal.fire({
-                    title: 'Error!',
+                    title: 'Im sorry :(',
                     imageUrl: `${SadSquare}`,
                     imageWidth: 180,
                     imageHeight: 180,

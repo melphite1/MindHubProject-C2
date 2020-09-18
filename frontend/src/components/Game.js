@@ -101,14 +101,12 @@ class Game extends React.Component {
       <div style={{display:'flex', margin:'3vh'}}>
         <div className="col-8 offset-md-2">
           <div className="aGame" style={{display:'flex'}}>
-            <div className='row' style={{display:'flex'}}>
-              <div className="col-12" style={{height:'50vh'}}>
+            <div>
+              <div className="col-12" style={{height:'50vh', margin:'2vh 0vh'}}>
                 <div className='img-fluid' style={{backgroundImage:`url(${this.state.mainFoto})`, backgroundSize:'cover', height:'50vh'}}>
-                  
                 </div>
-                
               </div>
-              <div style={{display:'flex', justifyContent:'center', alignContent:'center'}}>
+              <div style={{display:'flex', justifyContent:'center', alignContent:'center', margin:'2vh auto'}}>
                 {this.state.listImages.map((image, index) => {
                   return(
                     <div key={index} className='col-sm' style={{margin:'2vh auto'}}>
@@ -117,24 +115,30 @@ class Game extends React.Component {
                   )
                 })}
               </div>
-              {this.state.viewMore &&
-              <>
-                <div className="col-10 mx-auto">
-                  {this.props.commentaries.map(commentary => {
-                    return (
-                      this.props.game._id === commentary.idGame &&
-                      <>
-                        <Comment game={this.props.game} commentary={commentary} />
-                      </>)
-                  })}
+              <div className="col-12">
+                {this.state.viewMore &&
+                <>
+                  <div className="col-12" >
+                    <h3>Reviews</h3>
+                    {this.props.commentaries.map(commentary => {
+                      return (
+                        this.props.game._id === commentary.idGame &&
+                        <>
+                          <Comment game={this.props.game} commentary={commentary} />
+                        </>)
+                    })}
 
-                  <div className="p-5">
-                    <input onChange={this.readCommentary} placeholder="Send a comment" className="sendComment col-12" id={this.props.game._id} value={this.state.commentary} onKeyUp={this.enter}></input>
+                    <div className="col-12" style={{margin:'2vh 0vh'}}>
+                      <input onChange={this.readCommentary} placeholder="Send a comment" className="sendComment col-12" id={this.props.game._id} value={this.state.commentary} onKeyUp={this.enter}></input>
+                    </div>
                   </div>
+                </>
+                }
+                  <div style={{margin:'2vh 0vh'}}>
+                    <button style={{backgroundColor:'#101E30', border:'0px'}} class="btn btn-primary col-6 offset-md-3" onClick={viewSwitch}>{this.state.viewMore ? 'See less reviews' : 'See all reviews'}</button>
                 </div>
-              </>
-              }
-              <button class="btn btn-dark" onClick={viewSwitch}>{this.state.viewMore ? 'View less' : 'View more'}</button>
+              </div>
+              
             </div>
             <div className="col-4" style={{fontSize:'2vh'}}>
               <div>
