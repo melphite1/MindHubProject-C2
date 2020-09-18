@@ -13,8 +13,8 @@ const Header = (props) => {
   return (
     <>
       <header>
-        <nav className="navbar navbar-expand-xl navbar-light">
-          <div>
+        <nav className="navbar navbar-expand-sm navbar-light">
+        <div style={{ display: 'flex', alignItems: 'center' }}>
             <img src={logo} style={{ width: '50px', height: '50px' }}></img>
             <NavLink to="/" className="navbar-brand">SCAPE</NavLink>
           </div>

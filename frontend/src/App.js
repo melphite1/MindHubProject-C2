@@ -15,6 +15,9 @@ import "./styles/profile.css"
 import "./styles/footer.css"
 import "./styles/categories.css"
 import "./styles/category.css"
+import "./styles/home.css"
+import "./styles/banner.css"
+
 
 
 

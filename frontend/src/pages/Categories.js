@@ -31,7 +31,6 @@ const Categories = (props) => {
     return 0;
   });
 
-
   const categoryNotFound = require("../images/404notFound.png");
   const filteredSameZero = () => {
     if (categories.length === 0) {

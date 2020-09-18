@@ -180,7 +180,6 @@ class Profile extends React.Component {
                                                     return (
                                                         <option
                                                             key={"console" + [i]}
-                                                            value={this.state.favConsole}
                                                             className="text-center"
                                                         >
                                                             {console}
