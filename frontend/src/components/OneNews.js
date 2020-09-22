@@ -4,6 +4,8 @@ import { connect } from "react-redux"
 import CommentNews from './CommentNews';
 import "../styles/styles.css"
 import '../styles/category.css'
+import Swal from '../../node_modules/sweetalert2/src/sweetalert2'
+import SadSquare from '../images/sadsquare.png'
 
 class OneNews extends React.Component {
 
@@ -49,7 +51,14 @@ class OneNews extends React.Component {
   sendCommentary = async () => {
     var commentary = this.state.commentary
     if (commentary === '') {
-      alert("You can't send empty comments", "", "error");
+      Swal.fire({
+        title: 'Im sorry :(',
+        imageUrl: `${SadSquare}`,
+        imageWidth: 180,
+        imageHeight: 180,
+        imageAlt: 'Sad square :(',
+        text: "You can't comment air ",
+    })
 
     } else {
       await this.props.putCommentary(this.props.news._id, commentary, this.props.token)
@@ -84,7 +93,7 @@ class OneNews extends React.Component {
         viewAllNews: !this.state.viewAllNews
       })
     }
-    console.log(this.props.news)
+    
 //className="col-8 offset-md-2"  className="col-6"
     return (
       <>

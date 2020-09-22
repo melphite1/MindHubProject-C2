@@ -7,18 +7,18 @@ import '../../styles/styles.css'
 const usersActions = {
 
     createAccount: fd => {
-        console.log(fd)
+     
         return async (dispatch, getState) => {
-            const response = await axios.post('http://127.0.0.1:4000/api/user', fd, {
+            const response = await axios.post('https://scapeteamred.herokuapp.com/api/user', fd, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
 
             })
-            console.log(`llega ${response}`)
+           
             /* ->PEDIR RUTA AL BACKEND<- */
             if (response.data.success !== true) {
-                console.log(response.data.message)
+          
                 Swal.fire({
                     title: 'Im sorry :(',
                     imageUrl: `${SadSquare}`,
@@ -64,11 +64,11 @@ const usersActions = {
     },
     createAccountGoogle: newUser => {
         return async (dispatch, getState) => {
-            const response = await axios.post('http://127.0.0.1:4000/api/userGoogle', newUser)/* ->PEDIR RUTA AL BACKEND<- */
-            console.log('hola')
+            const response = await axios.post('https://scapeteamred.herokuapp.com/api/userGoogle', newUser)/* ->PEDIR RUTA AL BACKEND<- */
+
             if (response.data.success !== true) {
-                alert(response.data.error)
-                console.log(response.data.message)
+              
+            
                 Swal.fire({
                     icon: 'error',
                     title: 'Error!',
@@ -89,8 +89,8 @@ const usersActions = {
     },
     userLogIn: newUser => {
         return async (dispatch, getState) => {
-            const response = await axios.post('http://127.0.0.1:4000/api/login', newUser)/* ->PEDIR RUTA AL BACKEND<- */
-            console.log(response.data)
+            const response = await axios.post('https://scapeteamred.herokuapp.com/api/login', newUser)/* ->PEDIR RUTA AL BACKEND<- */
+           
             if (!response.data.success) {
                 Swal.fire({
                     title: 'Im sorry :(',
@@ -145,7 +145,7 @@ const usersActions = {
 
     forcedLogIn: tokenLS => {
         return async (dispatch, getState) => {
-            const response = await axios.get('http://127.0.0.1:4000/api/tokenVerificator', {
+            const response = await axios.get('https://scapeteamred.herokuapp.com/api/tokenVerificator', {
                 headers: {
                     Authorization: `Bearer ${tokenLS}`
                 }
@@ -168,9 +168,9 @@ const usersActions = {
         }
     },
     modifyUser: (fd) => {
-        console.log(fd)
+  
         return async (dispatch, getState) => {
-            const response = await axios.put('http://127.0.0.1:4000/api/modifyUser', fd, {
+            const response = await axios.put('https://scapeteamred.herokuapp.com/api/modifyUser', fd, {
                 headers: {
                     "Content-Type": "multipart/form-data"
                 }

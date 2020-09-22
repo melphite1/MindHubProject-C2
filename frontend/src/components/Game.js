@@ -3,6 +3,8 @@ import gamesActions from '../redux/actions/gamesActions'
 import { connect } from "react-redux"
 import Comment from "./Comment"
 import '../styles/category.css'
+import Swal from '../../node_modules/sweetalert2/src/sweetalert2'
+import SadSquare from '../images/sadsquare.png'
 
 
 
@@ -47,7 +49,14 @@ class Game extends React.Component {
   sendCommentary = async () => {
     var commentary = this.state.commentary
     if (commentary === '') {
-      alert("You can't send empty comments", "", "error");
+      Swal.fire({
+        title: 'Im sorry :(',
+        imageUrl: `${SadSquare}`,
+        imageWidth: 180,
+        imageHeight: 180,
+        imageAlt: 'Sad square :(',
+        text: "You can't comment air ",
+    })
 
     } else {
       await this.props.putCommentary(this.props.game._id, commentary, this.props.token)

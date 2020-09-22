@@ -47,7 +47,7 @@ const gameController = {
         const { username, urlpic } = req.user
         const newCommentary = new Comment({ content, userPic: urlpic, username, idGame })
         const commentary = await newCommentary.save()
-        console.log(commentary)
+  
         res.json({
             succes: true,
             commentary

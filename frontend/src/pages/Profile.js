@@ -32,7 +32,7 @@ class Profile extends React.Component {
     }
     sendInfo = async () => {
         const fd = new FormData()
-        console.log(this.state.urlpic)
+     
 
         fd.append("name", this.state.name)
         fd.append("lastname", this.state.lastname)
@@ -48,7 +48,7 @@ class Profile extends React.Component {
 
     }
     render() {
-        console.log(this.props)
+  
         const consoles = [
             'Not defined yet',
             'Pc',
@@ -77,7 +77,7 @@ class Profile extends React.Component {
             'Atari2600, Atari',
             'Atari5200, Atari'
         ]
-        console.log(this.state)
+      
         return (
             <>
                 <Header />

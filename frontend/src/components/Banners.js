@@ -26,13 +26,14 @@ const Banners = () => {
                                 }} className='col-xs-5 col-sm-12 col-md-5'>
                                     <h4 style={{
                                         paddingBottom: '1vw',
+                                        fontSize: '5vh',
                                     }}>{banner.subTitle}</h4>
                                     <p style={{
-                                        fontSize: '2vh',
+                                        fontSize: '4vh',
                                         color: 'gray',
                                         padding: '0vw 1vw 1vw 0vw'
                                     }}>{banner.description}</p>
-                                    <Link to={banner.link}>{banner.titleBanner}</Link>
+                                    <Link to={banner.link} style={{fontSize:"3vh"}}>{banner.titleBanner}</Link>
                                 </div>
                                 <div className='col-xs-7 col-sm-10 col-md-7'>
                                     <div id="banner" style={{

@@ -20,12 +20,12 @@ const controllerNews = {
     },
     
     putCommentary: async (req, res) => {
-        console.log(req.body)
+        
         const { idNews, content } = req.body
         const { username, urlpic } = req.user
         const newCommentary = new Comment({ content, userPic: urlpic, username, idNews })
         const commentary = await newCommentary.save()
-        console.log(commentary)
+      
         res.json({
             succes: true,
             commentary
@@ -47,7 +47,7 @@ const controllerNews = {
         })
     },
     modifyCommentary: async (req, res) => {
-        console.log('este es el controlador para modificar')
+        
         const { content, idComment } = req.body
         const commentaryDeleted = await Comment.findByIdAndUpdate(
             idComment

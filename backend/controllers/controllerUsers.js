@@ -14,14 +14,14 @@ const usersController = {
         if (userExists) {
             res.json({ success: false, message: "Username already use" })
         } else {
-            console.log(req.files)
+       
             const archivo = req.files.urlpic
             const nombreArchivo = req.body.username
             const serverURL = `uploads/${nombreArchivo}`
 
             archivo.mv(serverURL)
 
-            const photoUrl = `http://localhost:4000/uploads/${nombreArchivo}`
+            const photoUrl = `https://scapeteamred.herokuapp.com/uploads/${nombreArchivo}`
 
             const newUser = new User({ name, lastname, email, username, password: passwordHash, logWithGoogle, urlpic: photoUrl, firstTime, favConsole })
 
@@ -32,7 +32,7 @@ const usersController = {
                 if (error) {
                     res.json({ success: false, error })
                 } else {
-                    console.log("usuario nuevo")
+            
                     res.json({ success: true, token, urlpic: newUser.urlpic, name: newUser.name, lastName: newUser.lastname, favConsole: newUser.favConsole, email: newUser.email })
                 }
 
@@ -57,7 +57,7 @@ const usersController = {
                 if (error) {
                     res.json({ success: false, error })
                 } else {
-                    console.log("usuario nuevo")
+              
                     res.json({ success: true, token, urlpic: newUser.urlpic, name: newUser.name })
                 }
             }
@@ -122,7 +122,7 @@ const usersController = {
             var nombreArchivo = archivo.name
             var serverURL = `uploads/${nombreArchivo}`
             archivo.mv(serverURL)
-            var photoUrl = `http://localhost:4000/uploads/${nombreArchivo}`
+            var photoUrl = `https://scapeteamred.herokuapp.com/uploads/${nombreArchivo}`
         } else {
             var photoUrl = urlpic
         }

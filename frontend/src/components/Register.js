@@ -5,6 +5,7 @@ import usersActions from "../redux/actions/usersActions";
 import auxActions from '../redux/actions/auxActions';
 import { GoogleLogin } from 'react-google-login';
 import Swal from 'sweetalert2'
+import { NavLink } from 'react-router-dom';
 
 
 const Register = (props) => {
@@ -90,9 +91,10 @@ const Register = (props) => {
                     <label htmlFor="urlpic">Select your profile pic</label>
                     <input type='file' name='urlpic' id="urlpic"
                         onChange={readInput} />
+                           <p> If you already have an account,</p>  <NavLink to="/login">click here!</NavLink>
                     <button onClick={sendInfo}>Create new account</button>
                     <GoogleLogin
-                        clientId="575358746516-8ot9u4rh9irr4uf17ogf1bcqjt2aqneu.apps.googleusercontent.com"
+                        clientId="575358746516-garl0v4esqjgtnehq8aefumqi63e6f34.apps.googleusercontent.com"
                         buttonText="Create Account with Google"
                         onSuccess={responseGoogle}
                         onFailure={responseGoogle}

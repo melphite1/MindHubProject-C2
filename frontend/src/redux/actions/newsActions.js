@@ -3,7 +3,7 @@ import axios from 'axios'
 const newsActions = {
     getnews: () => {
         return async (dispatch, getState) => {
-            const respuesta = await axios.get('http://127.0.0.1:4000/api/news')
+            const respuesta = await axios.get('https://scapeteamred.herokuapp.com/api/news')
             dispatch({
                 type: "GET_NEWS",
                 payload: respuesta.data
@@ -14,7 +14,7 @@ const newsActions = {
     putCommentary: (idNews, content, token) => {
         return async (dispatch, getState) => {
             
-            const response = await axios.post(`http://localhost:4000/api/news/comments`, { idNews, content }, {
+            const response = await axios.post(`https://scapeteamred.herokuapp.com/api/news/comments`, { idNews, content }, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -24,7 +24,7 @@ const newsActions = {
     getCommentaries: () => {
         return async (dispatch, getState) => {
             
-            const response = await axios.get(`http://localhost:4000/api/news/comments`)
+            const response = await axios.get(`https://scapeteamred.herokuapp.com/api/news/comments`)
             
             dispatch({
                 type: 'GETCOMMENTARIES',
@@ -35,7 +35,7 @@ const newsActions = {
     deleteCommentary: (idComment) => {
         return async (dispatch, getState) => {
             
-            const response = await axios.put(`http://localhost:4000/api/news/deleteCommentary`, { idComment })
+            const response = await axios.put(`https://scapeteamred.herokuapp.com/api/news/deleteCommentary`, { idComment })
             dispatch({
                 type: 'GETCOMMENTARIES',
                 payload: response.data.comments
@@ -45,7 +45,7 @@ const newsActions = {
     modifyCommentary: (content, idComment) => {
         return async (dispatch, getState) => {
             
-            const response = await axios.put(`http://localhost:4000/api/news/modifyCommentary`, { content, idComment })
+            const response = await axios.put(`https://scapeteamred.herokuapp.com/api/news/modifyCommentary`, { content, idComment })
             dispatch({
                 type: 'GETCOMMENTARIES',
                 payload: response.data.comments

@@ -28,8 +28,8 @@ class Carousel extends React.Component {
                         <div className="carousel-item" >
                             <img className="d-block w-100" src="https://www.kabukis.com/wp-content/uploads/2013/08/BEYOND.jpg" alt="Third slide" />
                             <div className="carousel-caption d-md-block">
-                                <h2>Find the latest news about the gamer world</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dapibus sem elementum purus euismod elementum. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+                            <h2>What's new and up to date.</h2>
+                                <p>Stay up-to-date with what's new and curiosities from the gaming industry.</p>
                             </div>
                         </div>
                     </div>

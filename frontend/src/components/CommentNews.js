@@ -3,6 +3,8 @@ import newsActions from '../redux/actions/newsActions'
 import trash from '../images/trash.png'
 import edit from '../images/edit.png'
 import { connect } from "react-redux"
+import Swal from '../../node_modules/sweetalert2/src/sweetalert2'
+import SadSquare from '../images/sadsquare.png'
 
 class CommentNews extends React.Component {
 
@@ -26,7 +28,7 @@ class CommentNews extends React.Component {
     }
 
     enter = (e) => {
-        console.log(e.keyCode)
+    
         if (e.keyCode === 13) {
             this.sendCommentary()
         }
@@ -46,7 +48,14 @@ class CommentNews extends React.Component {
     sendCommentary = async () => {
         var commentary = this.state.commentary
         if (commentary === '') {
-            alert("You can't send empty comments", "", "error");
+            Swal.fire({
+                title: 'Im sorry :(',
+                imageUrl: `${SadSquare}`,
+                imageWidth: 180,
+                imageHeight: 180,
+                imageAlt: 'Sad square :(',
+                text: "You can't comment air ",
+            })
 
         } else {
             await this.props.putCommentary(this.props.news._id, commentary, this.props.token)
@@ -83,15 +92,15 @@ class CommentNews extends React.Component {
 
                                     <a className="comment-pic user-action text-light"> <img src={this.props.commentary.userPic} className="avatar" alt="Avatar" /><b className="caret"></b></a>
                                     <div>
-                                        <h6 className="text-light">{this.props.commentary.username}</h6>
+                                        <h6 className="text-light username font-weight-bold" >{this.props.commentary.username}</h6>
                                         {this.state.sendModify && this.props.commentary.username === this.props.username ? <><input onChange={this.readCommentary} id={this.props.commentary._id} placeholder={this.props.commentary.content} onKeyUp={this.escape} /> <p>escape to cancel • enter to save</p></> : <p className="text-light">{this.props.commentary.content}</p>}
                                     </div>
                                 </div>
                                 <div className="d-flex">
                                     {this.props.username === this.props.commentary.username &&
                                         <>
-                                            <img src={edit} alt="edit" className="pr-2" data-toggle="tooltip" data-placement="top" title="Delete" id={this.props.commentary._id} onClick={this.openInput} style={{ height: '4vh' }}></img>
-                                            <img src={trash} alt="trash" className="pr-2" data-toggle="tooltip" data-placement="top" title="Modify" id={this.props.commentary._id} onClick={this.deleteCommentary} style={{ height: '4vh' }}></img>
+                                            <img src={edit} alt="edit" className="pr-2" data-toggle="tooltip" data-placement="top" title="Modify" id={this.props.commentary._id} onClick={this.openInput} style={{ height: '4vh' }}></img>
+                                            <img src={trash} alt="trash" className="pr-2" data-toggle="tooltip" data-placement="top" title="Delete" id={this.props.commentary._id} onClick={this.deleteCommentary} style={{ height: '4vh' }}></img>
                                         </>
                                     }
                                 </div>

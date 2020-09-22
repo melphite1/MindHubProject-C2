@@ -4,7 +4,7 @@ const auxActions = {
     sendConsole: (favConsole, username) => {
         return async (dispatch, getState) => {
             
-            const response = await axios.put('http://127.0.0.1:4000/api/setConsole', { favConsole, username });
+            const response = await axios.put('https://scapeteamred.herokuapp.com/api/setConsole', { favConsole, username });
 
         }
     },

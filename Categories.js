@@ -108,7 +108,7 @@ const Categories = (props) => {
     };
   };
 
-  console.log(filteredCategories)
+  
   return (
     <>
       <Header />

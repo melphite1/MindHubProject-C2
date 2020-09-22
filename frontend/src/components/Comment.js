@@ -4,6 +4,9 @@ import trash from '../images/trash.png'
 import edit from '../images/edit.png'
 import { connect } from "react-redux"
 import '../styles/category.css'
+import Swal from '../../node_modules/sweetalert2/src/sweetalert2'
+import SadSquare from '../images/sadsquare.png'
+
 
 class Comment extends React.Component {
     state = {
@@ -43,7 +46,14 @@ class Comment extends React.Component {
     sendCommentary = async () => {
         var commentary = this.state.commentary
         if (commentary === '') {
-            alert("You can't send empty comments", "", "error");
+            Swal.fire({
+                title: 'Im sorry :(',
+                imageUrl: `${SadSquare}`,
+                imageWidth: 180,
+                imageHeight: 180,
+                imageAlt: 'Sad square :(',
+                text: "You can't comment air ",
+            })
 
         } else {
             await this.props.putCommentary(this.props.game._id, commentary, this.props.token)
@@ -64,7 +74,7 @@ class Comment extends React.Component {
         })
     }
     modifyCommentary = async (e) => {
-        console.log(this.state.id)
+     
         await this.props.modifyCommentary(this.state.commentary, this.state.idGame)
     }
     render() {
@@ -83,8 +93,8 @@ class Comment extends React.Component {
                         <div className="d-flex">
                             {this.props.username === this.props.commentary.username &&
                                 <>
-                                    <img src={edit} alt="edit" className="pr-2" data-toggle="tooltip" data-placement="top" title="Delete" id={this.props.commentary._id} onClick={this.openInput} style={{ height: '3vh', width: '2vw' }}></img>
-                                    <img src={trash} alt="trash" className="pr-2" data-toggle="tooltip" data-placement="top" title="Modify" id={this.props.commentary._id} onClick={this.deleteCommentary} style={{ height: '3vh', width: '2vw' }}></img>
+                                    <img src={edit} alt="edit" className="pr-2" data-toggle="tooltip" data-placement="top" title="Modify" id={this.props.commentary._id} onClick={this.openInput} style={{ height: '3vh', width: '2vw' }}></img>
+                                    <img src={trash} alt="trash" className="pr-2" data-toggle="tooltip" data-placement="top" title="Delete" id={this.props.commentary._id} onClick={this.deleteCommentary} style={{ height: '3vh', width: '2vw' }}></img>
                                 </>}
                         </div>
                     </div>

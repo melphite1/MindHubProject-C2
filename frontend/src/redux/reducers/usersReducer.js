@@ -23,7 +23,7 @@ const usersReducer = (state = initialState, action) => {
                 favConsole: action.payload.favConsole
             }
         case 'UPDATE_USER':
-            console.log(action.payload.urlpic)
+            
             return {
 
                 ...state,
